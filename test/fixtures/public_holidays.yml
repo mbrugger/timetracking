@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+december_8th:
+  name: December 8th
+  date: 2014-12-8
+
+december_25th:
+  name: December 25th
+  date: 2014-12-25
+
+august_15th:
+  name: August 15th
+  date: 2014-08-15
+
+december_26th:
+  name: December 26th
+  date: 2014-12-26
+
+december_24th:
+  name: December 24th
+  date: 2014-12-24
+
+jan_6th:
+  name: January 6th
+  date: 2015-01-06
+
+jan_1st:
+  name: January 1st
+  date: 2015-01-01

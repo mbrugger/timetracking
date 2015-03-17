@@ -1,0 +1,197 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+closed:
+  date: 2014-11-23
+  startTime: 2014-11-23 14:04:55
+  stopTime: 2014-11-23 16:04:55
+  user: john
+
+open:
+  date: 2014-11-23
+  startTime: 2014-11-23 14:04:55
+  stopTime:
+  user: jim
+
+
+first_day_1:
+  date: 2014-12-22
+  startTime: 2014-11-23 14:04:55
+  stopTime: 2014-11-23 16:04:55
+  user: john
+
+first_day_2:
+  date: 2014-12-22
+  startTime: 2014-11-23 17:04:55
+  stopTime: 2014-11-23 19:04:55
+  user: john
+
+second_day_1:
+  date: 2014-12-23
+  startTime: 2014-11-24 14:04:55
+  stopTime: 2014-11-24 16:04:55
+  user: john
+
+tester_day_1:
+  date: 2014-08-01
+  startTime: 2014-08-01 08:00:00
+  stopTime: 2014-08-01 16:30:00
+  user: tester
+
+tester_day_2:
+  date: 2014-08-04
+  startTime: 2014-08-04 08:00:00
+  stopTime: 2014-08-04 16:30:00
+  user: tester
+
+tester_day_3:
+  date: 2014-08-05
+  startTime: 2014-08-05 08:00:00
+  stopTime: 2014-08-05 16:30:00
+  user: tester
+
+te_yesterday_open:
+  date: <%=Date.yesterday%>
+  startTime: 2014-08-05 08:00:00
+  stopTime:
+  user: time_entry_tester
+
+te_yesterday:
+  date: <%=Date.yesterday%>
+  startTime: 2014-08-05 08:00:00
+  stopTime: 2014-08-05 16:30:00
+  user: time_entry_tester
+
+te_today_open:
+  date: <%=Date.today%>
+  startTime: 2014-08-05 08:00:00
+  stopTime:
+  user: time_entry_tester
+
+te_today:
+  date: <%=Date.today%>
+  startTime: 2014-08-05 08:00:00
+  stopTime: 2014-08-05 16:30:00
+  user: time_entry_tester
+
+admin_time_entry_1:
+  date: 2014-12-05
+  startTime: 2014-12-05 08:00:00
+  stopTime: 2014-12-05 12:30:00
+  user: admin
+
+admin_time_entry_2:
+  date: 2014-12-05
+  startTime: 2014-12-05 12:30:00
+  stopTime: 2014-12-05 14:30:00
+  user: admin
+
+admin_time_entry_3:
+  date: 2014-12-05
+  startTime: 2014-12-05 14:30:00
+  stopTime: 2014-12-05 16:30:00
+  user: admin
+
+admin_time_entry_5h59:
+  date: 2014-12-09
+  startTime: 2014-12-09 08:00:00
+  stopTime: 2014-12-09 13:59:00
+  user: admin
+
+admin_time_entry_6hr:
+  date: 2014-12-10
+  startTime: 2014-12-10 08:00:00
+  stopTime: 2014-12-10 14:00:00
+  user: admin
+
+# Working day validation
+wd_morning:
+  date: 2013-12-10
+  startTime: 2013-12-10 08:00:00
+  stopTime: 2013-12-10 12:00:00
+  user: wd_validation_user
+
+wd_long_morning:
+  date: 2013-12-10
+  startTime: 2013-12-10 08:00:00
+  stopTime: 2013-12-10 13:00:00
+  user: wd_validation_user
+
+wd_early_morning:
+  date: 2013-12-10
+  startTime: 2013-12-10 05:00:00
+  stopTime: 2013-12-10 12:00:00
+  user: wd_validation_user
+
+wd_afternoon:
+  date: 2013-12-10
+  startTime: 2013-12-10 12:30:00
+  stopTime: 2013-12-10 16:30:00
+  user: wd_validation_user
+
+wd_long_afternoon:
+  date: 2013-12-10
+  startTime: 2013-12-10 12:30:00
+  stopTime: 2013-12-10 19:30:00
+  user: wd_validation_user
+
+wd_afternoon_night:
+  date: 2013-12-10
+  startTime: 2013-12-10 12:30:00
+  stopTime: 2013-12-10 22:30:00
+  user: wd_validation_user
+
+wd_open_today:
+  date: <%=Date.today%>
+  startTime: <%=DateTime.now%>
+  stopTime:
+  user: wd_validation_user
+
+wd_open:
+  date: 2014-12-09
+  startTime: 2014-12-09 12:30:00
+  stopTime:
+  user: wd_validation_user
+
+wd_negative:
+  date: 2013-12-10
+  startTime: 2013-12-10 12:30:00
+  stopTime: 2013-12-10 11:30:00
+  user: wd_validation_user
+
+wd_valid:
+  date: 2014-12-12
+  startTime: 2014-12-12 12:30:00
+  stopTime: 2014-12-12 12:40:00
+  user: wd_validation_user
+
+time_entry_with_report:
+  date: 2014-11-11
+  startTime: 2014-11-11 12:30:00
+  stopTime: 2014-11-11 12:40:00
+  user: time_entries_controller_user
+
+time_entry_without_report:
+  date: 2014-10-11
+  startTime: 2014-10-11 12:30:00
+  stopTime: 2014-10-11 12:40:00
+  user: time_entries_controller_user
+
+# API testing
+
+paused_api_user_time_entry_1:
+  date: <%= Date.today %>
+  startTime: <%=DateTime.now - 30.minutes%>
+  stopTime: <%=DateTime.now - 20.minutes%>
+  user: working_api_user_with_pause
+
+paused_api_user_time_entry_2:
+  date: <%= Date.today %>
+  startTime: <%=DateTime.now - 10.minutes%>
+  stopTime:
+  user: working_api_user_with_pause
+
+working_api_user_time_entry:
+  date: <%= Date.today %>
+  startTime: <%=DateTime.now - 10.minutes%>
+  stopTime:
+  user: working_api_user

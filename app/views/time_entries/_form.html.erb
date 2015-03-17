@@ -1,0 +1,33 @@
+<%= form_for [@user, @time_entry] do |f| %>
+  <% if @time_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@time_entry.errors.count, "error") %> prohibited this time_entry from being saved:</h2>
+
+      <ul>
+      <% @time_entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :date %><br>
+    <div class="input-group" >
+      <input type="text" id="time_entry_datepicker" class="input-sm form-control" name='time_entry[date]' value="<%= @time_entry.date.to_formatted_s(:datepicker_date) unless @time_entry.date.nil? %>"/>
+    </div>
+  </p>
+
+  <p>
+    <%= f.label :startTime, 'Time' %><br>
+    <div class="input-daterange input-group" >
+      <input type="text" class="input-sm form-control" name="time_entry[start_time_string]" value="<%= @time_entry.startTime.to_formatted_s(:pretty_time) unless @time_entry.startTime.nil? %>"></input>
+      <span class="input-group-addon">to</span>
+      <input type="text" class="input-sm form-control" name="time_entry[stop_time_string]" value="<%= @time_entry.stopTime.to_formatted_s(:pretty_time) unless @time_entry.stopTime.nil? %>"></input>
+    </div>
+  </p>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-default" %>
+  </div>
+<% end %>

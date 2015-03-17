@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Listing Employments</div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Period</th>
+        <th>Weekly hours</th>
+        <th colspan="2"><%= link_to 'New Employment', new_user_employment_path %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @employments.each do |employment| %>
+        <tr>
+          <td><a href="<%= user_employment_path(employment.user, employment) %>"><%= employment.startDate.to_formatted_s(:pretty_date) %> - <%= employment.endDate.to_formatted_s(:pretty_date) unless employment.endDate.nil? %></a></td>
+          <td><%= employment.weeklyHours %></td>
+          <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_employment_path(employment.user, employment) %></td>
+          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [employment.user, employment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,46 @@
+<%= form_for [@report.user, @report] do |f| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p class="hide-print">
+  <%= f.label :date %><br>
+  <%= f.date_select(:date, :discard_day=>true) %>
+  <a href="#" id="update-report">Update Report</a>
+</p>
+
+<%=javascript_tag do%>
+$("#update-report").click(function(){
+  var date1i = $("#report_date_1i").val();
+  var date2i = $("#report_date_2i").val();
+
+  var url = '<%=user_reports_path(@user)%>/content/'+date1i+'/'+date2i;
+  $.get(url, function(data){$('#report-content').html(data)});
+});
+<%end%>
+
+<div id="report-content">
+<%= render "reports/report_content" %>
+</div>
+<div class="hide-print">
+  <p>
+    <%= f.label :correctionReason %><br>
+    <%= f.text_field(:correctionReason) %>
+  </p>
+  <p>
+    <%= f.label :correction %><br>
+    <input type="text" name="report[correction_string]" value="<%= format_duration(@report.correction)%>"></intpu>
+  </p>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+</div>
+<% end %>

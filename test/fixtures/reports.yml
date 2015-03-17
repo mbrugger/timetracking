@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-11-23
+  balance: 1
+  workingHours: 1
+  correction: 1
+  correctionReason: MyString
+  user_id:
+
+two:
+  date: 2014-11-23
+  balance: 1
+  workingHours: 1
+  correction: 1
+  correctionReason: MyString
+  user_id:
+
+tester_august:
+  date: 2014-08-01
+  balance: <%=-114.hours-36.minutes%>
+  workingHours:
+  correction:
+  correctionReason:
+  user: tester
+
+admin_november:
+  date: 2014-11-01
+  balance: <%=10*60*60%>
+  workingHours: <%=164*60*60%>
+  correction: <%=-5*60*60%>
+  correctionReason: SomeReason
+  user: admin
+
+admin_december:
+  date: 2014-12-01
+  balance: <%=60*60*-164-31*60%>
+  workingHours: <%=60*60*19+29*60%>
+  correction: <%=150*60*60%>
+  correctionReason: SomeReason
+  user: admin
+
+time_entries_controller_user_report:
+  date: 2014-11-01
+  balance: <%= 5.hours %>
+  workingHours: <%= 154.hours %>
+  correction:
+  correctionReason:
+  user: time_entries_controller_user

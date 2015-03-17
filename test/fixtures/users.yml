@@ -1,0 +1,79 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+admin:
+  email: admin@brugger.eu
+  role: admin
+# column: value
+#
+
+john:
+  email: john@brugger.eu
+  role: admin
+
+jim:
+  email: jim@brugger.eu
+  role: user
+#  column: value
+
+tester:
+  email: tester@brugger.eu
+  role: user
+
+time_entry_tester:
+  email: time_entry_tester@brugger.eu
+  role: user
+
+time_tracking_user:
+  email: time_tracking_user@brugger.eu
+  role: user
+
+employment_user_migrated:
+  email: employment_user_migrated@brugger.eu
+  role: user
+
+employment_user_terminated:
+  email: employment_user_terminated@brugger.eu
+  role: user
+
+employment_user:
+  email: employment_user@brugger.eu
+  role: user
+
+wd_validation_user:
+  email: wd_tester@brugger.eu
+  role: user
+
+time_entries_controller_user:
+  email: time_entries_controller_user@brugger.eu
+  role: user
+
+user_adi:
+  email: adi@bytepoets.com
+  role: user
+
+user_resi:
+  email: resi@bytepoets.com
+  role: user
+
+#================= API Test fixtures
+api_user:
+  email: api_user@brugger.eu
+  role: user
+  token: some_random_token
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+working_api_user:
+  email: api_user_working@brugger.eu
+  role: user
+  token: some_working_user_token
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+working_api_user_with_pause:
+  email: working_api_user_with_pause@brugger.eu
+  role: user
+  token: some_other_working_user_token
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>

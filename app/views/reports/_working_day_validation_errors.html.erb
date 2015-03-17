@@ -1,0 +1,3 @@
+<% working_day.validation_errors.each do |validation_error| %>
+  <%= validation_error %><% if working_day.validation_errors.last != validation_error %>, <% end %>
+<% end %>

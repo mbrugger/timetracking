@@ -1,0 +1,28 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :role %><br>
+    <%= f.select(:role, options_for_select(User.roles, @user.role)) %>
+  </p>
+  <p>
+    <%= f.label :time_zone %><br>
+    <%= f.time_zone_select :time_zone, /Europe/, :default => "Vienna" %>
+  </p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

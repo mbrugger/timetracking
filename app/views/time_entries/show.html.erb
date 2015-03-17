@@ -1,0 +1,15 @@
+
+<p>
+  <strong>Date:</strong>
+  <%= @time_entry.date %>
+</p>
+<p>
+  <strong>StartTime:</strong>
+  <%= @time_entry.startTime.in_time_zone(Time.zone).to_formatted_s(:pretty_time) %>
+</p>
+<p>
+  <strong>StopTime:</strong>
+  <%= @time_entry.stopTime.in_time_zone(Time.zone).to_formatted_s(:pretty_time) %>
+</p>
+<%= link_to 'Edit', edit_user_time_entry_path(@time_entry.user.id, @time_entry) %> |
+<%= link_to 'Back', user_time_entries_path %>

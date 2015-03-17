@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Listing Leave Days for working year <%= @working_year_start.to_formatted_s(:pretty_date) %> to <%= @working_year_end.to_formatted_s(:pretty_date) %>
+  <%= render "partials/year_selector", path: user_leave_days_path(@user) %>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Type</th>
+        <th colspan="2"><%= link_to 'New Leave day', new_user_leave_day_path %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @leave_days.each do |leave_day| %>
+        <tr>
+          <td><%= leave_day.date.to_formatted_s(:pretty_date)%></td>
+          <td><%= render "partials/leave_day_type", leave_day: leave_day %></td>
+          <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_leave_day_path(leave_day.user, leave_day) %></td>
+          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [leave_day.user, leave_day], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

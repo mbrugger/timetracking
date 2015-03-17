@@ -1,0 +1,5 @@
+Date::DATE_FORMATS[:month_year_date] = "%m/%Y"
+Date::DATE_FORMATS[:pretty_date] = "%F"
+Date::DATE_FORMATS[:datepicker_date] = "%e/%_m/%Y"
+Date::DATE_FORMATS[:pretty_report_date] = "%F %a"
+Time::DATE_FORMATS[:pretty_time] = "%H:%M"

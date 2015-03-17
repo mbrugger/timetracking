@@ -1,0 +1,25 @@
+<%= form_for(@public_holiday) do |f| %>
+  <% if @public_holiday.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@public_holiday.errors.count, "error") %> prohibited this public_holiday from being saved:</h2>
+
+      <ul>
+      <% @public_holiday.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= f.label :date %><br>
+    <input type="text" id="public_holiday_datepicker" name='public_holiday[date]' value="<%= @public_holiday.date.to_formatted_s(:datepicker_date) unless @public_holiday.date.nil? %>"/>
+  </p>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

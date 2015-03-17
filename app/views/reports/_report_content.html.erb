@@ -1,0 +1,85 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Report for <%= @report.date.to_formatted_s(:month_year_date)%></div>
+  <div class="panel-body">
+    <div class="panel-left">
+      <table>
+        <tr><td><%=@company_name%></td></tr>
+        <tr><td><%=@user.name%></td></tr>
+      </table>
+    </div>
+    <div class="panel-right">
+      <table>
+        <tr><td class="panel-label">Urlaubstage verbraucht:</td><td><%=@leave_days_consumed%></td></tr>
+        <tr><td class="panel-label">Urlaubstage verfügbar:</td><td><%=@leave_days_available%></td></tr>
+        <tr><td class="panel-label">Wochenstunden:</td><td>
+          <% @employments.each do |employment| %><%=employment.weeklyHours%> <% end %>
+        </td></tr>
+      </table>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <table class="table table-condensed table-responsive">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Entries</th>
+        <th>Pause</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @working_days.each do |working_day| %>
+      <tr class="<%= 'not_working_day' unless working_day.working_day?%>">
+        <td><%= link_to "#{working_day.date.to_formatted_s(:pretty_report_date)}", user_time_entries_path(@user, date: working_day.date.to_formatted_s(:datepicker_date))%></td>
+        <td><%= render "reports/working_day_content", working_day: working_day %></td>
+        <% if working_day.validation_errors.size == 0 %>
+          <td><%= format_duration(working_day.pause_duration)%></td>
+          <td><%= format_duration(working_day.duration)%></td>
+        <% else %>
+          <td colspan="2"><%= render "reports/working_day_validation_errors", working_day: working_day %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"></td>
+        <td>Working hours:</td>
+        <td><%= format_duration(@report_summary.working_hours) %> / <%= format_duration(@report_summary.expected_working_hours) %></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td>Balance:</td>
+        <td><%= format_duration(@report_summary.working_hours_balance+@report_summary.comp_time) %></td>
+      </tr>
+      <% if @report_summary.comp_time > 0%>
+      <tr>
+        <td colspan="2"></td>
+        <td>Compensatory Time-off:</td>
+        <td>-<%= format_duration(@report_summary.comp_time) %></td>
+      </tr>
+      <% end %>
+      <% if !@report.nil? && !@report.correction.nil? && @report.correction > 0%>
+      <tr>
+        <td colspan="2"></td>
+        <td>Correction: <% if !@report.correctionReason.nil? &&  @report.correctionReason.size > 0 %>(<%= @report.correctionReason %>) <% end %></td>
+        <td><%= format_duration(@report.correction) %></td>
+      </tr>
+      <% end %>
+      <% if !@report_summary.previous_working_hours_balance.nil? %>
+      <tr>
+        <td colspan="2"></td>
+        <td>Previous Balance:</td>
+        <td><%= format_duration(@report_summary.previous_working_hours_balance) %></td>
+      </tr>
+      <% end %>
+      <tr>
+        <td colspan="2"></td>
+        <td>Total Balance:</td>
+        <td><%= format_duration(@report_summary.total_working_hours_balance) %></td>
+      </tr>
+    </tfoot>
+
+  </table>
+</div>

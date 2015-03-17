@@ -1,0 +1,9 @@
+# encoding: UTF-8
+<% if !working_day.custom_description.nil? && working_day.custom_description.size > 0 %>
+  <%= working_day.custom_description %>
+<% elsif !working_day.leave_day.nil? %>
+  <%= render "partials/leave_day_type", leave_day: working_day.leave_day %>
+<% end %>
+<% working_day.time_entries.each do |time_entry| %>
+  <%= time_entry.startTime.to_formatted_s(:pretty_time)%>-<%= time_entry.stopTime.to_formatted_s(:pretty_time) unless time_entry.stopTime.nil? %>
+<% end %>

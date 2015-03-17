@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <h1>Time tracking validation failed on <%=@working_day.date.to_formatted_s(:pretty_date)%></h1>
+  <p>
+    The following validation errors occurred
+    <ul>
+      <% @validation_errors.each do |validation_error| %>
+        <li> <%= validation_error %></li>
+      <% end %>
+    </ul>
+  </p>
+  <p>
+    Please proceed to <%= @url %> to correct any validation errors.
+  </p>
+</body>
+</html>

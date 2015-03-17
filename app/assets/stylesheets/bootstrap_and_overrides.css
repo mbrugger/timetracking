@@ -1,0 +1,80 @@
+/*
+  =require twitter-bootstrap-static/bootstrap
+
+  Use Font Awesome icons (default)
+  To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
+  =require twitter-bootstrap-static/fontawesome
+  */
+div.year_selector {
+  float: right;
+}
+
+@media screen {
+  div#main-content-container {
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+
+  .show-print {
+    display: none;
+  }
+}
+
+div.clear {
+  clear:both;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+@media print {
+  .breadcrumb {
+    display: none;
+  }
+
+  div.alert-info {
+    display: none;
+  }
+
+  .show-print {
+    display: block;
+  }
+
+  .hide-print {
+    display: none;
+  }
+
+  #main-content-container {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+
+  a[href]:after {
+    content: none;
+  }
+
+  table.table-condensed {
+    font-size: 12px;
+  }
+
+  table.table-condensed tr td {
+    padding: 2px 5px 2px 5px;
+  }
+}
+
+td.summary-label {
+  text-align: right;
+}
+
+li.selected-user {
+  color: white;
+}
+
+i.fa {
+  font-size: 18px;
+}

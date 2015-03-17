@@ -1,0 +1,26 @@
+<fieldset>
+  <legend>Employment Related Information</legend>
+  <p>
+    <label>Start:</label> <%= @employment.startDate.to_formatted_s(:datepicker_date)%>
+  </p>
+  <p>
+    <label>End:</label> <%= @employment.endDate.to_formatted_s(:datepicker_date) unless @employment.endDate.nil? %>
+  </p>
+  <p>
+    <label>Weekly Hours:</label> <%= @employment.weeklyHours %>
+  </p>
+</fieldset>
+<% if @employment.migrated_employment? %>
+  <fieldset>
+    <legend>Migration Related Information</legend>
+    <p>
+      <label>Leave Days Balance</label> <%= @employment.leave_days %>
+    </p>
+    <p>
+      <label>Working Hours Balance</label> <%= format_duration(@employment.working_hours_balance) %>
+    </p>
+  </fieldset>
+<% end %>
+
+<%= link_to 'Edit', edit_user_employment_path(@employment.user, @employment) %> |
+<%= link_to 'Back', user_employments_path %>

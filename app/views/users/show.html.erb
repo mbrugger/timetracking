@@ -1,0 +1,10 @@
+<h2><%= @user.email %></h2>
+
+<ul>
+<li><%= link_to 'Employments', user_employments_path(@user) %></li>
+<li><%= link_to 'TimeEntries', user_time_entries_path(@user) %></li>
+<li><%= link_to 'LeaveDays', user_leave_days_path(@user) %></li>
+<li><%= link_to 'Reports', user_reports_path(@user) %></li>
+<li><%= link_to 'Current Report', user_reports_current_path(@user) %></li>
+</ul>
+<%= link_to 'Edit', edit_user_path(@user) %>

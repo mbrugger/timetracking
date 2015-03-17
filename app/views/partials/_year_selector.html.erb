@@ -1,0 +1,6 @@
+<div class="year_selector">
+  <%= select_date(Date.new(@year, 1, 1), {prefix: 'date_filter', discard_day: true, discard_month: true}) %>
+  <%= form_tag(path, method:'get', id:'date_filter') do %>
+  <%= hidden_field_tag 'year' %>
+  <% end %>
+</div>

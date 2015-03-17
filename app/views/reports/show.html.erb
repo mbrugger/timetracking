@@ -1,0 +1,12 @@
+<%= render "reports/report_content" %>
+
+<div class="print-footer show-print">
+  <div class="date">Date: <%= Date.today() %></div>
+  <div class="signature">Signature</div>
+  <div class="clear"></div>
+</div>
+
+<div class="hide-print">
+  <%= link_to 'Edit', edit_user_report_path(@report.user, @report) %> |
+  <%= link_to 'Back', user_reports_path %>
+</div>

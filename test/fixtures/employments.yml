@@ -1,0 +1,106 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+june:
+  startDate: 2014-06-01
+  endDate: 2014-06-30
+  weeklyHours: 20
+  user: admin
+
+first_half_august:
+  startDate: 2014-08-01
+  endDate: 2014-08-15
+  weeklyHours: 40
+  user: admin
+
+second_half_august:
+  startDate: 2014-08-16
+  endDate: 2014-08-30
+  weeklyHours: 20
+  user: admin
+
+december_open_end:
+  startDate: 2014-12-01
+  endDate:
+  weeklyHours: 40
+  user: admin
+
+november_open_end:
+  startDate: 2014-11-01
+  endDate:
+  weeklyHours: 40
+  user: admin
+
+august_open_end:
+  startDate: 2014-08-01
+  endDate:
+  working_hours_balance:
+  leave_days: 20
+  weeklyHours: 38.5
+  user: tester
+
+default_employment:
+  startDate: 2014-08-01
+  endDate:
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 38.5
+  user: employment_user
+
+original_employment:
+  startDate: 2013-08-01
+  endDate: 2014-09-30
+  working_hours_balance: <%=10.hours%>
+  leave_days: 30
+  weeklyHours: 38.5
+  migrated_employment: true
+  user: employment_user_migrated
+
+migrated_employment:
+  startDate: 2014-10-01
+  endDate:
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 38.5
+  user: employment_user_migrated
+
+terminated_employment:
+  startDate: 2014-08-01
+  endDate: 2017-07-31
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 38.5
+  user: employment_user_terminated
+
+adi_migration:
+  startDate: 2014-09-15
+  endDate: 2014-12-31
+  working_hours_balance: 3.hours
+  leave_days: 0
+  weeklyHours: 38.5
+  user: user_adi
+  migrated_employment: true
+
+adi_current:
+  startDate: 2015-01-01
+  endDate:
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 38.5
+  user: user_adi
+
+resi_mig:
+  startDate: 2014-03-04
+  endDate: 2015-01-31
+  working_hours_balance: 10.hours
+  leave_days: 0
+  weeklyHours: 30
+  user: user_resi
+  migrated_employment: true
+
+resi_current:
+  startDate: 2015-02-01
+  endDate:
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: user_resi

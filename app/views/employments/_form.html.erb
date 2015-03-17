@@ -1,0 +1,46 @@
+<%= form_for [@user, @employment] do |f| %>
+  <% if @employment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@employment.errors.count, "error") %> prohibited this employment from being saved:</h2>
+
+      <ul>
+      <% @employment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset class="form-group">
+    <legend>Employment Related Information</legend>
+    <p>
+      <label for="employment_dates">Employment Dates</label>
+      <div class="input-daterange input-group" id="employment_datepicker">
+        <input type="text" class="input-sm form-control" name="employment[startDate]" value="<%= @employment.startDate.to_formatted_s(:datepicker_date) unless @employment.startDate.nil? %>"/>
+        <span class="input-group-addon">to</span>
+        <input type="text" class="input-sm form-control" name="employment[endDate]" value="<%= @employment.endDate.to_formatted_s(:datepicker_date) unless @employment.endDate.nil? %>"/>
+      </div>
+    </p>
+    <p>
+      <%= f.label :weeklyHours %><br>
+      <%= f.number_field(:weeklyHours, in: 0.0..50, step: 0.5) %>
+    </p>
+  </fieldset>
+  <fieldset class="form-group">
+    <legend>Migration Related Information</legend>
+    <p>
+      <%= f.label :migrated_employment, 'Migrated employment' %> <%= f.check_box(:migrated_employment) %>
+    </p>
+    <p>
+      <%= f.label :leave_days, 'Migrated leave days balance at working year start' %><br>
+      <%= f.number_field(:leave_days) %>
+    </p>
+    <div class="input-group" >
+      <%= f.label :working_hours_balance, 'Migrated working hours balance at migration date' %><br>
+      <input type="text" class="input-sm form-control" name="employment[working_hours_balance_string]" value="<%= format_duration(@employment.working_hours_balance) unless @employment.working_hours_balance.nil? %>"></input>
+      <%#= f.number_field(:working_hours_balance) %>
+    </div>
+  </fieldset>
+  <div class="form-group">
+      <%= f.submit class: "btn btn-default" %>
+  <div>
+<% end %>

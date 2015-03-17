@@ -1,0 +1,43 @@
+div.panel-left {
+  float: left;
+  width: 40%;
+}
+
+div.panel-right {
+  float: right;
+  width: 60%;
+}
+
+div.panel-right table {
+  float: right;
+}
+
+div.panel-right td.panel-label {
+  text-align: right;
+  padding-right: 5px;
+}
+
+div.print-footer {
+  margin-top: 100px;
+}
+
+div.print-footer div.date {
+  float: left;
+  margin-left: 60px;
+}
+
+div.print-footer div.signature {
+  float: right;
+  margin-right: 120px;
+}
+
+tr.not_working_day {
+  background-color: lightgrey;
+}
+
+@media print {
+  .panel-body {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}

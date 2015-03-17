@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Listing users</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>email</th>
+        <th colspan="2"><%= link_to 'New User', new_user_path %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.email, user %>
+          <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_path(user) %></td>
+          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>

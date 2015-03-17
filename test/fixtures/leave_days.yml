@@ -1,0 +1,103 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+leave_day:
+  date: 2014-12-24
+  description: Vacation
+  leave_day_type: leave_day
+  user: admin
+
+sick_day:
+  date: 2014-12-29
+  description: Sick
+  leave_day_type: sick
+  user: admin
+
+comp_time:
+  date: 2014-12-30
+  description: Comp Time
+  leave_day_type: comp_time
+  user: admin
+
+absent_day:
+  date: 2014-11-23
+  description: Absent
+  leave_day_type: absent
+  user: admin
+
+tester_leave_day_1:
+  date: 2014-08-13
+  description: Vacation
+  leave_day_type: leave_day
+  user: tester
+
+tester_leave_day_2:
+  date: 2014-08-14
+  description: Vacation
+  leave_day_type: leave_day
+  user: tester
+
+employment_leave_day_1:
+  date: 2014-09-01
+  description: Vacation
+  leave_day_type: leave_day
+  user: employment_user
+
+employment_leave_day_2:
+  date: 2014-09-02
+  description: Vacation
+  leave_day_type: leave_day
+  user: employment_user
+
+employment_sick_day_1:
+  date: 2014-10-04
+  description: Sickness
+  leave_day_type: sick_day
+  user: employment_user
+
+employment_leave_day_3:
+  date: 2016-10-31
+  description: Holiday
+  leave_day_type: leave_day
+  user: employment_user
+
+adi_leave_day_1:
+  date: 2014-12-22
+  description: Holiday
+  leave_day_type: leave_day
+  user: user_adi
+
+adi_leave_day_2:
+  date: 2014-12-23
+  description: Holiday
+  leave_day_type: leave_day
+  user: user_adi
+
+adi_leave_day_3:
+  date: 2014-12-29
+  description: Holiday
+  leave_day_type: leave_day
+  user: user_adi
+
+adi_leave_day_4:
+  date: 2014-12-30
+  description: Holiday
+  leave_day_type: leave_day
+  user: user_adi
+
+adi_leave_day_5:
+  date: 2014-12-31
+  description: Holiday
+  leave_day_type: leave_day
+  user: user_adi
+
+adi_leave_day_6:
+  date: 2015-01-02
+  description: Holiday
+  leave_day_type: leave_day
+  user: user_adi
+
+adi_leave_day_7:
+  date: 2015-01-05
+  description: Holiday
+  leave_day_type: leave_day
+  user: user_adi

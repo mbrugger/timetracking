@@ -1,0 +1,15 @@
+
+<div class="panel panel-default">
+<div class="panel-heading">Todays working time</div>
+<%= render 'time_entries/day_time_entries', display_add_time_entry: false %>
+</div>
+
+<p>
+  <center>
+  <% if !@timer_running  %>
+    <%= button_to "Start work", time_tracking_start_path, :method => "post", :class=>"btn btn-default btn-success" %>
+  <% else %>
+    <%= button_to "Stop work", time_tracking_stop_path, :method => "post", :class=>"btn btn-default btn-danger" %>
+  <% end %>
+  </center>
+</p>
