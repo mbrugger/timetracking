@@ -51,8 +51,12 @@ class ApplicationController < ActionController::Base
     end
 
     def verify_employment
-      if current_user.employments.size == 0
-        redirect_to root_path, alert: 'Please ask your administrator to create an employment first.'
+      if @user.employments.size == 0
+        if current_user == @user
+          redirect_to root_path, alert: 'Please ask your administrator to create an employment first.'
+        else
+          redirect_to root_path, alert: 'Please create an employment for this user first.'
+        end
       end
     end
 
