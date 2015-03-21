@@ -7,8 +7,14 @@
 admin:
   email: admin@brugger.eu
   role: admin
-# column: value
-#
+
+unemployed_admin:
+  email: unemployed_admin@brugger.eu
+  role: admin
+
+unemployed_user:
+  email: unemployed_user@brugger.eu
+  role: user
 
 john:
   email: john@brugger.eu
