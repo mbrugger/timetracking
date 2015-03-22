@@ -89,7 +89,6 @@ GEM
     mite-rb (0.5.3)
       activeresource (>= 3.1.0)
     multi_json (1.10.1)
-    mysql2 (0.3.17)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
@@ -97,6 +96,7 @@ GEM
     paper_trail (3.0.7)
       activerecord (>= 3.0, < 5.0)
       activesupport (>= 3.0, < 5.0)
+    pg (0.18.1)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -185,8 +185,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mite-rb
-  mysql2
   paper_trail (~> 3.0.0)
+  pg
   rails (= 4.1.8)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
