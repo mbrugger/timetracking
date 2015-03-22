@@ -5,7 +5,7 @@ ruby '2.0.0'
 gem 'rails', '4.1.8'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
+gem 'sqlite3', group: [:development, :test]
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -33,6 +33,7 @@ gem 'spring',        group: :development
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'thin', '~> 1.6.0'
 
 # Use Capistrano for deployment
 gem 'capistrano-bundler', group: :development
