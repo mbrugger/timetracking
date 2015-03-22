@@ -158,7 +158,7 @@ class ReportsController < ApplicationController
       @user.employments,
       public_holidays)
       @report_summary = create_report_summary(@working_days, @user.employments, @user.reports)
-      @company_name = "BYTEPOETS GmbH"
+      @company_name = ENV['COMPANY_NAME']
       @leave_days_available = calculate_available_leave_days(@report.date.end_of_month, @user.employments, @user.leave_days)
       @leave_days_consumed = calculate_consumed_leave_days(@report.date.end_of_month, @user.employments, @user.leave_days)
       @employments = filter_employments(@report.date.beginning_of_month, @report.date.end_of_month, @user.employments)
