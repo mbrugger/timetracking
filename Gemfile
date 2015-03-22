@@ -45,8 +45,6 @@ gem 'capistrano-passenger', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'mite-rb'
-
 gem 'devise'
 
 gem 'mysql2'
@@ -66,4 +64,4 @@ gem 'whenever'
 gem 'paper_trail', '~> 3.0.0'
 
 #added for heroku deployment
-gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: [:production, :heroku]
