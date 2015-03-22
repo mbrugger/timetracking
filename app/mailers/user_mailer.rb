@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "noreply@bytepoets.com"
+  default from: ENV['MAIL_FROM']
   helper :duration_format
   include DurationFormatHelper
 
