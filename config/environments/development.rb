@@ -39,11 +39,11 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtprelaypool.ispgateway.de',
-    port:                 465,
-    domain:               'brugger.eu',
-    user_name:            'mailer@brugger.eu',
-    password:             'h1sjf3tGFD',
-    authentication:       :login,
-    ssl:                  true }
+    address:              ENV['SMTP_SERVER'],
+    port:                 ENV['SMTP_PORT'],
+    domain:               ENV['SMTP_DOMAIN'],
+    user_name:            ENV['SMTP_USER_NAME'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       ENV['SMTP_AUTHENTICATION'],
+    ssl:                  ENV['SMTP_SSL'] == "true" }
 end

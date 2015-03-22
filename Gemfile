@@ -49,7 +49,7 @@ gem 'mite-rb'
 
 gem 'devise'
 
-#gem 'mysql2'
+gem 'mysql2'
 gem 'pg'
 
 gem "twitter-bootstrap-rails"
@@ -64,3 +64,6 @@ gem 'bootstrap-datepicker-rails'
 gem 'whenever'
 
 gem 'paper_trail', '~> 3.0.0'
+
+#added for heroku deployment
+gem 'rails_12factor', group: :production
