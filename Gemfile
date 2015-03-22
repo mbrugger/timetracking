@@ -47,7 +47,8 @@ gem 'mite-rb'
 
 gem 'devise'
 
-gem 'mysql2'
+#gem 'mysql2'
+gem 'pg'
 
 gem "twitter-bootstrap-rails"
 
