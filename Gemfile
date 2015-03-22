@@ -48,7 +48,7 @@ gem 'capistrano-passenger', group: :development
 gem 'devise'
 
 gem 'mysql2'
-gem 'pg'
+gem 'pg', group: :heroku
 
 gem "twitter-bootstrap-rails"
 
