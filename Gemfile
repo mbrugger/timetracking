@@ -57,7 +57,7 @@ gem 'cancancan', '~> 1.9'
 
 gem "therubyracer"
 
-gem 'bootstrap-datepicker-rails'
+gem 'bootstrap-datepicker-rails', '1.3.0.2'
 
 #used for scheduled working day validation
 gem 'whenever'
