@@ -29,4 +29,12 @@ class UserMailerTest < ActionMailer::TestCase
     mail = ActionMailer::Base.deliveries.last
     assert_nil mail
   end
+
+  test "should send a validation error mail for multiple days validation failed" do
+    @controller.validate_working_days_for_duration(Date.new(2014,12,9), Date.new(2014,12,10))
+    mail = ActionMailer::Base.deliveries.last
+    assert_equal 1, ActionMailer::Base.deliveries.size
+    assert_equal 'wd_tester@brugger.eu' , mail['to'].to_s
+    assert_equal "Time tracking validation failed", mail['subject'].to_s
+  end
 end
