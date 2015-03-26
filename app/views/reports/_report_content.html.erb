@@ -9,9 +9,9 @@
     </div>
     <div class="panel-right">
       <table>
-        <tr><td class="panel-label">Urlaubstage verbraucht:</td><td><%=@leave_days_consumed%></td></tr>
-        <tr><td class="panel-label">Urlaubstage verfügbar:</td><td><%=@leave_days_available%></td></tr>
-        <tr><td class="panel-label">Wochenstunden:</td><td>
+        <tr><td class="panel-label"><%= I18n.t('views.reports.leave_days_used')%>:</td><td><%=@leave_days_consumed%></td></tr>
+        <tr><td class="panel-label"><%= I18n.t('views.reports.leave_days_available')%>:</td><td><%=@leave_days_available%></td></tr>
+        <tr><td class="panel-label"><%= I18n.t('views.reports.weekly_working_hours')%>:</td><td>
           <% @employments.each do |employment| %><%=employment.weeklyHours%> <% end %>
         </td></tr>
       </table>

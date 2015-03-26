@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :authenticate_user!, unless: :devise_controller?
+  before_action :set_locale
 
   include YearFilterHelper
   include ApplicationHelper
@@ -20,6 +21,14 @@ class ApplicationController < ActionController::Base
     resource = controller_path.singularize.gsub('/', '_').to_sym
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
   end
 
   def user_for_paper_trail

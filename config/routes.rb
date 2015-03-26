@@ -1,26 +1,28 @@
 Rails.application.routes.draw do
-  post 'users' => 'users#create'
-  devise_for :users
-  get 'home/index'
-  resources :users do
-    get 'time_entries/content/' => "time_entries#day_content"
-    resources :time_entries
-    resources :employments
-    resources :leave_days
-    get 'reports/current' => 'reports#current'
-    get 'reports/content/:year/:month' => 'reports#content'
-    resources :reports
+  get '/:locale' => 'home#index'
+  scope "(:locale)", locale: /en|de/ do
+    post 'users' => 'users#create'
+    devise_for :users
+    get 'home/index'
+    resources :users do
+      get 'time_entries/content/' => "time_entries#day_content"
+      resources :time_entries
+      resources :employments
+      resources :leave_days
+      get 'reports/current' => 'reports#current'
+      get 'reports/content/:year/:month' => 'reports#content'
+      resources :reports
+    end
+    resources :public_holidays
+    post 'time_tracking/start' => 'time_tracking#start'
+    post 'time_tracking/stop' => 'time_tracking#stop'
+
+    # ====== API Routes ======
+    post 'api/v1/login' => 'api/v1/api_login#login'
+    post 'api/v1/status/start' => 'api/v1/api_status#start'
+    post 'api/v1/status/stop' => 'api/v1/api_status#stop'
+    get 'api/v1/status' => 'api/v1/api_status#status'
   end
-  resources :public_holidays
-  post 'time_tracking/start' => 'time_tracking#start'
-  post 'time_tracking/stop' => 'time_tracking#stop'
-
-  # ====== API Routes ======
-  post 'api/v1/login' => 'api/v1/api_login#login'
-  post 'api/v1/status/start' => 'api/v1/api_status#start'
-  post 'api/v1/status/stop' => 'api/v1/api_status#stop'
-  get 'api/v1/status' => 'api/v1/api_status#status'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -22,7 +22,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               <% if user_signed_in? %>
-              <li><%= link_to "Current Report", user_reports_current_path(current_user) %></li>
+              <li><%= link_to I18n.t('current_report'), user_reports_current_path(current_user) %></li>
               <% end %>
             </ul>
           <ul class="nav navbar-nav navbar-right">

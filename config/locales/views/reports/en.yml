@@ -1,0 +1,6 @@
+en:
+  views:
+    reports:
+      leave_days_used: "Leave days consumed"
+      leave_days_available: "Leave days available"
+      weekly_working_hours: "Weekly working hours"
