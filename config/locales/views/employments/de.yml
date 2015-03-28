@@ -1,0 +1,15 @@
+de:
+  views:
+    employments:
+      listing: 'Übersicht Anstellungen'
+      period: 'Zeitspanne'
+      weekly_hours: 'Wochenarbeitszeit'
+      new_employment: 'Neues Anstellungsverhältnis'
+      employment_dates: 'Dauer des Anstellungsverhältnisses'
+      weeklyHours: 'Wochenarbeitszeit'
+      employment_information: 'Informationen zum Anstellungsverhältnis'
+      migration_information: 'Migration Related Information'
+      migrated_employment: 'Migrated employment'
+      migrated_leave_days: 'Migrated leave days balance at working year start'
+      migrated_working_hours: 'Migrated working hours balance at migration date'
+      back: 'Zurück'

@@ -1,12 +1,12 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Listing Employments</div>
+  <div class="panel-heading"><%= I18n.t('views.employments.listing') %></div>
 
   <table class="table">
     <thead>
       <tr>
-        <th>Period</th>
-        <th>Weekly hours</th>
-        <th colspan="2"><%= link_to 'New Employment', new_user_employment_path %></th>
+        <th><%= I18n.t('views.employments.period') %></th>
+        <th><%= I18n.t('views.employments.weekly_hours') %></th>
+        <th colspan="2"><%= link_to I18n.t('views.employments.new_employment'), new_user_employment_path %></th>
       </tr>
     </thead>
 
