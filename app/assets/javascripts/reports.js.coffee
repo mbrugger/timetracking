@@ -6,6 +6,7 @@ updateReport = (date) ->
   $.get base_url + '/content/' + date.getFullYear() + '/' + (date.getMonth()+1)
   , (data) ->
     $("#report-content").html data
+    ready()
     return
 
 ready = ->
