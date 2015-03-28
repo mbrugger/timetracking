@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/:locale' => 'home#index'
+  get '/:locale' => 'home#index', :as => 'locale_root'
   scope "(:locale)", locale: /en|de/ do
     post 'users' => 'users#create'
     devise_for :users
@@ -9,8 +9,9 @@ Rails.application.routes.draw do
       resources :time_entries
       resources :employments
       resources :leave_days
-      get 'reports/current' => 'reports#current'
-      get 'reports/content/:year/:month' => 'reports#content'
+      get 'reports/current/' => 'reports#current'
+      get 'reports/current/(:year/:month)' => 'reports#current'
+      get 'reports/content/(:year)/(:month)' => 'reports#content'
       resources :reports
     end
     resources :public_holidays

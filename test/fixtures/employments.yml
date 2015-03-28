@@ -104,3 +104,29 @@ resi_current:
   leave_days:
   weeklyHours: 7
   user: user_resi
+
+#================= Permissions test fixtures
+
+user:
+  startDate: 2015-02-01
+  endDate:
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: user
+
+other_user:
+  startDate: 2015-02-01
+  endDate:
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: other_user
+
+admin_user:
+  startDate: 2015-02-01
+  endDate:
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: admin_user

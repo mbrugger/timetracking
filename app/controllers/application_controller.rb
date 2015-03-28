@@ -9,12 +9,14 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, unless: :devise_controller?
   before_action :set_locale
 
+  check_authorization unless: :devise_controller?
+
   include YearFilterHelper
   include ApplicationHelper
   include BreadcrumbsHelper
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => exception.message
+    redirect_to locale_root_path, :alert => exception.message
   end
 
   before_filter do
@@ -49,7 +51,7 @@ class ApplicationController < ActionController::Base
         add_breadcrumb("Users", users_path)
         add_breadcrumb(@user.visible_name, user_path(@user))
       elsif current_user == @user
-        add_breadcrumb("Home", root_path)
+        add_breadcrumb("Home", locale_root_path)
       end
     end
 
@@ -62,9 +64,9 @@ class ApplicationController < ActionController::Base
     def verify_employment
       if @user.employments.size == 0
         if current_user == @user
-          redirect_to root_path, alert: 'Please ask your administrator to create an employment first.'
+          redirect_to locale_root_path, alert: 'Please ask your administrator to create an employment first.'
         else
-          redirect_to root_path, alert: 'Please create an employment for this user first.'
+          redirect_to locale_root_path, alert: 'Please create an employment for this user first.'
         end
       end
     end

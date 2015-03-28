@@ -1,7 +1,9 @@
 class LeaveDaysController < ApplicationController
   include LeaveDaysHelper
   before_action :set_leave_day, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
+  load_and_authorize_resource :user
+  load_and_authorize_resource :leave_day, through: :user
 
   def prepare_year_filter
     @year = params[:year].to_i
@@ -17,7 +19,7 @@ class LeaveDaysController < ApplicationController
   # GET /user/:user_id/leave_days.json
   def index
     if @user.employments.size == 0
-      redirect_to root_path, alert: 'Please ask your administrator to create an employment first.'
+      redirect_to locale_root_path, alert: 'Please ask your administrator to create an employment first.'
       return
     end
 

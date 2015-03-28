@@ -4,9 +4,6 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: [:development, :test]
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -43,13 +40,12 @@ gem 'capistrano-passenger', group: :development
 #gem 'capistrano-stats', group: :development
 
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'sqlite3', group: [:development, :test]
+gem 'debugger', group: :development
 
 gem 'devise'
 
 gem 'mysql2'
-gem 'pg', group: :heroku
 
 gem "twitter-bootstrap-rails"
 
@@ -66,3 +62,4 @@ gem 'paper_trail', '~> 3.0.0'
 
 #added for heroku deployment
 gem 'rails_12factor', group: [:production, :heroku]
+gem 'pg', group: :heroku
