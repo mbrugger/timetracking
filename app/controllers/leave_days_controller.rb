@@ -19,7 +19,7 @@ class LeaveDaysController < ApplicationController
   # GET /user/:user_id/leave_days.json
   def index
     if @user.employments.size == 0
-      redirect_to root_path, alert: 'Please ask your administrator to create an employment first.'
+      redirect_to locale_root_path, alert: 'Please ask your administrator to create an employment first.'
       return
     end
 

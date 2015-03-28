@@ -13,7 +13,7 @@ class ReportsControllerTest < ActionController::TestCase
   test "user should not be able to browse other users reports" do
     given_authenticated_user(users(:user))
     get :index, user_id: users(:other_user).id
-    assert_redirected_to root_path
+    assert_redirected_to locale_root_path
     assert_equal "You are not authorized to access this page.", flash[:alert]
   end
 
@@ -39,7 +39,7 @@ class ReportsControllerTest < ActionController::TestCase
     given_authenticated_user(users(:user_adi))
     get :content, user_id: users(:employment_user).id, year: 2015, month: 2
     assert_equal "You are not authorized to access this page.", flash[:alert]
-    assert_redirected_to root_path
+    assert_redirected_to locale_root_path
   end
 
   # test "should get index" do
