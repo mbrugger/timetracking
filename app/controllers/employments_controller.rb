@@ -1,7 +1,10 @@
 class EmploymentsController < ApplicationController
-  before_action :set_employment, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
   include EmploymentsHelper
+
+  before_action :set_employment, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :user
+  load_and_authorize_resource :employment, through: :user
+
 
   def add_breadcrumbs
     super

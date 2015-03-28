@@ -1,5 +1,6 @@
 class TimeTrackingController < ApplicationController
   include ReportsHelper
+  skip_authorization_check
 
   def start
     user = current_user

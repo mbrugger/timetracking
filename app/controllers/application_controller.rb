@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, unless: :devise_controller?
   before_action :set_locale
 
+  check_authorization
+
   include YearFilterHelper
   include ApplicationHelper
   include BreadcrumbsHelper

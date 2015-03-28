@@ -1,7 +1,9 @@
 class LeaveDaysController < ApplicationController
   include LeaveDaysHelper
   before_action :set_leave_day, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
+  load_and_authorize_resource :user
+  load_and_authorize_resource :leave_day, through: :user
 
   def prepare_year_filter
     @year = params[:year].to_i

@@ -1,6 +1,9 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
+  load_and_authorize_resource :user
+  load_and_authorize_resource :report, through: :user
+
   skip_load_resource only: [:content]
   before_action :verify_employment
   before_action :prepare_year_filter, only: [:index]
@@ -28,10 +31,6 @@ class ReportsController < ApplicationController
 
   # GET /users/1/reports/content
   def content
-    if params[:user_id] != current_user.id && !current_user.admin?
-      logger.info "only admins are allowed to fetch other users content"
-      params[:user_id] = current_user.id
-    end
     begin
       @user = User.find(params[:user_id])
       @report = @user.reports.build
