@@ -1,0 +1,10 @@
+en:
+  views:
+    time_entries:
+      add_time_entry: 'Add time entry'
+      confirm_delete: 'Are you sure?'
+      pause: 'Pause'
+      duration: 'Duration'
+      balance: 'Balance today in current month'
+      start: 'Start'
+      stop: 'Stop'

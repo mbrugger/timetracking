@@ -1,0 +1,6 @@
+de:
+  views:
+    home:
+      todays_working_time_heading: "Arbeitszeiten heute"
+      start_work: 'Zeiterfassung beginnen'
+      stop_work: 'Zeiterfassung beenden'
