@@ -55,7 +55,8 @@ class ReportsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     prepare_report()
-    add_breadcrumb("#{@report.date.to_formatted_s(:month_year_date)}")
+    add_breadcrumb("#{@report.date.year}")
+    add_breadcrumb("#{@report.date.month}")
     if @report.balance != @report_summary.working_hours_balance || @report.workingHours != @report_summary.working_hours
       logger.error "report has changed since creating it, please generate a new report!"
       flash[:alert] = "Data has been changed after creating a report. Please update the report!"
