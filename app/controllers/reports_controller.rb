@@ -18,8 +18,12 @@ class ReportsController < ApplicationController
   def current
     @user = User.find(params[:user_id])
     @report = @user.reports.build
-    @report.date = Date.today
+    if !(params[:year].nil? || params[:month].nil?)
+      @report.date = Date.new(params[:year].to_i,params[:month].to_i,1)
+    end
+    @report.date = Date.today if @report.date.nil?
     prepare_report()
+    add_breadcrumb("Current")
   end
 
   # GET /users/1/reports/content
@@ -52,6 +56,7 @@ class ReportsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     prepare_report()
+    add_breadcrumb("#{@report.date.to_formatted_s(:month_year_date)}")
     if @report.balance != @report_summary.working_hours_balance || @report.workingHours != @report_summary.working_hours
       logger.error "report has changed since creating it, please generate a new report!"
       flash[:alert] = "Data has been changed after creating a report. Please update the report!"
@@ -80,6 +85,7 @@ class ReportsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @report = @user.reports.create(report_params)
+    @report.date = prepare_date(params[:date])
     prepare_report()
     @report.balance = @report_summary.working_hours_balance
     @report.workingHours = @report_summary.working_hours
@@ -152,11 +158,11 @@ class ReportsController < ApplicationController
     def prepare_report()
       public_holidays = PublicHoliday.where(date: @report.date.beginning_of_month..@report.date.end_of_month)
       @working_days = process_working_days(@report.date.beginning_of_month,
-      @report.date.end_of_month,
-      @user.time_entries,
-      @user.leave_days,
-      @user.employments,
-      public_holidays)
+                                            @report.date.end_of_month,
+                                            @user.time_entries,
+                                            @user.leave_days,
+                                            @user.employments,
+                                            public_holidays)
       @report_summary = create_report_summary(@working_days, @user.employments, @user.reports)
       @company_name = ENV['COMPANY_NAME']
       @leave_days_available = calculate_available_leave_days(@report.date.end_of_month, @user.employments, @user.leave_days)

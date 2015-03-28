@@ -11,22 +11,6 @@
     </div>
   <% end %>
 
-<p class="hide-print">
-  <%= f.label :date %><br>
-  <%= f.date_select(:date, :discard_day=>true) %>
-  <a href="#" id="update-report">Update Report</a>
-</p>
-
-<%=javascript_tag do%>
-$("#update-report").click(function(){
-  var date1i = $("#report_date_1i").val();
-  var date2i = $("#report_date_2i").val();
-
-  var url = '<%=user_reports_path(@user)%>/content/'+date1i+'/'+date2i;
-  $.get(url, function(data){$('#report-content').html(data)});
-});
-<%end%>
-
 <div id="report-content">
 <%= render "reports/report_content" %>
 </div>

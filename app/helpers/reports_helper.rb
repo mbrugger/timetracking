@@ -4,6 +4,13 @@ module ReportsHelper
   include ReportsValidationHelper
   include WorkingDaysHelper
 
+  def prepare_date(date_string)
+    if !date_string.nil?
+      return Date.parse(date_string)
+    end
+    return nil
+  end
+
   def process_working_days(start_date, end_date, time_entries, leave_days, employments, public_holidays)
     working_days = []
     working_days_with_time_entries = prepare_working_days_for_time_entries(time_entries)
