@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, unless: :devise_controller?
   before_action :set_locale
 
-  check_authorization
+  check_authorization unless: :devise_controller?
 
   include YearFilterHelper
   include ApplicationHelper
