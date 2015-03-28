@@ -7,7 +7,13 @@ class ActiveSupport::TestCase
   fixtures :all
   include DurationFormatHelper
 
-  # Add more helper methods to be used by all tests here...
+  def given_authenticated_user(user)
+    @current_user = user
+    if user.admin?
+      @request.env["devise.mapping"] = Devise.mappings[:admin]
+    end
+    sign_in user
+  end
 
   def create_working_days
     first_working_day = WorkingDay.new(Date.new(2014,12,9))

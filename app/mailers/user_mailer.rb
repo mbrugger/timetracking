@@ -1,11 +1,11 @@
 class UserMailer < ActionMailer::Base
-  default from: "noreply@bytepoets.com"
+  default from: ENV['MAIL_FROM']
   helper :duration_format
   include DurationFormatHelper
 
   def notify_working_day_validation_error(user, working_day, validation_errors)
     @user = user
-    @url = user_time_entries_url(@user)
+    @url = user_time_entries_url(@user, locale: I18n.default_locale)
     @working_day = working_day
     @validation_errors = validation_errors
     mail(to: @user.email, subject: "Time tracking validation failed on #{working_day.date.to_formatted_s(:pretty_date)}")
@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
 
   def notify_validation_error(user, start_date, end_date, working_days)
     @user = user
-    @url = user_time_entries_url(@user)
+    @url = user_time_entries_url(@user, locale: I18n.default_locale)
     @working_days = working_days
     @start_date = start_date
     @end_date = end_date

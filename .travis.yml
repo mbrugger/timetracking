@@ -5,3 +5,5 @@ rvm:
 notifications:
   email:
     - travis@brugger.eu
+
+bundler_args: --without development

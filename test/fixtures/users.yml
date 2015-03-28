@@ -65,6 +65,21 @@ user_resi:
   email: resi@bytepoets.com
   role: user
 
+#================= Permissions test fixtures
+
+user:
+  email: user@bytepoets.com
+  role: user
+
+other_user:
+  email: other_user@bytepoets.com
+  role: user
+
+admin_user:
+  email: admin_user@bytepoets.com
+  role: admin
+
+
 #================= API Test fixtures
 api_user:
   email: api_user@brugger.eu

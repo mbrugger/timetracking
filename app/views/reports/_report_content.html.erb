@@ -1,5 +1,7 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Report for <%= @report.date.to_formatted_s(:month_year_date)%></div>
+  <input id="base-url" type="hidden" value="<%= user_reports_path(params[:user_id])%>" />
+  <input name="date" type="hidden" class="form-control" value="<%= @report.date.to_formatted_s(:month_year_date) unless @report.date.nil? %>">
+  <div class="panel-heading">Report for <a href="#" id="reports-datepicker"><%= @report.date.to_formatted_s(:month_year_date)%></a></div>
   <div class="panel-body">
     <div class="panel-left">
       <table>
@@ -9,9 +11,9 @@
     </div>
     <div class="panel-right">
       <table>
-        <tr><td class="panel-label">Urlaubstage verbraucht:</td><td><%=@leave_days_consumed%></td></tr>
-        <tr><td class="panel-label">Urlaubstage verfügbar:</td><td><%=@leave_days_available%></td></tr>
-        <tr><td class="panel-label">Wochenstunden:</td><td>
+        <tr><td class="panel-label"><%= I18n.t('views.reports.leave_days_used')%>:</td><td><%=@leave_days_consumed%></td></tr>
+        <tr><td class="panel-label"><%= I18n.t('views.reports.leave_days_available')%>:</td><td><%=@leave_days_available%></td></tr>
+        <tr><td class="panel-label"><%= I18n.t('views.reports.weekly_working_hours')%>:</td><td>
           <% @employments.each do |employment| %><%=employment.weeklyHours%> <% end %>
         </td></tr>
       </table>

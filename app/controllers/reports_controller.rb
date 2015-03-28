@@ -1,6 +1,9 @@
 class ReportsController < ApplicationController
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+
+  load_and_authorize_resource :user
+  load_and_authorize_resource :report, through: :user
+
   skip_load_resource only: [:content]
   before_action :verify_employment
   before_action :prepare_year_filter, only: [:index]
@@ -18,16 +21,16 @@ class ReportsController < ApplicationController
   def current
     @user = User.find(params[:user_id])
     @report = @user.reports.build
-    @report.date = Date.today
+    if !(params[:year].nil? || params[:month].nil?)
+      @report.date = Date.new(params[:year].to_i,params[:month].to_i,1)
+    end
+    @report.date = Date.today if @report.date.nil?
     prepare_report()
+    add_breadcrumb("Current")
   end
 
   # GET /users/1/reports/content
   def content
-    if params[:user_id] != current_user.id && !current_user.admin?
-      logger.info "only admins are allowed to fetch other users content"
-      params[:user_id] = current_user.id
-    end
     begin
       @user = User.find(params[:user_id])
       @report = @user.reports.build
@@ -52,6 +55,8 @@ class ReportsController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     prepare_report()
+    add_breadcrumb("#{@report.date.year}")
+    add_breadcrumb("#{@report.date.month}")
     if @report.balance != @report_summary.working_hours_balance || @report.workingHours != @report_summary.working_hours
       logger.error "report has changed since creating it, please generate a new report!"
       flash[:alert] = "Data has been changed after creating a report. Please update the report!"
@@ -80,6 +85,7 @@ class ReportsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @report = @user.reports.create(report_params)
+    @report.date = prepare_date(params[:date])
     prepare_report()
     @report.balance = @report_summary.working_hours_balance
     @report.workingHours = @report_summary.working_hours
@@ -152,13 +158,13 @@ class ReportsController < ApplicationController
     def prepare_report()
       public_holidays = PublicHoliday.where(date: @report.date.beginning_of_month..@report.date.end_of_month)
       @working_days = process_working_days(@report.date.beginning_of_month,
-      @report.date.end_of_month,
-      @user.time_entries,
-      @user.leave_days,
-      @user.employments,
-      public_holidays)
+                                            @report.date.end_of_month,
+                                            @user.time_entries,
+                                            @user.leave_days,
+                                            @user.employments,
+                                            public_holidays)
       @report_summary = create_report_summary(@working_days, @user.employments, @user.reports)
-      @company_name = "BYTEPOETS GmbH"
+      @company_name = ENV['COMPANY_NAME']
       @leave_days_available = calculate_available_leave_days(@report.date.end_of_month, @user.employments, @user.leave_days)
       @leave_days_consumed = calculate_consumed_leave_days(@report.date.end_of_month, @user.employments, @user.leave_days)
       @employments = filter_employments(@report.date.beginning_of_month, @report.date.end_of_month, @user.employments)

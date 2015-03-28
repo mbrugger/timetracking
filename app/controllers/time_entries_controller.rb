@@ -3,7 +3,8 @@ class TimeEntriesController < ApplicationController
   include TimeEntriesHelper
   include DurationFormatHelper
   before_action :set_time_entry, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  load_and_authorize_resource :user
+  load_and_authorize_resource :time_entry, through: :user
 
   def add_breadcrumbs
     super
