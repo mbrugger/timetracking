@@ -8,3 +8,8 @@ de:
       balance: 'Stundenguthaben'
       start: 'Start'
       stop: 'Stop'
+      edit: 'Eintrag bearbeiten'
+      back: 'Zurück'
+      show: 'Anzeigen'
+      date: 'Datum'
+      time: 'Uhrzeit'

@@ -8,3 +8,8 @@ en:
       balance: 'Balance today in current month'
       start: 'Start'
       stop: 'Stop'
+      edit: 'Editing time_entry'
+      back: 'Back'
+      show: 'Show'
+      date: 'Date'
+      time: 'Time'
