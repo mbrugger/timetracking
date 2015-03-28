@@ -6,4 +6,4 @@ notifications:
   email:
     - travis@brugger.eu
 
-bundler_args: --without development debug
+bundler_args: --without development
