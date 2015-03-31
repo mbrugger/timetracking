@@ -10,7 +10,7 @@ Demo System
 ---
 A demo installation is available at [Heroku](https://intense-reef-9620.herokuapp.com/)
 
-- User: admin
+- User: admin@example.com
 - Password: admin1234
 
 The system is available for testing and will be cleared frequently
