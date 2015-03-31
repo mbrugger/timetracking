@@ -45,7 +45,7 @@ gem 'debugger', group: :development
 
 gem 'devise'
 
-gem 'mysql2'
+gem 'mysql2', group: :mysql
 
 gem "twitter-bootstrap-rails"
 
