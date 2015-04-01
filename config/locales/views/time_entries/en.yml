@@ -1,6 +1,7 @@
 en:
   views:
     time_entries:
+      time_entries: 'Time entries'
       add_time_entry: 'Add time entry'
       confirm_delete: 'Are you sure?'
       pause: 'Pause'

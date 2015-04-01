@@ -1,6 +1,7 @@
 de:
   views:
     time_entries:
+      time_entries: 'Zeiteinträge'      
       add_time_entry: 'Eintrag hinzufügen'
       confirm_delete: 'Sind Sie sicher?'
       pause: 'Pause'
