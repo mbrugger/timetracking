@@ -13,3 +13,6 @@ en:
       migrated_leave_days: 'Migrated leave days balance at working year start'
       migrated_working_hours: 'Migrated working hours balance at migration date'
       back: 'Back'
+      edit: 'Edit'
+      start: 'Start'
+      end: 'End'
