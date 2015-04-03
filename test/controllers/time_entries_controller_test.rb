@@ -39,10 +39,22 @@ class TimeEntriesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update time_entry" do
-    patch :update, user_id: @user.id, id: @time_entry_without_report, time_entry: {  date: "2012-12-14", start_time_string: "2012-12-14 06:00:00", stop_time_string: "2012-12-14 08:00:00"  }
-    assert_redirected_to user_time_entries_path(@user, date:"2012-12-14")
+  test "should update time_entry with correct time zone information DST off" do
+    patch :update, user_id: @user.id, id: @time_entry_without_report, time_entry: {  date: "2015-03-01", start_time_string: "06:00:00", stop_time_string: "08:00:00"  }
+    assert_redirected_to user_time_entries_path(@user, date:"2015-03-01")
+    modified_time_entry = TimeEntry.find(@time_entry_without_report.id)
+    assert_equal Time.zone.parse("2015-03-01 06:00:00"), modified_time_entry.startTime
+    assert_equal Time.zone.parse("2015-03-01 08:00:00"), modified_time_entry.stopTime
   end
+
+  test "should update time_entry with correct time zone information DST on" do
+    patch :update, user_id: @user.id, id: @time_entry_without_report, time_entry: {  date: "2015-03-31", start_time_string: "06:00:00", stop_time_string: "08:00:00"  }
+    assert_redirected_to user_time_entries_path(@user, date:"2015-03-31")
+    modified_time_entry = TimeEntry.find(@time_entry_without_report.id)
+    assert_equal Time.zone.parse("2015-03-31 06:00:00").to_s, modified_time_entry.startTime.to_s
+    assert_equal Time.zone.parse("2015-03-31 08:00:00").to_s, modified_time_entry.stopTime.to_s
+  end
+
 
   test "should destroy time_entry" do
     assert_difference('TimeEntry.count', -1) do
@@ -87,18 +99,6 @@ class TimeEntriesControllerTest < ActionController::TestCase
     end
     assert_response :redirect
     assert_redirected_to user_time_entries_path(@user)
-  end
-
-  test "should show validation error for unparseable start time" do
-    patch :update, user_id: @user.id, id: @time_entry_without_report, time_entry: {  date: "2014-12-14", start_time_string: "0", stop_time_string: "08:00:00"  }
-    assert_response :success
-    assert_equal flash[:alert], "Invalid start time 0"
-  end
-
-  test "should show validation error for unparseable stop time" do
-    patch :update, user_id: @user.id, id: @time_entry_without_report, time_entry: {  date: "2014-12-14", start_time_string: "06:00:00", stop_time_string: "0"  }
-    assert_response :success
-    assert_equal flash[:alert], "Invalid stop time 0"
   end
 
 end

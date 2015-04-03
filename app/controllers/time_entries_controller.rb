@@ -129,17 +129,12 @@ class TimeEntriesController < ApplicationController
     def time_entry_params
       @parse_error = false
       time_entry = params[:time_entry]
-      date = Date.parse(time_entry[:date])
 
-      year = date.year #time_entry["date(1i)"].to_i
-      month = date.month #time_entry["date(2i)"].to_i
-      day = date.day #time_entry["date(3i)"].to_i
       offset = Time.zone.formatted_offset
       if !time_entry[:start_time_string].nil?
         begin
           if time_entry[:start_time_string].length>0
-            start_time = DateTime.parse(time_entry[:start_time_string])
-            start_time = DateTime.new(year, month, day, start_time.hour, start_time.minute, 0, offset)
+            start_time = Time.zone.parse(time_entry[:date] + " " + time_entry[:start_time_string])
             time_entry[:startTime] = start_time
           else
             time_entry[:startTime] = nil
@@ -155,8 +150,7 @@ class TimeEntriesController < ApplicationController
       if !time_entry[:stop_time_string].nil?
         begin
           if time_entry[:stop_time_string].length>0
-            stop_time = DateTime.parse(time_entry[:stop_time_string])
-            stop_time = DateTime.new(year, month, day, stop_time.hour, stop_time.minute, 0, offset)
+            stop_time = Time.zone.parse(time_entry[:date] + " " + time_entry[:stop_time_string])
             time_entry[:stopTime] = stop_time
           else
             time_entry[:stopTime] = nil
