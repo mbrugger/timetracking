@@ -1,6 +1,28 @@
 de:
   views:
     reports:
+      report_for: "Stundenaufzeichnungen für"
       leave_days_used: "Urlaubstage verbraucht"
       leave_days_available: "Urlaubstage verfügbar"
       weekly_working_hours: "Wochenstunden"
+      date: "Datum"
+      entries: "Zeiteinträge"
+      pause: "Pause"
+      duration: "Dauer"
+      working_hours: "Arbeitszeit"
+      balance: "Abweichung"
+      comp_time_off: "Zeitausgleich"
+      correction: "Manuelle Korrektur"
+      previous_balance: "Guthaben aus dem vorhergehenden Monat"
+      total_balance: "Aktuelles Guthaben"
+      report_unavailable: "Abrechnung nicht verfügbar für diesen Monat!"
+      edit: 'Bearbeiten'
+      back: 'Zurück'
+      show: 'Anzeigen'
+      list_reports: 'Stundenabrechnungen'
+      create_report: 'Stundenabrechnung erstellen'
+      month: 'Monat'
+      actual: 'Arbeitszeit'
+      new_report: 'Neue Stundenabrechnung'
+      confirmation: 'Sind Sie sicher?'
+      signature: 'Unterschrift'
