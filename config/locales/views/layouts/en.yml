@@ -13,3 +13,4 @@ en:
       logout: 'Logout'
       login: 'Login'
       settings: 'Settings'
+      click_to_hide: '(click to hide)'

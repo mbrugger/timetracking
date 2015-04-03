@@ -62,12 +62,12 @@
 <div class="container" id="main-content-container">
   <% if notice %>
     <div class="alert alert-info" role="alert">
-      <%= notice %> <small>(click to hide)</small>
+      <%= notice %> <small><%= I18n.t('views.layouts.click_to_hide') %></small>
     </div>
   <% end %>
   <% if alert %>
     <div class="alert alert-danger" role="alert">
-      <%= alert %> <small>(click to hide)</small>
+      <%= alert %> <small><%= I18n.t('views.layouts.click_to_hide') %></small>
     </div>
   <% end %>
   <% if user_signed_in? && @breadcrumbs.size > 0 %>
