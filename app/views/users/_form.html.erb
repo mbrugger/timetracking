@@ -16,7 +16,7 @@
   </p>
   <p>
     <%= f.label :role %><br>
-    <%= f.select(:role, options_for_select(User.roles, @user.role)) %>
+    <%= f.select(:role, options_for_select(User.localized_roles, @user.role)) %>
   </p>
   <p>
     <%= f.label :time_zone %><br>

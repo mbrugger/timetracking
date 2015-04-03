@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   end
 
   def self.roles
-    [['User','user'], ['Admin','admin']]
+    ['user', 'admin']
+  end
+
+  def self.localized_roles
+    User.roles.map { |role| [ I18n.t(role, scope: "models.users.roles"), role] }
   end
 end

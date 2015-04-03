@@ -1,19 +1,21 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Listing users</div>
+  <div class="panel-heading"><%= I18n.t('views.users.title') %></div>
   <table class="table">
     <thead>
       <tr>
-        <th>email</th>
-        <th colspan="2"><%= link_to 'New User', new_user_path %></th>
+        <th><%= I18n.t('views.users.name') %></th>
+        <th><%= I18n.t('views.users.email') %></th>
+        <th colspan="2"><%= link_to I18n.t('views.users.new_user'), new_user_path %></th>
       </tr>
     </thead>
 
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= link_to user.email, user %>
+          <td><%= link_to user.name, user %></td>
+          <td><%= link_to user.email, user %></td>
           <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_path(user) %></td>
-          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), user, method: :delete, data: { confirm: I18n.t('views.users.are_you_sure') } %></td>
         </tr>
       <% end %>
     </tbody>

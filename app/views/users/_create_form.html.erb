@@ -20,14 +20,14 @@
   </p>
   <p>
     <%= f.label :role %><br>
-    <%= f.select(:role, options_for_select(User.roles, @user.role)) %>
+    <%= f.select(:role, options_for_select(User.localized_roles, @user.role)) %>
   </p>
   <p>
     <%= f.label :time_zone %><br>
     <%= f.time_zone_select :time_zone, /Europe/, :default => "Vienna" %>
   </p>
   <p>
-    <%= label_tag :notify_user %><br>
+    <%= f.label :notify_user %><br>
     <%= check_box_tag :notify_user, true, {:checked => "checked"} %>
   </p>
   <div class="actions">

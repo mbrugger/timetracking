@@ -1,0 +1,35 @@
+de:
+  views:
+    users:
+      title: 'Benutzer'
+      email: 'e-Mail'
+      name: 'Name'
+      new_user: 'Benutzer anlegen'
+      show: 'Anzeigen'
+      back: 'Zurück'
+      edit: 'Bearbeiten'
+      are_you_sure: 'Sind Sie sicher?'
+      edit_user: 'Benutzer bearbeiten'
+      employments: 'Dienstverhältnisse'
+      time_entries: 'Zeiteinträge'
+      leave_days: 'Abwesenheitstage'
+      reports: 'Stundenaufzeichnungen'
+      current_report: 'Aktueller Monat'
+  helpers:
+    label:
+      user:
+        email: 'e-Mail'
+        name: 'Name'
+        role: 'Berechtigungen'
+        time_zone: 'Zeitzone'
+        notify_user: 'Benutzer per e-Mail benachrichtigen?'
+    submit:
+      user:
+        create: "Benutzer anlegen"
+        update: "Benutzer aktualisieren"
+  models:
+    users:
+      roles:
+        admin: 'Administrator'
+        user: 'Zeiterfasser'
+        
