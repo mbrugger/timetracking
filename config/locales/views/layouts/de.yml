@@ -1,0 +1,15 @@
+de:
+  views:
+    layouts:
+      application_title: 'Zeiterfassung'
+      current_report: 'Aktueller Monat'
+      public_holidays: 'Gesetzliche Feiertage'
+      users: 'Mitarbeiter'
+      employments: 'Dienstverhältnisse'
+      time_entries: 'Zeiteinträge'
+      leave_days: 'Urlaubstage/Abwesenheiten'
+      reports: 'Monatsabrechnungen'
+      edit_profile: 'Profile bearbeiten'
+      logout: 'Ausloggen'
+      login: 'Einloggen'
+      settings: 'Einstellungen'
