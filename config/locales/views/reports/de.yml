@@ -13,7 +13,7 @@ de:
       balance: "Abweichung"
       comp_time_off: "Zeitausgleich"
       correction: "Manuelle Korrektur"
-      previous_balance: "Guthaben aus dem vorhergehenden Monat"
+      previous_balance: "Guthaben zu Monatsbeginn"
       total_balance: "Aktuelles Guthaben"
       report_unavailable: "Abrechnung nicht verfügbar für diesen Monat!"
       edit: 'Bearbeiten'
