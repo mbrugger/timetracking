@@ -13,9 +13,6 @@ class LeaveDay < ActiveRecord::Base
   end
 
   def self.localized_leave_day_types
-    print "localizing leave day types: \n"
-    tmp = LeaveDay.leave_day_types.map { |type| [ I18n.t("models.leave_days.types.#{type}"), type] }
-    print "#{tmp.inspect}\n"
-    return tmp
+    LeaveDay.leave_day_types.map { |type| [ I18n.t(type, scope: "models.leave_days.types"), type] }
   end
 end
