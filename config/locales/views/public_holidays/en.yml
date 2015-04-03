@@ -1,0 +1,21 @@
+en:
+  views:
+    public_holidays:
+      title: 'Listing Public Holidays'
+      date: 'Date'
+      name: 'Name'
+      new_public_holiday: 'New Public holiday'
+      show: 'Show'
+      back: 'Back'
+      edit: 'Edit'
+      are_you_sure: 'Are you sure?'
+      edit_public_holiday: 'Editing Public holiday'
+  helpers:
+    label:
+      public_holiday:
+        date: 'Date'
+        name: 'Name'
+    submit:
+      public_holiday:
+        create: "Create Public Holiday"
+        update: "Update Public Holiday"
