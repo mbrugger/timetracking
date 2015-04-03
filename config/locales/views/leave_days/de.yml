@@ -1,3 +1,24 @@
 de:
   views:
     leave_days:
+      listing_prefix: 'Awesenheitstage für das Arbeitsjahr von'
+      to: 'bis'
+      date: 'Datum'
+      type: 'Art'
+      new_leave_day: 'Neuer Abwesenheitstag'
+      show: 'Anzeigen'
+      back: 'Zurück'
+      edit: 'Bearbeiten'
+  helpers:
+    label:
+      leave_day:
+        date: 'Datum'
+        leave_day_type: 'Grund für Abwesenheit'
+  models:
+    leave_days:
+      types:
+        leave_day: 'Urlaub'
+        sick_day: 'Krankheit'
+        absent_day: 'Sonderurlaub'
+        comp_time: 'Zeitausgleich'
+        comp_time_old: 'Zeitausgleich(alt)'
