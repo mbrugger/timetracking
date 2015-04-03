@@ -17,7 +17,7 @@
           <td><%= leave_day.date.to_formatted_s(:pretty_date)%></td>
           <td><%= leave_day.localized_leave_day_type %></td>
           <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_leave_day_path(leave_day.user, leave_day) %></td>
-          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [leave_day.user, leave_day], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [leave_day.user, leave_day], method: :delete, data: { confirm: I18n.t('views.leave_days.are_you_sure') } %></td>
         </tr>
       <% end %>
     </tbody>

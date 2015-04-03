@@ -8,12 +8,17 @@ en:
       new_leave_day: 'New Leave day'
       show: 'Show'
       back: 'Back'
-      edit: 'Edit'   
+      edit: 'Edit'
+      are_you_sure: 'Are you sure?'
   helpers:
     label:
       leave_day:
         date: 'Date'
         leave_day_type: 'Leave Day Type'
+    submit:
+      leave_day:
+        create: "Create Leave Day"
+        update: "Update Leave Day"
   models:
     leave_days:
       types:

@@ -9,11 +9,16 @@ de:
       show: 'Anzeigen'
       back: 'Zurück'
       edit: 'Bearbeiten'
+      are_you_sure: 'Sind Sie sicher?'
   helpers:
     label:
       leave_day:
         date: 'Datum'
         leave_day_type: 'Grund für Abwesenheit'
+    submit:
+      leave_day:
+        create: "Abwesenheitstag anlegen"
+        update: "Abwesenheitstag aktualisieren"
   models:
     leave_days:
       types:
