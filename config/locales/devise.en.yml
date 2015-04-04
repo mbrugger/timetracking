@@ -56,6 +56,11 @@ en:
     forgot_password:
       forgot_password_title: 'Forgot your password?'
       submit: 'Send me reset password instructions'
+    activate_account:
+      title: 'Change password'
+      new_password: 'New password'
+      confirm_password: 'Confirm new password'
+      change_password: "Change my password"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"

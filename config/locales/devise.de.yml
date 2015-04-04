@@ -56,6 +56,11 @@ de:
     forgot_password:
       forgot_password_title: 'Passwort vergessen?'
       submit: 'Passwort zurücksetzen'
+    activate_account:
+      title: 'Passwort ändern'
+      new_password: 'Neues Passwort'
+      confirm_password: 'Passwort wiederholen'
+      change_password: "Passwort ändern"
   errors:
     messages:
       already_confirmed: "wurde bereits bestätigt"
