@@ -40,6 +40,13 @@ en:
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
+      edit_title: "Edit User Profile"
+      leave_blank: "leave blank if you don't want to change it"
+      new_password: 'New password'
+      confirm_password: 'Confirm new password'
+      current_password: "Current password"
+      current_password_explanation: "we need your current password to confirm your changes"
+      update: 'Update Profile'
     sessions:
       log_in_title: 'Log in'
       signed_in: "Signed in successfully."
@@ -75,4 +82,5 @@ en:
     label:
       user:
         password: 'Password'
+        current_password: 'Current Password'
         remember_me: 'Remember me'
