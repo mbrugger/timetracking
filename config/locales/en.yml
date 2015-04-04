@@ -2,3 +2,8 @@ en:
   date:
     formats:
       pretty_report_date: "%F %a"
+  mailers:
+    user_mailer:
+      account_created_notification_subject: "Time tracking account created"
+      validation_failed: "Time tracking validation failed"
+      validation_failed_on_date: "Time tracking validation failed on %{date}"

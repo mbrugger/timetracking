@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
     @url = user_time_entries_url(@user, locale: I18n.default_locale)
     @working_day = working_day
     @validation_errors = validation_errors
-    mail(to: @user.email, subject: "Time tracking validation failed on #{working_day.date.to_formatted_s(:pretty_date)}")
+    mail(to: @user.email, subject: I18n.t('mailers.user_mailer.validation_failed_on_date', date: working_day.date.to_formatted_s(:pretty_date)))
   end
 
   def notify_validation_error(user, start_date, end_date, working_days)
@@ -17,12 +17,12 @@ class UserMailer < ActionMailer::Base
     @working_days = working_days
     @start_date = start_date
     @end_date = end_date
-    mail(to: @user.email, subject: "Time tracking validation failed")
+    mail(to: @user.email, subject: I18n.t('mailers.user_mailer.validation_failed'))
   end
 
   def notify_account_created(user, url)
     @user = user
     @url = url
-    mail(to: @user.email, subject: "Time tracking account created")
+    mail(to: @user.email, subject: I18n.t('mailers.user_mailer.account_created_notification_subject'))
   end
 end
