@@ -8,7 +8,7 @@ class EmploymentsController < ApplicationController
 
   def add_breadcrumbs
     super
-    add_breadcrumb("Employments", user_employments_path(@user))
+    add_breadcrumb(I18n.t('controllers.employments.breadcrumbs.employments'), user_employments_path(@user))
   end
 
   # GET /employments
@@ -25,7 +25,7 @@ class EmploymentsController < ApplicationController
   # GET /employments/new
   def new
     @employment = @user.employments.build
-    add_breadcrumb("New Employment")
+    add_breadcrumb(I18n.t('controllers.employments.breadcrumbs.new_employment'))
   end
 
   # GET /employments/1/edit
@@ -39,7 +39,7 @@ class EmploymentsController < ApplicationController
     @employment = @user.employments.create(employment_params)
     respond_to do |format|
       if @employment.save
-        format.html { redirect_to user_employments_path(@employment.user), notice: I18n.t('controllers.employment.successfully_created') }
+        format.html { redirect_to user_employments_path(@employment.user), notice: I18n.t('controllers.employments.successfully_created') }
         format.json { render :show, status: :created, location: @employment }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class EmploymentsController < ApplicationController
     @employment = Employment.find(params[:id])
     respond_to do |format|
       if @employment.update(employment_params)
-        format.html { redirect_to user_employments_path(@employment.user), notice: I18n.t('controllers.employment.successfully_updated') }
+        format.html { redirect_to user_employments_path(@employment.user), notice: I18n.t('controllers.employments.successfully_updated') }
         format.json { render :show, status: :ok, location: @employment }
       else
         format.html { render :edit }
@@ -68,7 +68,7 @@ class EmploymentsController < ApplicationController
   def destroy
     @employment.destroy
     respond_to do |format|
-      format.html { redirect_to user_employments_url, notice: I18n.t('controllers.employment.successfully_destroyed') }
+      format.html { redirect_to user_employments_url, notice: I18n.t('controllers.employments.successfully_destroyed') }
       format.json { head :no_content }
     end
   end
