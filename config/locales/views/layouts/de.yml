@@ -10,7 +10,7 @@ de:
       leave_days: 'Urlaubstage/Abwesenheiten'
       reports: 'Monatsabrechnungen'
       edit_profile: 'Profile bearbeiten'
-      logout: 'Ausloggen'
+      logout: 'Abmelden'
       login: 'Einloggen'
       settings: 'Einstellungen'
       click_to_hide: '(Meldung ausblenden)'

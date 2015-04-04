@@ -41,13 +41,21 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
     sessions:
+      log_in_title: 'Log in'
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+      log_in: 'Log in'
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    links:
+      forgot_password: "Forgot your password?"
+      log_in: "Log in"
+    forgot_password:
+      forgot_password_title: 'Forgot your password?'
+      submit: 'Send me reset password instructions'
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
@@ -58,3 +66,8 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  helpers:
+    label:
+      user:
+        password: 'Password'
+        remember_me: 'Remember me'

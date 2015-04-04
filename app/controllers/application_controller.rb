@@ -29,8 +29,12 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def default_url_options(options = {})
+  def self.default_url_options(options = {})
     { locale: I18n.locale }.merge options
+  end
+
+  def default_url_options(options = {})
+    ApplicationController.default_url_options(options)
   end
 
   def user_for_paper_trail
