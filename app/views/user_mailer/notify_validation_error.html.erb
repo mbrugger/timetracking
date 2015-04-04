@@ -4,22 +4,22 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <h1>Time tracking validation failed between <%= @start_date.to_formatted_s(:pretty_date)%> and <%=@end_date.to_formatted_s(:pretty_date)%></h1>
+  <h1><%= I18n.t('views.user_mailer.validation_failed.heading', start_date: @start_date.to_formatted_s(:pretty_date), end_date: @end_date.to_formatted_s(:pretty_date)) %></h1>
   <p>
     <table class="table table-condensed table-responsive">
       <thead>
         <tr>
-          <th>Date</th>
-          <th>Entries</th>
-          <th>Pause</th>
-          <th>Duration</th>
+          <th><%= I18n.t('views.user_mailer.validation_failed.date') %></th>
+          <th><%= I18n.t('views.user_mailer.validation_failed.time_entries') %></th>
+          <th><%= I18n.t('views.user_mailer.validation_failed.pause') %></th>
+          <th><%= I18n.t('views.user_mailer.validation_failed.duration') %></th>
         </tr>
       </thead>
 
       <tbody>
         <% @working_days.each do |working_day| %>
         <tr class="<%= 'not_working_day' unless working_day.working_day?%>">
-          <td><%= working_day.date.to_formatted_s(:pretty_report_date)%></td>
+          <td><%= I18n.l(working_day.date, format: :pretty_report_date) %></td>
           <td><%= render "reports/working_day_content", working_day: working_day %></td>
           <% if working_day.validation_errors.size == 0 %>
           <td><%= format_duration(working_day.pause_duration)%></td>
@@ -34,7 +34,7 @@
 
   </p>
   <p>
-    Please proceed to <%= @url %> to correct any validation errors.
+    <%= I18n.t('views.user_mailer.validation_failed.link_prefix') %> <%= @url %> <%= I18n.t('views.user_mailer.validation_failed.link_suffix') %>
   </p>
 </body>
 </html>

@@ -6,3 +6,16 @@ de:
         message_suffix: ' auf, um deinen Account zu aktivieren.'
         activation_page: 'Link'
         heading: 'Ein neuer Mitarbeiter wurde angelegt!'
+      validation_failed:
+        heading: 'Überprüfung der Zeitbuchungen zwischen %{start_date} und %{end_date} fehlgeschlagen'
+        date: 'Datum'
+        time_entries: 'Zeitbuchungen'
+        pause: 'Pause'
+        duration: 'Dauer'
+        link_prefix: 'Bitte besuche'
+        link_suffix: 'um die Fehler zu korrigieren.'
+      working_day_validation_failed:
+        heading: 'Überprüfung der Zeitbuchungen am %{date} fehlgeschlagen'
+        description: 'Die folgenden Fehler sind bei der Überprüfung aufgetreten'
+        link_prefix: 'Bitte besuche'
+        link_suffix: 'um die Fehler zu korrigieren.'
