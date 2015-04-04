@@ -92,9 +92,9 @@ class ReportsController < ApplicationController
 
     success = false
     begin
-      # if @report.save
+      if @report.save
         success = true
-      # end
+      end
     rescue ActiveRecord::RecordNotUnique
       flash[:alert] = I18n.t('controllers.reports.already_exists_for_date')
     end
