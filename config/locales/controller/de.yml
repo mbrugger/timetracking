@@ -1,0 +1,19 @@
+de:
+  controllers:
+    application:
+      ask_administrator_create_employment: 'Please ask your administrator to create an employment first.'
+      create_employment: 'Please create an employment for this user first.'
+    employments:
+      successfully_created: 'Employment was successfully created.'
+      successfully_updated: 'Employment was successfully updated.'
+      successfully_destroyed: 'Employment was successfully destroyed.'
+    leave_days:
+      successfully_created: 'Leave day was successfully created.'
+      successfully_updated: 'Leave day was successfully updated.'
+      successfully_destroyed: 'Leave day was successfully destroyed.'
+      could_not_save: "Could not save leave day for date %{date}"
+      leave_day_already_exists: "Leave day for date %{date} already exists"
+      leave_day_for_date_already_exists: "Leave day for date already exists!"
+      breadcrumb:
+        leave_days: "Leave days"
+        new_leave_day: "New Leave day"
