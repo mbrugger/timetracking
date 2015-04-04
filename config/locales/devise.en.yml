@@ -40,14 +40,34 @@ en:
       signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
+      edit_title: "Edit User Profile"
+      leave_blank: "leave blank if you don't want to change it"
+      new_password: 'New password'
+      confirm_password: 'Confirm new password'
+      current_password: "Current password"
+      current_password_explanation: "we need your current password to confirm your changes"
+      update: 'Update Profile'
     sessions:
+      log_in_title: 'Log in'
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
+      log_in: 'Log in'
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."
       unlocked: "Your account has been unlocked successfully. Please sign in to continue."
+    links:
+      forgot_password: "Forgot your password?"
+      log_in: "Log in"
+    forgot_password:
+      forgot_password_title: 'Forgot your password?'
+      submit: 'Send me reset password instructions'
+    activate_account:
+      title: 'Change password'
+      new_password: 'New password'
+      confirm_password: 'Confirm new password'
+      change_password: "Change my password"
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
@@ -58,3 +78,9 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  helpers:
+    label:
+      user:
+        password: 'Password'
+        current_password: 'Current Password'
+        remember_me: 'Remember me'

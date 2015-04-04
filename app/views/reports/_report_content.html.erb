@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <input id="base-url" type="hidden" value="<%= user_reports_path(params[:user_id])%>" />
   <input name="date" type="hidden" class="form-control" value="<%= @report.date.to_formatted_s(:month_year_date) unless @report.date.nil? %>">
-  <div class="panel-heading">Report for <a href="#" id="reports-datepicker"><%= @report.date.to_formatted_s(:month_year_date)%></a></div>
+  <div class="panel-heading"><%= I18n.t('views.reports.report_for') %> <a href="#" id="reports-datepicker"><%= @report.date.to_formatted_s(:month_year_date)%></a></div>
   <div class="panel-body">
     <div class="panel-left">
       <table>
@@ -23,17 +23,17 @@
   <table class="table table-condensed table-responsive">
     <thead>
       <tr>
-        <th>Date</th>
-        <th>Entries</th>
-        <th>Pause</th>
-        <th>Duration</th>
+        <th><%= I18n.t('views.reports.date') %></th>
+        <th><%= I18n.t('views.reports.entries') %></th>
+        <th><%= I18n.t('views.reports.pause') %></th>
+        <th><%= I18n.t('views.reports.duration') %></th>
       </tr>
     </thead>
 
     <tbody>
       <% @working_days.each do |working_day| %>
       <tr class="<%= 'not_working_day' unless working_day.working_day?%>">
-        <td><%= link_to "#{working_day.date.to_formatted_s(:pretty_report_date)}", user_time_entries_path(@user, date: working_day.date.to_formatted_s(:datepicker_date))%></td>
+        <td><%= link_to I18n.l(working_day.date, format: :pretty_report_date), user_time_entries_path(@user, date: working_day.date.to_formatted_s(:datepicker_date))%></td>
         <td><%= render "reports/working_day_content", working_day: working_day %></td>
         <% if working_day.validation_errors.size == 0 %>
           <td><%= format_duration(working_day.pause_duration)%></td>
@@ -47,38 +47,38 @@
     <tfoot>
       <tr>
         <td colspan="2"></td>
-        <td>Working hours:</td>
+        <td><%= I18n.t('views.reports.working_hours') %>:</td>
         <td><%= format_duration(@report_summary.working_hours) %> / <%= format_duration(@report_summary.expected_working_hours) %></td>
       </tr>
       <tr>
         <td colspan="2"></td>
-        <td>Balance:</td>
+        <td><%= I18n.t('views.reports.balance') %>:</td>
         <td><%= format_duration(@report_summary.working_hours_balance+@report_summary.comp_time) %></td>
       </tr>
       <% if @report_summary.comp_time > 0%>
       <tr>
         <td colspan="2"></td>
-        <td>Compensatory Time-off:</td>
+        <td><%= I18n.t('views.reports.comp_time_off') %>:</td>
         <td>-<%= format_duration(@report_summary.comp_time) %></td>
       </tr>
       <% end %>
       <% if !@report.nil? && !@report.correction.nil? && @report.correction > 0%>
       <tr>
         <td colspan="2"></td>
-        <td>Correction: <% if !@report.correctionReason.nil? &&  @report.correctionReason.size > 0 %>(<%= @report.correctionReason %>) <% end %></td>
+        <td><%= I18n.t('views.reports.correction') %>: <% if !@report.correctionReason.nil? &&  @report.correctionReason.size > 0 %>(<%= @report.correctionReason %>) <% end %></td>
         <td><%= format_duration(@report.correction) %></td>
       </tr>
       <% end %>
       <% if !@report_summary.previous_working_hours_balance.nil? %>
       <tr>
         <td colspan="2"></td>
-        <td>Previous Balance:</td>
+        <td><%= I18n.t('views.reports.previous_balance') %>:</td>
         <td><%= format_duration(@report_summary.previous_working_hours_balance) %></td>
       </tr>
       <% end %>
       <tr>
         <td colspan="2"></td>
-        <td>Total Balance:</td>
+        <td><%= I18n.t('views.reports.total_balance') %>:</td>
         <td><%= format_duration(@report_summary.total_working_hours_balance) %></td>
       </tr>
     </tfoot>

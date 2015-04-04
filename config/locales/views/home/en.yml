@@ -1,0 +1,6 @@
+en:
+  views:
+    home:
+      todays_working_time_heading: "Todays working time"
+      start_work: "Start work"
+      stop_work: "Stop work"

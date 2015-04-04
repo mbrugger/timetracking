@@ -1,0 +1,16 @@
+de:
+  views:
+    time_entries:
+      time_entries: 'Zeiteinträge'      
+      add_time_entry: 'Eintrag hinzufügen'
+      confirm_delete: 'Sind Sie sicher?'
+      pause: 'Pause'
+      duration: 'Dauer'
+      balance: 'Stundenguthaben'
+      start: 'Start'
+      stop: 'Stop'
+      edit: 'Eintrag bearbeiten'
+      back: 'Zurück'
+      show: 'Anzeigen'
+      date: 'Datum'
+      time: 'Uhrzeit'

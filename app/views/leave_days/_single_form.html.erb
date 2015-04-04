@@ -18,7 +18,7 @@
 
 <p>
   <%= f.label :leave_day_type %><br>
-  <%= f.select(:leave_day_type, options_for_select(LeaveDay.leave_day_types, @leave_day.leave_day_type)) %>
+  <%= f.select(:leave_day_type, options_for_select(LeaveDay.localized_leave_day_types, @leave_day.leave_day_type)) %>
 </p>
 
   <div class="actions">

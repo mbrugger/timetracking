@@ -1,0 +1,8 @@
+de:
+  views:
+    user_mailer:
+      account_created:
+        message_prefix: 'Bitte rufe folgenden '
+        message_suffix: ' auf, um deinen Account zu aktivieren.'
+        activation_page: 'Link'
+        heading: 'Ein neuer Mitarbeiter wurde angelegt!'

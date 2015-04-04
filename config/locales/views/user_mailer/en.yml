@@ -1,0 +1,8 @@
+en:
+  views:
+    user_mailer:
+      account_created:
+        message_prefix: 'Please proceed to '
+        message_suffix: ' to activate your account.'
+        activation_page: 'account activation'
+        heading: 'A new time tracking account has been created!'

@@ -1,0 +1,16 @@
+en:
+  views:
+    layouts:
+      application_title: 'Timetracking'
+      current_report: 'Current Month'
+      public_holidays: 'Public holidays'
+      users: 'Users'
+      employments: 'Employments'
+      time_entries: 'TimeEntries'
+      leave_days: 'LeaveDays'
+      reports: 'Reports'
+      edit_profile: 'Edit profile'
+      logout: 'Logout'
+      login: 'Login'
+      settings: 'Settings'
+      click_to_hide: '(click to hide)'

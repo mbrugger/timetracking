@@ -1,1 +1,4 @@
 de:
+  date:
+    formats:
+      pretty_report_date: "%F %a"

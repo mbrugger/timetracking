@@ -1,0 +1,28 @@
+en:
+  views:
+    leave_days:
+      listing_title: 'Listing Leave Days for working year %{start} to %{end}'
+      date: 'Date'
+      type: 'Type'
+      new_leave_day: 'New Leave day'
+      show: 'Show'
+      back: 'Back'
+      edit: 'Edit'
+      are_you_sure: 'Are you sure?'
+  helpers:
+    label:
+      leave_day:
+        date: 'Date'
+        leave_day_type: 'Leave Day Type'
+    submit:
+      leave_day:
+        create: "Create Leave Day"
+        update: "Update Leave Day"
+  models:
+    leave_days:
+      types:
+        leave_day: 'Leave Day'
+        sick_day: 'Sick Day'
+        absent_day: 'Absent Day'
+        comp_time: 'Compensatory Time-off'
+        comp_time_old: 'Compensatory Time-off(old)'

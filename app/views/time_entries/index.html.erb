@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading control-group controls form-inline">Time entries<input type="text" class="form-control input-sm" id="time_entry_day_datepicker" value="<%= @date.to_formatted_s(:datepicker_date) %>">
+  <div class="panel-heading control-group controls form-inline"><%= I18n.t('views.time_entries.time_entries') %><input type="text" class="form-control input-sm" id="time_entry_day_datepicker" value="<%= @date.to_formatted_s(:datepicker_date) %>">
     <input id="base-url" type="hidden" value="<%= user_time_entries_path(params[:user_id])%>" />
     <div class="clear"></div>
   </div>

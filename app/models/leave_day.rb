@@ -5,6 +5,14 @@ class LeaveDay < ActiveRecord::Base
   has_paper_trail skip: [:created_at, :updated_at]
 
   def self.leave_day_types
-    return [["Leave Day", "leave_day"], ["Sick Day", "sick_day"], ["Absent Day", "absent_day"], ["Compensatory Time-off", "comp_time"], ["Compensatory Time-off(old)", "comp_time_old"]]
+    return ["leave_day", "sick_day", "absent_day", "comp_time", "comp_time_old"]
+  end
+
+  def localized_leave_day_type
+    I18n.t(leave_day_type, :scope => 'models.leave_days.types')
+  end
+
+  def self.localized_leave_day_types
+    LeaveDay.leave_day_types.map { |type| [ I18n.t(type, scope: "models.leave_days.types"), type] }
   end
 end

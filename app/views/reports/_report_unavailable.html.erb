@@ -1,6 +1,6 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Report for <%= @report.date.to_formatted_s(:month_year_date)%></div>
+  <div class="panel-heading"><%= I18n.t('views.reports.report_for') %> <%= @report.date.to_formatted_s(:month_year_date)%></div>
   <div class="panel-body">
-    <center>Report not available for mgirated employment!</center>
+    <center><%= I18n.t('views.reports.report_unavailable') %></center>
   </div>
 </div>

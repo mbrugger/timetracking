@@ -1,6 +1,5 @@
-<h1>Editing report</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', user_reports_path(@report.user, @report) %> |
-<%= link_to 'Back', user_reports_path %>
+<%= link_to I18n.t('views.reports.show'), user_reports_path(@report.user, @report) %> |
+<%= link_to I18n.t('views.reports.back'), user_reports_path %>

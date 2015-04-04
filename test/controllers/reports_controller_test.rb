@@ -53,13 +53,21 @@ class ReportsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
   #
-  # test "should create report" do
-  #   assert_difference('Report.count') do
-  #     post :create, report: {  }
-  #   end
-  #
-  #   assert_redirected_to report_path(assigns(:report))
-  # end
+  test "should create report" do
+    given_authenticated_user(users(:admin_user))
+    assert_difference('Report.count') do
+      post :create, user_id: users(:other_user).id, date: Date.today, report: { correctionReason: "", correction_string:"" }
+    end
+    assert_redirected_to user_report_path(users(:other_user), assigns(:report))
+  end
+
+  test "should show error for invalid correction duration" do
+    given_authenticated_user(users(:admin_user))
+    assert_no_difference('Report.count') do
+      post :create, user_id: users(:other_user).id, date: Date.today, report: { correctionReason: "", correction_string:"xxx" }
+    end
+    assert_response :success
+  end
   #
   # test "should show report" do
   #   get :show, id: @report

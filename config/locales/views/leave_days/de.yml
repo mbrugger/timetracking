@@ -1,0 +1,28 @@
+de:
+  views:
+    leave_days:
+      listing_title: 'Abwesenheitstage für das Arbeitsjahr von %{start} bis %{end}'
+      date: 'Datum'
+      type: 'Art'
+      new_leave_day: 'Neuer Abwesenheitstag'
+      show: 'Anzeigen'
+      back: 'Zurück'
+      edit: 'Bearbeiten'
+      are_you_sure: 'Sind Sie sicher?'
+  helpers:
+    label:
+      leave_day:
+        date: 'Datum'
+        leave_day_type: 'Grund für Abwesenheit'
+    submit:
+      leave_day:
+        create: "Abwesenheitstag anlegen"
+        update: "Abwesenheitstag aktualisieren"
+  models:
+    leave_days:
+      types:
+        leave_day: 'Urlaub'
+        sick_day: 'Krankheit'
+        absent_day: 'Sonderurlaub'
+        comp_time: 'Zeitausgleich'
+        comp_time_old: 'Zeitausgleich(alt)'

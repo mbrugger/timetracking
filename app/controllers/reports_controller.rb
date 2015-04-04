@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
 
   def add_breadcrumbs
     super
-    add_breadcrumb("Reports", user_reports_path(@user))
+    add_breadcrumb(I18n.t('controllers.reports.breadcrumbs.reports'), user_reports_path(@user))
   end
 
   # GET /users/1/reports/current
@@ -26,7 +26,7 @@ class ReportsController < ApplicationController
     end
     @report.date = Date.today if @report.date.nil?
     prepare_report()
-    add_breadcrumb("Current")
+    add_breadcrumb(I18n.t('controllers.reports.breadcrumbs.current_report'))
   end
 
   # GET /users/1/reports/content
@@ -59,13 +59,13 @@ class ReportsController < ApplicationController
     add_breadcrumb("#{@report.date.month}")
     if @report.balance != @report_summary.working_hours_balance || @report.workingHours != @report_summary.working_hours
       logger.error "report has changed since creating it, please generate a new report!"
-      flash[:alert] = "Data has been changed after creating a report. Please update the report!"
+      flash[:alert] = I18n.t('controllers.reports.report_data_changed_error')
     end
   end
 
   # GET /reports/new
   def new
-    add_breadcrumb("New Report")
+    add_breadcrumb(I18n.t('controllers.reports.breadcrumbs.new_report'))
     @user = User.find(params[:user_id])
     @report = @user.reports.build
     @report.date = params[:date]
@@ -92,15 +92,16 @@ class ReportsController < ApplicationController
 
     success = false
     begin
-      @report.save
-      success = true
+      if @report.save
+        success = true
+      end
     rescue ActiveRecord::RecordNotUnique
-      flash[:alert] = "Report for date already exists!"
+      flash[:alert] = I18n.t('controllers.reports.already_exists_for_date')
     end
 
     respond_to do |format|
       if success
-        format.html { redirect_to [@report.user, @report], notice: 'Report was successfully created.' }
+        format.html { redirect_to [@report.user, @report], notice: I18n.t('controllers.reports.successfully_created') }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new }
@@ -115,7 +116,7 @@ class ReportsController < ApplicationController
     @report = Report.find(params[:id])
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to [@report.user, @report], notice: 'Report was successfully updated.' }
+        format.html { redirect_to [@report.user, @report], notice: I18n.t('controllers.reports.successfully_updated') }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit }
@@ -129,7 +130,7 @@ class ReportsController < ApplicationController
   def destroy
     @report.destroy
     respond_to do |format|
-      format.html { redirect_to user_reports_url, notice: 'Report was successfully destroyed.' }
+      format.html { redirect_to user_reports_url, notice: I18n.t('controllers.reports.successfully_updated') }
       format.json { head :no_content }
     end
   end
@@ -169,7 +170,7 @@ class ReportsController < ApplicationController
       @leave_days_consumed = calculate_consumed_leave_days(@report.date.end_of_month, @user.employments, @user.leave_days)
       @employments = filter_employments(@report.date.beginning_of_month, @report.date.end_of_month, @user.employments)
       if @report_summary.validation_errors?
-        flash[:alert] = "Please correct the working day validation errors!"
+        flash[:alert] = I18n.t('controllers.reports.validation_error')
       end
     end
 

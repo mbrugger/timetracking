@@ -1,10 +1,10 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Start</th>
-      <th>Stop</th>
-      <th>Duration</th>
-      <th colspan="2"><% if display_add_time_entry %><%= link_to 'Add time entry', new_user_time_entry_path(@user, date: @date) %><% end %></th>
+      <th><%= I18n.t('views.time_entries.start') %></th>
+      <th><%= I18n.t('views.time_entries.stop') %></th>
+      <th><%= I18n.t('views.time_entries.duration') %></th>
+      <th colspan="2"><% if display_add_time_entry %><%= link_to I18n.t('views.time_entries.add_time_entry'), new_user_time_entry_path(@user, date: @date) %><% end %></th>
     </tr>
   </thead>
 
@@ -15,23 +15,23 @@
       <td><%= time_entry.stopTime.to_formatted_s(:pretty_time) unless time_entry.stopTime.nil? %></td>
       <td><%= format_duration(time_entry.duration) unless time_entry.duration.nil? %></td>
       <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_time_entry_path(time_entry.user, time_entry) %></td>
-      <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [time_entry.user, time_entry], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [time_entry.user, time_entry], method: :delete, data: { confirm: I18n.t('views.time_entries.confirm_delete') } %></td>
     </tr>
     <% end %>
   </tbody>
   <tfoot>
     <% if @working_day.leave_day.nil? %>
     <tr>
-      <td colspan="2" class="summary-label">Pause:</td>
+      <td colspan="2" class="summary-label"><%= I18n.t('views.time_entries.pause') %>:</td>
       <td colspan="3"><%= format_duration(@working_day.pause_duration)%></td>
     </tr>
     <tr>
-      <td colspan="2" class="summary-label">Duration:</td>
+      <td colspan="2" class="summary-label"><%= I18n.t('views.time_entries.duration') %>:</td>
       <td colspan="3"><%= format_duration(@working_day.duration)%> / <%= format_duration(@working_day.expected_duration)%></td>
     </tr>
     <% if !@report_summary.nil? %>
       <tr>
-        <td colspan="2" class="summary-label">Balance today in current month:</td>
+        <td colspan="2" class="summary-label"><%= I18n.t('views.time_entries.balance') %>:</td>
         <td colspan="3"><%= format_duration(@report_summary.working_hours_balance+@report_summary.comp_time)%></td>
       </tr>
     <% end %>

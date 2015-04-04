@@ -29,8 +29,12 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def default_url_options(options = {})
+  def self.default_url_options(options = {})
     { locale: I18n.locale }.merge options
+  end
+
+  def default_url_options(options = {})
+    ApplicationController.default_url_options(options)
   end
 
   def user_for_paper_trail
@@ -48,10 +52,10 @@ class ApplicationController < ActionController::Base
     def add_breadcrumbs
       @breadcrumbs = []
       if !@user.nil? && @user != current_user
-        add_breadcrumb("Users", users_path)
+        add_breadcrumb(I18n.t('controllers.application.breadcrumbs.user'), users_path)
         add_breadcrumb(@user.visible_name, user_path(@user))
       elsif current_user == @user
-        add_breadcrumb("Home", locale_root_path)
+        add_breadcrumb(I18n.t('controllers.application.breadcrumbs.home'), locale_root_path)
       end
     end
 
@@ -64,9 +68,9 @@ class ApplicationController < ActionController::Base
     def verify_employment
       if @user.employments.size == 0
         if current_user == @user
-          redirect_to locale_root_path, alert: 'Please ask your administrator to create an employment first.'
+          redirect_to locale_root_path, alert: I18n.t('controllers.application.ask_administrator_create_employment')
         else
-          redirect_to locale_root_path, alert: 'Please create an employment for this user first.'
+          redirect_to locale_root_path, alert: I18n.t('controllers.application.create_employment')
         end
       end
     end

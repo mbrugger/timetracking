@@ -1,21 +1,21 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Listing Reports
+  <div class="panel-heading"><%= I18n.t('views.reports.list_reports') %>
     <%= render "partials/year_selector", path: user_reports_path(@user) %>
   </div>
   <table class="table">
     <% if @reports.size == 0 %>
       <tbody>
         <tr>
-          <td><center><%= link_to 'Create a Report', new_user_report_path %></center></td>
+          <td><center><%= link_to I18n.t('views.reports.create_report'), new_user_report_path %></center></td>
         </tr>
       </tbody>
     <% else %>
     <thead>
       <tr>
-        <th>Month</th>
-        <th>Actual</th>
-        <th>Balance</th>
-        <th colspan="2"><%= link_to 'New Report', new_user_report_path %></th>
+        <th><%= I18n.t('views.reports.month') %></th>
+        <th><%= I18n.t('views.reports.actual') %></th>
+        <th><%= I18n.t('views.reports.balance') %></th>
+        <th colspan="2"><%= link_to I18n.t('views.reports.new_report'), new_user_report_path %></th>
       </tr>
     </thead>
 
@@ -26,7 +26,7 @@
           <td><%= format_duration(report.workingHours)%></td>
           <td><%= format_duration(report.balance)%></td>
           <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_report_path(report.user, report)  %></td>
-          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [report.user, report], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [report.user, report], method: :delete, data: { confirm: I18n.t('views.reports.confirmation') } %></td>
         </tr>
       <% end %>
     </tbody>

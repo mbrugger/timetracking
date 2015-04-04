@@ -11,9 +11,9 @@
     </div>
   <% end %>
   <fieldset class="form-group">
-    <legend>Employment Related Information</legend>
+    <legend><%= I18n.t('views.employments.employment_information') %></legend>
     <p>
-      <label for="employment_dates">Employment Dates</label>
+      <label for="employment_dates"><%= I18n.t('views.employments.employment_dates') %></label>
       <div class="input-daterange input-group" id="employment_datepicker">
         <input type="text" class="input-sm form-control" name="employment[startDate]" value="<%= @employment.startDate.to_formatted_s(:datepicker_date) unless @employment.startDate.nil? %>"/>
         <span class="input-group-addon">to</span>
@@ -21,21 +21,21 @@
       </div>
     </p>
     <p>
-      <%= f.label :weeklyHours %><br>
+      <%= f.label :weeklyHours, I18n.t('views.employments.weeklyHours') %><br>
       <%= f.number_field(:weeklyHours, in: 0.0..50, step: 0.5) %>
     </p>
   </fieldset>
   <fieldset class="form-group">
-    <legend>Migration Related Information</legend>
+    <legend><%= I18n.t('views.employments.migration_information') %></legend>
     <p>
-      <%= f.label :migrated_employment, 'Migrated employment' %> <%= f.check_box(:migrated_employment) %>
+      <%= f.label :migrated_employment, I18n.t('views.employments.migrated_employment') %> <%= f.check_box(:migrated_employment) %>
     </p>
     <p>
-      <%= f.label :leave_days, 'Migrated leave days balance at working year start' %><br>
+      <%= f.label :leave_days, I18n.t('views.employments.migrated_leave_days') %><br>
       <%= f.number_field(:leave_days) %>
     </p>
     <div class="input-group" >
-      <%= f.label :working_hours_balance, 'Migrated working hours balance at migration date' %><br>
+      <%= f.label :working_hours_balance, I18n.t('views.employments.migrated_working_hours') %><br>
       <input type="text" class="input-sm form-control" name="employment[working_hours_balance_string]" value="<%= format_duration(@employment.working_hours_balance) unless @employment.working_hours_balance.nil? %>"></input>
       <%#= f.number_field(:working_hours_balance) %>
     </div>

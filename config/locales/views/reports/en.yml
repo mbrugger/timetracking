@@ -1,6 +1,28 @@
 en:
   views:
     reports:
+      report_for: "Report for"
       leave_days_used: "Leave days consumed"
       leave_days_available: "Leave days available"
       weekly_working_hours: "Weekly working hours"
+      date: "Date"
+      entries: "Entries"
+      pause: "Pause"
+      duration: "Duration"
+      working_hours: "Working hours"
+      balance: "Balance"
+      comp_time_off: "Compensatory Time-off"
+      correction: "Correction"
+      previous_balance: "Previous Balance"
+      total_balance: "Total Balance"
+      report_unavailable: "Report not available for mgirated employment!"
+      edit: 'Edit'
+      back: 'Back'
+      show: 'Show'
+      list_reports: 'Listing Reports'
+      create_report: 'Create a Report'
+      month: 'Month'
+      actual: 'Actual'
+      new_report: 'New Report'
+      confirmation: 'Are you sure?'
+      signature: 'Signature'
