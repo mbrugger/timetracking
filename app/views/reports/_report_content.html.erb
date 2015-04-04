@@ -33,7 +33,7 @@
     <tbody>
       <% @working_days.each do |working_day| %>
       <tr class="<%= 'not_working_day' unless working_day.working_day?%>">
-        <td><%= link_to "#{working_day.date.to_formatted_s(:pretty_report_date)}", user_time_entries_path(@user, date: working_day.date.to_formatted_s(:datepicker_date))%></td>
+        <td><%= link_to I18n.l(working_day.date, format: :pretty_report_date), user_time_entries_path(@user, date: working_day.date.to_formatted_s(:datepicker_date))%></td>
         <td><%= render "reports/working_day_content", working_day: working_day %></td>
         <% if working_day.validation_errors.size == 0 %>
           <td><%= format_duration(working_day.pause_duration)%></td>
