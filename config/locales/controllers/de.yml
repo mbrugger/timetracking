@@ -10,6 +10,9 @@ de:
       successfully_created: 'Dienstverhältnis wurde erfolgreich angelegt'
       successfully_updated: 'Dienstverhältnis wurde erfolgreich aktualisiert.'
       successfully_destroyed: 'Dienstverhältnis wurde erfolgreich gelöscht.'
+      breadcrumbs:
+        employments: "Dienstverhältnisse"
+        new_employment: "Neues Dienstverhältnis"
     leave_days:
       successfully_created: 'Abwesenheitstag wurde erfolgreich angelegt.'
       successfully_updated: 'Abwesenheitstag wurde erfolgreich aktualisiert.'

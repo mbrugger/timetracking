@@ -10,6 +10,9 @@ en:
       successfully_created: 'Employment was successfully created.'
       successfully_updated: 'Employment was successfully updated.'
       successfully_destroyed: 'Employment was successfully destroyed.'
+      breadcrumbs:
+        employments: "Employments"
+        new_employment: "New Employment"      
     leave_days:
       successfully_created: 'Leave day was successfully created.'
       successfully_updated: 'Leave day was successfully updated.'
