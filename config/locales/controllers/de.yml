@@ -3,6 +3,9 @@ de:
     application:
       ask_administrator_create_employment: 'Fehlendes Dienstverhältnis, bitte kontaktiere deinen Administrator.'
       create_employment: 'Fehlendes Dienstverhältnis, bitte zuerst anlegen.'
+      breadcrumbs:
+        user: 'Mitarbeiter'
+        home: 'Zeiterfassung'
     employments:
       successfully_created: 'Dienstverhältnis wurde erfolgreich angelegt'
       successfully_updated: 'Dienstverhältnis wurde erfolgreich aktualisiert.'

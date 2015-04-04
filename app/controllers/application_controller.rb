@@ -52,10 +52,10 @@ class ApplicationController < ActionController::Base
     def add_breadcrumbs
       @breadcrumbs = []
       if !@user.nil? && @user != current_user
-        add_breadcrumb("Users", users_path)
+        add_breadcrumb(I18n.t('controllers.application.breadcrumbs.user'), users_path)
         add_breadcrumb(@user.visible_name, user_path(@user))
       elsif current_user == @user
-        add_breadcrumb("Home", locale_root_path)
+        add_breadcrumb(I18n.t('controllers.application.breadcrumbs.home'), locale_root_path)
       end
     end
 

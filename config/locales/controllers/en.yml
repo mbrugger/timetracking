@@ -3,6 +3,9 @@ en:
     application:
       ask_administrator_create_employment: 'Please ask your administrator to create an employment first.'
       create_employment: 'Please create an employment for this user first.'
+      breadcrumbs:
+        user: 'User'
+        home: 'Home'
     employments:
       successfully_created: 'Employment was successfully created.'
       successfully_updated: 'Employment was successfully updated.'
