@@ -9,7 +9,7 @@ class TimeEntriesController < ApplicationController
   def add_breadcrumbs
     super
     @date = prepare_date
-    add_breadcrumb("Time entries", user_time_entries_path(@user, date: @date.to_formatted_s(:datepicker_date)))
+    add_breadcrumb(I18n.t('controllers.time_entries.breadcrumbs.time_entries'), user_time_entries_path(@user, date: @date.to_formatted_s(:datepicker_date)))
   end
 
   def prepare_content
@@ -43,7 +43,7 @@ class TimeEntriesController < ApplicationController
     @time_entry = @user.time_entries.build
     @time_entry.date = params[:date]
     @time_entry.date = DateTime.now if @time_entry.date.nil?
-    add_breadcrumb("New Time entry")
+    add_breadcrumb(I18n.t('controllers.time_entries.breadcrumbs.new_time_entry'))
   end
 
   # GET /time_entries/1/edit
@@ -51,7 +51,7 @@ class TimeEntriesController < ApplicationController
     @time_entry = TimeEntry.find(params[:id])
     @user = @time_entry.user
     if !report_for_date(@time_entry.date, @user.reports).nil?
-      flash[:alert] = "Can not edit time entries if a report already exists, delete report before editing time entry."
+      flash[:alert] = I18n.t('controllers.time_entries.error_edit_report_already_exists')
       redirect_to user_time_entries_path(@time_entry.user)
     end
   end
@@ -64,11 +64,11 @@ class TimeEntriesController < ApplicationController
       @time_entry = @user.time_entries.create(time_entry_params)
       can_create = true
     else
-      flash[:alert] = "Can not create time entries if a report already exists for the given date, delete report before creating time entry."
+      flash[:alert] = I18n.t('controllers.time_entries.error_create_report_already_exists')
     end
     respond_to do |format|
       if !@parse_error && can_create && @time_entry.save
-        format.html { redirect_to user_time_entries_path(@time_entry.user, date: @time_entry.date), notice: 'Time entry was successfully created.' }
+        format.html { redirect_to user_time_entries_path(@time_entry.user, date: @time_entry.date), notice: I18n.t('controllers.time_entries.successfully_created') }
         format.json { render :show, status: :created, location: @time_entry }
       else
         format.html { render :new }
@@ -86,12 +86,12 @@ class TimeEntriesController < ApplicationController
     if (report_for_date(@time_entry.date, @user.reports).nil? && can_create_time_entry(params, @user))
       can_update = true
     else
-      flash[:alert] = "Can not edit time entries if a report already exists, delete report before editing time entry."
+      flash[:alert] = I18n.t('controllers.time_entries.error_edit_report_already_exists')
     end
 
     respond_to do |format|
       if !@parse_error && can_update && @time_entry.update(time_entry_params)
-        format.html { redirect_to user_time_entries_path(@time_entry.user, date: @time_entry.date), notice: 'Time entry was successfully updated.' }
+        format.html { redirect_to user_time_entries_path(@time_entry.user, date: @time_entry.date), notice: I18n.t('controllers.time_entries.successfully_updated') }
         format.json { render :show, status: :ok, location: @time_entry }
       else
         format.html { render :edit }
@@ -110,10 +110,10 @@ class TimeEntriesController < ApplicationController
     end
     respond_to do |format|
       if can_destroy
-        format.html { redirect_to user_time_entries_path(@time_entry.user), notice: 'Time entry was successfully destroyed.' }
+        format.html { redirect_to user_time_entries_path(@time_entry.user), notice: I18n.t('controllers.time_entries.successfully_destroyed') }
         format.json { head :no_content }
       else
-        format.html { redirect_to user_time_entries_path(@time_entry.user), alert: 'Can not destroy time entries if a report already exists, delete report before destroying time entry.' }
+        format.html { redirect_to user_time_entries_path(@time_entry.user), alert: I18n.t('controllers.time_entries.error_delete_report_already_exists') }
         format.json { render json: @time_entry.errors, status: :unprocessable_entity }
       end
     end
@@ -141,7 +141,7 @@ class TimeEntriesController < ApplicationController
           end
           time_entry.delete(:start_time_string)
         rescue  ArgumentError
-          flash[:alert] = "Invalid start time #{time_entry[:start_time_string]}"
+          flash[:alert] = I18n.t('controllers.time_entries.error_invalid_start_time', start_time_string: time_entry[:start_time_string])
           @parse_error = true
         end
       end
@@ -157,7 +157,7 @@ class TimeEntriesController < ApplicationController
           end
           time_entry.delete(:stop_time_string)
         rescue  ArgumentError
-          flash[:alert] = "Invalid stop time #{time_entry[:stop_time_string]}"
+          flash[:alert] = I18n.t('controllers.time_entries.error_invalid_stop_time', stop_time_string: time_entry[:stop_time_string])
           @parse_error = true
         end
       end

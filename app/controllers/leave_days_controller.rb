@@ -13,7 +13,7 @@ class LeaveDaysController < ApplicationController
 
   def add_breadcrumbs
     super
-    add_breadcrumb(I18n.t('controllers.leave_days.breadcrumb.leave_days'), user_leave_days_path(@user))
+    add_breadcrumb(I18n.t('controllers.leave_days.breadcrumbs.leave_days'), user_leave_days_path(@user))
   end
 
   # GET /user/:user_id/leave_days?year=:year
@@ -37,7 +37,7 @@ class LeaveDaysController < ApplicationController
   # GET /leave_days/new
   def new
     @leave_day = @user.leave_days.build
-    add_breadcrumb(I18n.t('controllers.leave_days.breadcrumb.new_leave_day'))
+    add_breadcrumb(I18n.t('controllers.leave_days.breadcrumbs.new_leave_day'))
   end
 
   # GET /leave_days/1/edit
