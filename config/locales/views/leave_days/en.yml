@@ -1,8 +1,7 @@
 en:
   views:
     leave_days:
-      listing_prefix: 'Listing Leave Days for working year'
-      to: 'to'
+      listing_title: 'Listing Leave Days for working year %{start} to %{end}'
       date: 'Date'
       type: 'Type'
       new_leave_day: 'New Leave day'

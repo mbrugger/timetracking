@@ -1,5 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading"><%= I18n.t('views.leave_days.listing_prefix')%> <%= @working_year_start.to_formatted_s(:pretty_date) %> <%= I18n.t('views.leave_days.to')%> <%= @working_year_end.to_formatted_s(:pretty_date) %>
+  <div class="panel-heading"><%= I18n.t('views.leave_days.listing_title', start: @working_year_start.to_formatted_s(:pretty_date), end: @working_year_end.to_formatted_s(:pretty_date))%>
   <%= render "partials/year_selector", path: user_leave_days_path(@user) %>
   </div>
   <table class="table">

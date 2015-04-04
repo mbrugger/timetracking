@@ -1,8 +1,7 @@
 de:
   views:
     leave_days:
-      listing_prefix: 'Abwesenheitstage für das Arbeitsjahr von'
-      to: 'bis'
+      listing_title: 'Abwesenheitstage für das Arbeitsjahr von %{start} bis %{end}'
       date: 'Datum'
       type: 'Art'
       new_leave_day: 'Neuer Abwesenheitstag'
