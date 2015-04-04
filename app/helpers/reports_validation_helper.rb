@@ -25,7 +25,7 @@ module ReportsValidationHelper
       if previous_stop_time == nil
         previous_stop_time = time_entry.stopTime
       elsif time_entry.startTime < previous_stop_time
-        result << 'Overlapping time entries'
+        result << I18n.t('helpers.reports_validation.overlapping_time_entries')
         break
       end
     end
@@ -34,7 +34,7 @@ module ReportsValidationHelper
   def validate_negative_duration(time_entries, result)
     for time_entry in time_entries
       if !time_entry.duration.nil? && time_entry.duration < 0
-        result << 'Invalid duration'
+        result << I18n.t('helpers.reports_validation.invalid_duration')
         break
       end
     end
@@ -43,26 +43,26 @@ module ReportsValidationHelper
   def validate_duration(working_day, result)
     working_day.duration = calculate_single_day_working_hours(working_day.time_entries) if working_day.duration.nil?
     if working_day.duration > 10.hours
-      result << 'Duration exceeding daily limit'
+      result << I18n.t('helpers.reports_validation.duration_exceeding_daily_limit')
     end
   end
 
   def validate_start_time(time_entries, result)
     if (time_entries.first.startTime.to_time.hour < 6 )
-      result << 'Invalid start time'
+      result << I18n.t('helpers.reports_validation.invalid_start_time')
     end
   end
 
   def validate_stop_time(time_entries, result)
     if (!time_entries.last.stopTime.nil? && time_entries.last.stopTime.to_time.hour >= 22 )
-      result << 'Invalid stop time'
+      result << I18n.t('helpers.reports_validation.invalid_stop_time')
     end
   end
 
   def validate_missing_stop_time(time_entries, result)
     for time_entry in time_entries
       if time_entry.date != Date.today and time_entry.stopTime.nil?
-        result << 'Missing stop time'
+        result << I18n.t('helpers.reports_validation.missing_stop_time')
         break
       end
     end
@@ -71,7 +71,7 @@ module ReportsValidationHelper
   def validate_missing_time_entries(working_day, result)
     if working_day.expected_duration > 0
       if working_day.date < Date.today && (working_day.time_entries.nil? || working_day.time_entries.size == 0)
-        result << 'Missing time entries'
+        result << I18n.t('helpers.reports_validation.missing_time_entries')
       end
     end
   end

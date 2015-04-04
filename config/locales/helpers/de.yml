@@ -1,1 +1,10 @@
 de:
+  helpers:
+    reports_validation:
+      overlapping_time_entries: 'Overlapping time entries'
+      invalid_duration: 'Invalid duration'
+      duration_exceeding_daily_limit: 'Duration exceeding daily limit'
+      invalid_start_time: 'Invalid start time'
+      invalid_stop_time: 'Invalid stop time'
+      missing_stop_time: 'Missing stop time'
+      missing_time_entries: 'Missing time entries'
