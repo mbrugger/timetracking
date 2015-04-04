@@ -1,10 +1,10 @@
 de:
   helpers:
     reports_validation:
-      overlapping_time_entries: 'Overlapping time entries'
-      invalid_duration: 'Invalid duration'
-      duration_exceeding_daily_limit: 'Duration exceeding daily limit'
-      invalid_start_time: 'Invalid start time'
-      invalid_stop_time: 'Invalid stop time'
-      missing_stop_time: 'Missing stop time'
-      missing_time_entries: 'Missing time entries'
+      overlapping_time_entries: 'Überlappende Zeitbuchungen'
+      invalid_duration: 'Üngültige Dauer der Zeitbuchung (Ende vor Start)'
+      duration_exceeding_daily_limit: 'Dauer übersteigt die täglich erlaubte maximale Arbeitszeit'
+      invalid_start_time: 'Ungültiger Arbeitsbeginn (vor 6:00)'
+      invalid_stop_time: 'Ungültiges Arbeitsende (nach 22:00)'
+      missing_stop_time: 'Ungültige Zeitbuchung, fehlendes Arbeitsende'
+      missing_time_entries: 'Fehlende Zeitbuchungen'

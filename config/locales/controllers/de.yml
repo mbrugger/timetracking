@@ -1,64 +1,64 @@
 de:
   controllers:
     application:
-      ask_administrator_create_employment: 'Please ask your administrator to create an employment first.'
-      create_employment: 'Please create an employment for this user first.'
+      ask_administrator_create_employment: 'Fehlendes Dienstverhältnis, bitte kontaktiere deinen Administrator.'
+      create_employment: 'Fehlendes Dienstverhältnis, bitte zuerst anlegen.'
     employments:
-      successfully_created: 'Employment was successfully created.'
-      successfully_updated: 'Employment was successfully updated.'
-      successfully_destroyed: 'Employment was successfully destroyed.'
+      successfully_created: 'Dienstverhältnis wurde erfolgreich angelegt'
+      successfully_updated: 'Dienstverhältnis wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Dienstverhältnis wurde erfolgreich gelöscht.'
     leave_days:
-      successfully_created: 'Leave day was successfully created.'
-      successfully_updated: 'Leave day was successfully updated.'
-      successfully_destroyed: 'Leave day was successfully destroyed.'
-      could_not_save: "Could not save leave day for date %{date}"
-      leave_day_already_exists: "Leave day for date %{date} already exists"
-      leave_day_for_date_already_exists: "Leave day for date already exists!"
+      successfully_created: 'Abwesenheitstag wurde erfolgreich angelegt.'
+      successfully_updated: 'Abwesenheitstag wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Abwesenheitstag wurde erfolgreich gelöscht.'
+      could_not_save: "Abwesenheitstag für das Datum %{date} konnte nicht gespeichert werden"
+      leave_day_already_exists: "Abwesenheitstag für das Datum %{date} existiert bereits"
+      leave_day_for_date_already_exists: "Es existiert bereits ein Abwesenheitstag für dieses Datum"
       breadcrumbs:
-        leave_days: "Leave days"
-        new_leave_day: "New Leave day"
+        leave_days: "Abwesenheitstage"
+        new_leave_day: "Neuer Abwesenheitstag"
     public_holidays:
-      successfully_created: 'Public holiday was successfully created.'
-      successfully_updated: 'Public holiday was successfully updated.'
-      successfully_destroyed: 'Public holiday was successfully destroyed.'
-      already_exists_for_date: "Public holiday for date already exists!"
+      successfully_created: 'Gesetzlicher Feiertag wurde erfolgreich angelegt.'
+      successfully_updated: 'Gesetzlicher Feiertag wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Gesetzlicher Feiertag wurde erfolgreich gelöscht.'
+      already_exists_for_date: "Es existiert bereits ein gesetzlicher Feiertag für dieses Datum"
       breadcrumbs:
-        public_holidays: "Public holidays"
-        new_public_holiday: "New Public holidays"
+        public_holidays: "Gesetzliche Feiertage"
+        new_public_holiday: "Neuer gesetzlicher Feiertag"
     reports:
-      successfully_created: 'Report was successfully created.'
-      successfully_updated: 'Report was successfully updated.'
-      successfully_destroyed: 'Report was successfully destroyed.'
-      report_data_changed_error: "Data has been changed after creating a report. Please update the report!"
-      already_exists_for_date: "Report for date already exists!"
-      validation_error: "Please correct the working day validation errors!"
+      successfully_created: 'Monatsabrechnung wurde erfolgreich angelegt.'
+      successfully_updated: 'Monatsabrechnung wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Monatsabrechnung wurde erfolgreich gelöscht.'
+      report_data_changed_error: "Der Inhalt der Monatsabrechnung wurde geändert. Bitte die Monatsabrechnung neu anlegen!"
+      already_exists_for_date: "Es existiert bereits eine Monatsabrechnung für dieses Datum!"
+      validation_error: "Bitte die Validierungsfehler beheben!"
       breadcrumbs:
-        reports: "Reports"
-        new_report: "New Report"
-        current_report: "Current"
+        reports: "Monatsabrechnungen"
+        new_report: "Neue Monatsabrechnung"
+        current_report: "Aktueller Monat"
     time_entries:
-      successfully_created: 'Time entry was successfully created.'
-      successfully_updated: 'Time entry was successfully updated.'
-      successfully_destroyed: 'Time entry was successfully destroyed.'
-      report_already_exists_for_date: "Report for date already exists!"
-      error_edit_report_already_exists: "Can not edit time entries if a report already exists, delete report before editing time entry."
-      error_create_report_already_exists: "Can not create time entries if a report already exists for the given date, delete report before creating time entry."
-      error_delete_report_already_exists: 'Can not destroy time entries if a report already exists, delete report before destroying time entry.'
-      error_invalid_start_time: "Invalid start time %{start_time_string}"
-      error_invalid_stop_time: "Invalid stop time %{stop_time_string}"
+      successfully_created: 'Zeitbuchung wurde erfolgreich angelegt.'
+      successfully_updated: 'Zeitbuchung wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Zeitbuchung wurde erfolgreich gelöscht.'
+      report_already_exists_for_date: "Es existiert bereits eine Monatsabrechnung für dieses Datum!"
+      error_edit_report_already_exists: "Die Zeitbuchung kann nicht bearbeitet werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
+      error_create_report_already_exists: "Für dieses Datum kann keine Zeitbuchung angelegt werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
+      error_delete_report_already_exists: "Diese Zeitbuchung kann nicht gelöscht werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
+      error_invalid_start_time: "Ungültiger Arbeitsbeginn %{start_time_string}"
+      error_invalid_stop_time: "Ungültiges Arbeitsende %{stop_time_string}"
       breadcrumbs:
-        time_entries: "Time entries"
-        new_time_entry: "New Time entry"
+        time_entries: "Zeitbuchungen"
+        new_time_entry: "Neue Zeitbuchung"
     time_tracking:
-      report_already_exists: 'A report has already been created for the current month.'
-      successfully_started: 'Time tracking was successfully started.'
-      could_not_be_started: 'Time tracking could not be started!'
-      successfully_stopped: 'Time tracking was successfully stopped.'
-      could_not_be_stopped: 'Time tracking could not be stopped!'
+      report_already_exists: 'Zeitbuchung nicht möglich. es wurde bereits eine Monatsabrechnung für diesen Monat erstellt.'
+      successfully_started: 'Zeitbuchung gestartet.'
+      could_not_be_started: 'Zeitbuchung konnte nicht gestartet werden.'
+      successfully_stopped: 'Zeitbuchung beendet.'
+      could_not_be_stopped: 'Zeitbuchung konnte nicht beendet werden.'
     users:
-      successfully_created: 'User was successfully created.'
-      successfully_updated: 'User was successfully updated.'
-      successfully_destroyed: 'User was successfully destroyed.'
+      successfully_created: 'Mitarbeiter wurde erfolgreich angelegt.'
+      successfully_updated: 'Mitarbeiter wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Mitarbeiter wurde erfolgreich gelöscht.'
       breadcrumbs:
-        users: "Users"
-        new_user: "New User"
+        users: "Mitarbeiter"
+        new_user: "Neuer Mitarbeiter"
