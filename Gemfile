@@ -41,7 +41,7 @@ gem 'capistrano-passenger', group: :development
 
 
 gem 'sqlite3', group: [:development, :test]
-gem 'debugger', group: :development
+gem 'byebug', '~> 4.0.5', group: :development
 
 gem 'devise'
 
