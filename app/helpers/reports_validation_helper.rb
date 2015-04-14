@@ -48,13 +48,18 @@ module ReportsValidationHelper
   end
 
   def validate_start_time(time_entries, result)
-    if (time_entries.first.startTime.to_time.hour < 6 )
+    entry_date = time_entries.first.date
+    working_day_start = Time.zone.now.change({year: entry_date.year, month: entry_date.month, day:entry_date.day, hour: 6, min: 0, sec: 0})
+    if (time_entries.first.startTime < working_day_start )
       result << I18n.t('helpers.reports_validation.invalid_start_time')
     end
   end
 
   def validate_stop_time(time_entries, result)
-    if (!time_entries.last.stopTime.nil? && time_entries.last.stopTime.to_time.hour >= 22 )
+    working_day_end = time_entries.last.date.to_datetime
+    entry_date = time_entries.first.date
+    working_day_end = Time.zone.now.change({year: entry_date.year, month: entry_date.month, day:entry_date.day, hour: 22, min: 0, sec: 0})
+    if (!time_entries.last.stopTime.nil? && time_entries.last.stopTime > working_day_end )
       result << I18n.t('helpers.reports_validation.invalid_stop_time')
     end
   end
