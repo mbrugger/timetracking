@@ -115,4 +115,23 @@ class ReportsHelperWorkingDayTest < ActionView::TestCase
     then_validation_result_is([])
   end
 
+  test "calculate_single_day_validation_errors should NOT return error for valid early morning start time" do
+    given_time_entries([time_entries(:wd_valid_early_morning)])
+    when_validation_is_performed
+    then_validation_result_is([])
+  end
+
+  test "calculate_single_day_validation_errors should NOT return error for valid late evening stop time" do
+    given_time_entries([time_entries(:wd_valid_late_evening)])
+    when_validation_is_performed
+    then_validation_result_is([])
+  end
+
+  test "calculate_single_day_validation_errors should return error for invalid late evening stop time" do
+    given_time_entries([time_entries(:wd_invalid_late_evening)])
+    when_validation_is_performed
+    then_validation_result_is(['Invalid stop time'])
+  end
+
+
 end
