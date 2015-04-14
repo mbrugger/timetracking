@@ -118,8 +118,8 @@ wd_long_morning:
 
 wd_early_morning:
   date: 2013-12-10
-  startTime: 2013-12-10 05:00:00
-  stopTime: 2013-12-10 12:00:00
+  startTime: 2013-12-10 05:00:00 +02:00
+  stopTime: 2013-12-10 12:00:00 +02:00
   user: wd_validation_user
 
 wd_afternoon:
@@ -175,6 +175,24 @@ time_entry_without_report:
   startTime: 2014-10-11 12:30:00
   stopTime: 2014-10-11 12:40:00
   user: time_entries_controller_user
+
+wd_valid_early_morning:
+  date: 2015-04-14
+  startTime: 2015-04-14 06:00:00 +02:00
+  stopTime: 2015-04-14 12:00:00 +02:00
+  user: wd_validation_user
+
+wd_valid_late_evening:
+  date: 2015-04-14
+  startTime: 2015-04-14 18:00:00 +02:00
+  stopTime: 2015-04-14 22:00:00 +02:00
+  user: wd_validation_user
+
+wd_invalid_late_evening:
+  date: 2015-04-14
+  startTime: 2015-04-14 18:00:00 +02:00
+  stopTime: 2015-04-14 22:00:01 +02:00
+  user: wd_validation_user
 
 # API testing
 
