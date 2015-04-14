@@ -4,9 +4,9 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <h1>Time tracking validation failed on <%=@working_day.date.to_formatted_s(:pretty_date)%></h1>
+  <h1><%= I18n.t('views.user_mailer.working_day_validation_failed.heading', date: @working_day.date.to_formatted_s(:pretty_date)) %></h1>
   <p>
-    The following validation errors occurred
+    <%= I18n.t('views.user_mailer.working_day_validation_failed.description') %>
     <ul>
       <% @validation_errors.each do |validation_error| %>
         <li> <%= validation_error %></li>
@@ -14,7 +14,7 @@
     </ul>
   </p>
   <p>
-    Please proceed to <%= @url %> to correct any validation errors.
+    <%= I18n.t('views.user_mailer.working_day_validation_failed.link_prefix') %> <%= @url %> <%= I18n.t('views.user_mailer.working_day_validation_failed.link_suffix') %>
   </p>
 </body>
 </html>

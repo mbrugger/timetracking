@@ -1,6 +1,7 @@
 class LeaveDaysController < ApplicationController
   include LeaveDaysHelper
   before_action :set_leave_day, only: [:show, :edit, :update, :destroy]
+  before_action :verify_employment
 
   load_and_authorize_resource :user
   load_and_authorize_resource :leave_day, through: :user
@@ -12,17 +13,12 @@ class LeaveDaysController < ApplicationController
 
   def add_breadcrumbs
     super
-    add_breadcrumb("Leave days", user_leave_days_path(@user))
+    add_breadcrumb(I18n.t('controllers.leave_days.breadcrumbs.leave_days'), user_leave_days_path(@user))
   end
 
   # GET /user/:user_id/leave_days?year=:year
   # GET /user/:user_id/leave_days.json
   def index
-    if @user.employments.size == 0
-      redirect_to locale_root_path, alert: 'Please ask your administrator to create an employment first.'
-      return
-    end
-
     @year = params[:year].to_i
     if @year == 0
       @year = calculate_working_year_start(Date.today, @user.employments).year
@@ -41,7 +37,7 @@ class LeaveDaysController < ApplicationController
   # GET /leave_days/new
   def new
     @leave_day = @user.leave_days.build
-    add_breadcrumb("New Leave day")
+    add_breadcrumb(I18n.t('controllers.leave_days.breadcrumbs.new_leave_day'))
   end
 
   # GET /leave_days/1/edit
@@ -71,11 +67,11 @@ class LeaveDaysController < ApplicationController
           leave_day.leave_day_type = leave_day_params[:leave_day_type]
           begin
             if (!leave_day.save)
-              flash[:alert] = "Could not save leave day for date #{date}"
+              flash[:alert] = I18n.t('controllers.leave_days.could_not_save', date: date)
               break
             end
           rescue ActiveRecord::RecordNotUnique => e
-            flash[:alert] = "Leave day for date #{date} already exists"
+            flash[:alert] = I18n.t('controllers.leave_days.leave_day_already_exists', date: date)
             raise e
           end
         end
@@ -87,7 +83,7 @@ class LeaveDaysController < ApplicationController
 
     respond_to do |format|
       if successful
-        format.html { redirect_to user_leave_days_path(@user), notice: 'Leave day was successfully created.' }
+        format.html { redirect_to user_leave_days_path(@user), notice: I18n.t('controllers.leave_days.successfully_created') }
         format.json { render :show, status: :created, location: @leave_day }
       else
         format.html { render :new }
@@ -105,12 +101,12 @@ class LeaveDaysController < ApplicationController
       @leave_day.update(leave_day_params)
       success = true
     rescue ActiveRecord::RecordNotUnique
-      flash[:alert] = "Leave day for date already exists!"
+      flash[:alert] = I18n.t('controllers.leave_days.leave_day_for_date_already_exists')
     end
 
     respond_to do |format|
       if success
-        format.html { redirect_to user_leave_days_path(@leave_day.user), notice: 'Leave day was successfully updated.' }
+        format.html { redirect_to user_leave_days_path(@leave_day.user), notice: I18n.t('controllers.leave_days.successfully_updated') }
         format.json { render :show, status: :ok, location: @leave_day }
       else
         format.html { render :edit }
@@ -124,7 +120,7 @@ class LeaveDaysController < ApplicationController
   def destroy
     @leave_day.destroy
     respond_to do |format|
-      format.html { redirect_to user_leave_days_url, notice: 'Leave day was successfully destroyed.' }
+      format.html { redirect_to user_leave_days_url, notice: I18n.t('controllers.leave_days.successfully_destroyed') }
       format.json { head :no_content }
     end
   end

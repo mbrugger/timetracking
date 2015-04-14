@@ -1,0 +1,21 @@
+en:
+  views:
+    user_mailer:
+      account_created:
+        message_prefix: 'Please proceed to '
+        message_suffix: ' to activate your account.'
+        activation_page: 'account activation'
+        heading: 'A new time tracking account has been created!'
+      validation_failed:
+        heading: 'Time tracking validation failed between %{start_date} and %{end_date}'
+        date: 'Date'
+        time_entries: 'Time entries'
+        pause: 'Pause'
+        duration: 'Duration'
+        link_prefix: 'Please proceed to'
+        link_suffix: 'to correct any validation errors.'
+      working_day_validation_failed:
+        heading: 'Time tracking validation failed on %{date}'
+        description: 'The following validation errors occurred'
+        link_prefix: 'Please proceed to'
+        link_suffix: 'to correct any validation errors.'

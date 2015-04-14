@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
@@ -41,11 +41,11 @@ gem 'capistrano-passenger', group: :development
 
 
 gem 'sqlite3', group: [:development, :test]
-gem 'debugger', group: :development
+gem 'byebug', '~> 4.0.5', group: :development
 
 gem 'devise'
 
-gem 'mysql2'
+gem 'mysql2', group: :mysql
 
 gem "twitter-bootstrap-rails"
 

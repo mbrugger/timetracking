@@ -5,7 +5,7 @@ class PublicHolidaysController < ApplicationController
 
   def add_breadcrumbs
     super
-    add_breadcrumb("Public holidays", public_holidays_path)
+    add_breadcrumb(I18n.t('controllers.public_holidays.breadcrumbs.public_holidays'), public_holidays_path)
   end
 
   # GET /public_holidays
@@ -22,6 +22,7 @@ class PublicHolidaysController < ApplicationController
   # GET /public_holidays/new
   def new
     @public_holiday = PublicHoliday.new
+    add_breadcrumb(I18n.t('controllers.public_holidays.breadcrumbs.new_public_holiday'))
   end
 
   # GET /public_holidays/1/edit
@@ -38,12 +39,12 @@ class PublicHolidaysController < ApplicationController
       @public_holiday.save
       success = true
     rescue ActiveRecord::RecordNotUnique
-      flash[:alert] = "Publich holiday for date already exists!"
+      flash[:alert] = I18n.t('controllers.public_holidays.already_exists_for_date')
     end
 
     respond_to do |format|
       if success
-        format.html { redirect_to public_holidays_url, notice: 'Public holiday was successfully created.' }
+        format.html { redirect_to public_holidays_url, notice: I18n.t('controllers.public_holidays.successfully_created') }
         format.json { render :show, status: :created, location: @public_holiday }
       else
         format.html { render :new }
@@ -60,12 +61,12 @@ class PublicHolidaysController < ApplicationController
       @public_holiday.update(public_holiday_params)
       success = true
     rescue ActiveRecord::RecordNotUnique
-      flash[:alert] = "Public holiday for date already exists!"
+      flash[:alert] = I18n.t('controllers.public_holidays.already_exists_for_date')
     end
 
     respond_to do |format|
       if success
-        format.html { redirect_to public_holidays_url, notice: 'Public holiday was successfully updated.' }
+        format.html { redirect_to public_holidays_url, notice: I18n.t('controllers.public_holidays.successfully_updated') }
         format.json { render :show, status: :ok, location: @public_holiday }
       else
         format.html { render :edit }
@@ -79,7 +80,7 @@ class PublicHolidaysController < ApplicationController
   def destroy
     @public_holiday.destroy
     respond_to do |format|
-      format.html { redirect_to public_holidays_url, notice: 'Public holiday was successfully destroyed.' }
+      format.html { redirect_to public_holidays_url, notice: I18n.t('controllers.public_holidays.successfully_destroyed') }
       format.json { head :no_content }
     end
   end

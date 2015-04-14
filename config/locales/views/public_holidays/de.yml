@@ -1,0 +1,21 @@
+de:
+  views:
+    public_holidays:
+      title: 'Gesetzliche Feiertage'
+      date: 'Datum'
+      name: 'Name'
+      new_public_holiday: 'Feiertag anlegen'
+      show: 'Anzeigen'
+      back: 'Zurück'
+      edit: 'Bearbeiten'
+      are_you_sure: 'Sind Sie sicher?'
+      edit_public_holiday: 'Feiertag bearbeiten'
+  helpers:
+    label:
+      public_holiday:
+        date: 'Datum'
+        name: 'Name'
+    submit:
+      public_holiday:
+        create: "Feiertag anlegen"
+        update: "Feiertag aktualisieren"

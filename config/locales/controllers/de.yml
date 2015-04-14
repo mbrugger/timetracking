@@ -1,0 +1,70 @@
+de:
+  controllers:
+    application:
+      ask_administrator_create_employment: 'Fehlendes Dienstverhältnis, bitte kontaktiere deinen Administrator.'
+      create_employment: 'Fehlendes Dienstverhältnis, bitte zuerst anlegen.'
+      breadcrumbs:
+        user: 'Mitarbeiter'
+        home: 'Zeiterfassung'
+    employments:
+      successfully_created: 'Dienstverhältnis wurde erfolgreich angelegt'
+      successfully_updated: 'Dienstverhältnis wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Dienstverhältnis wurde erfolgreich gelöscht.'
+      breadcrumbs:
+        employments: "Dienstverhältnisse"
+        new_employment: "Neues Dienstverhältnis"
+    leave_days:
+      successfully_created: 'Abwesenheitstag wurde erfolgreich angelegt.'
+      successfully_updated: 'Abwesenheitstag wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Abwesenheitstag wurde erfolgreich gelöscht.'
+      could_not_save: "Abwesenheitstag für das Datum %{date} konnte nicht gespeichert werden"
+      leave_day_already_exists: "Abwesenheitstag für das Datum %{date} existiert bereits"
+      leave_day_for_date_already_exists: "Es existiert bereits ein Abwesenheitstag für dieses Datum"
+      breadcrumbs:
+        leave_days: "Abwesenheitstage"
+        new_leave_day: "Neuer Abwesenheitstag"
+    public_holidays:
+      successfully_created: 'Gesetzlicher Feiertag wurde erfolgreich angelegt.'
+      successfully_updated: 'Gesetzlicher Feiertag wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Gesetzlicher Feiertag wurde erfolgreich gelöscht.'
+      already_exists_for_date: "Es existiert bereits ein gesetzlicher Feiertag für dieses Datum"
+      breadcrumbs:
+        public_holidays: "Gesetzliche Feiertage"
+        new_public_holiday: "Neuer gesetzlicher Feiertag"
+    reports:
+      successfully_created: 'Monatsabrechnung wurde erfolgreich angelegt.'
+      successfully_updated: 'Monatsabrechnung wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Monatsabrechnung wurde erfolgreich gelöscht.'
+      report_data_changed_error: "Der Inhalt der Monatsabrechnung wurde geändert. Bitte die Monatsabrechnung neu anlegen!"
+      already_exists_for_date: "Es existiert bereits eine Monatsabrechnung für dieses Datum!"
+      validation_error: "Bitte die Validierungsfehler beheben!"
+      breadcrumbs:
+        reports: "Monatsabrechnungen"
+        new_report: "Neue Monatsabrechnung"
+        current_report: "Aktueller Monat"
+    time_entries:
+      successfully_created: 'Zeitbuchung wurde erfolgreich angelegt.'
+      successfully_updated: 'Zeitbuchung wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Zeitbuchung wurde erfolgreich gelöscht.'
+      report_already_exists_for_date: "Es existiert bereits eine Monatsabrechnung für dieses Datum!"
+      error_edit_report_already_exists: "Die Zeitbuchung kann nicht bearbeitet werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
+      error_create_report_already_exists: "Für dieses Datum kann keine Zeitbuchung angelegt werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
+      error_delete_report_already_exists: "Diese Zeitbuchung kann nicht gelöscht werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
+      error_invalid_start_time: "Ungültiger Arbeitsbeginn %{start_time_string}"
+      error_invalid_stop_time: "Ungültiges Arbeitsende %{stop_time_string}"
+      breadcrumbs:
+        time_entries: "Zeitbuchungen"
+        new_time_entry: "Neue Zeitbuchung"
+    time_tracking:
+      report_already_exists: 'Zeitbuchung nicht möglich. es wurde bereits eine Monatsabrechnung für diesen Monat erstellt.'
+      successfully_started: 'Zeitbuchung gestartet.'
+      could_not_be_started: 'Zeitbuchung konnte nicht gestartet werden.'
+      successfully_stopped: 'Zeitbuchung beendet.'
+      could_not_be_stopped: 'Zeitbuchung konnte nicht beendet werden.'
+    users:
+      successfully_created: 'Mitarbeiter wurde erfolgreich angelegt.'
+      successfully_updated: 'Mitarbeiter wurde erfolgreich aktualisiert.'
+      successfully_destroyed: 'Mitarbeiter wurde erfolgreich gelöscht.'
+      breadcrumbs:
+        users: "Mitarbeiter"
+        new_user: "Neuer Mitarbeiter"

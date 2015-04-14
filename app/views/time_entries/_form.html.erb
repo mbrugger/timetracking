@@ -12,14 +12,14 @@
   <% end %>
 
   <p>
-    <%= f.label :date %><br>
+    <%= f.label :date, I18n.t('views.time_entries.date') %><br>
     <div class="input-group" >
       <input type="text" id="time_entry_datepicker" class="input-sm form-control" name='time_entry[date]' value="<%= @time_entry.date.to_formatted_s(:datepicker_date) unless @time_entry.date.nil? %>"/>
     </div>
   </p>
 
   <p>
-    <%= f.label :startTime, 'Time' %><br>
+    <%= f.label :startTime, I18n.t('views.time_entries.time') %><br>
     <div class="input-daterange input-group" >
       <input type="text" class="input-sm form-control" name="time_entry[start_time_string]" value="<%= @time_entry.startTime.to_formatted_s(:pretty_time) unless @time_entry.startTime.nil? %>"></input>
       <span class="input-group-addon">to</span>

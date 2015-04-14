@@ -1,1 +1,9 @@
 de:
+  date:
+    formats:
+      pretty_report_date: "%F %a"
+  mailers:
+    user_mailer:
+      account_created_notification_subject: "Account für Zeiterfassung angelegt"
+      validation_failed: "Überprüfung der Zeitbuchungen fehlgeschlagen"
+      validation_failed_on_date: "Überprüfung der Zeitbuchungen am %{date} fehlgeschlagen"

@@ -1,6 +1,5 @@
-<h1>Editing leave_day</h1>
 
 <%= render 'single_form' %>
 
-<%= link_to 'Show', user_leave_day_path(@leave_day.user, @leave_day) %> |
-<%= link_to 'Back', user_leave_days_path %>
+<%= link_to I18n.t('views.leave_days.show'), user_leave_day_path(@leave_day.user, @leave_day) %> |
+<%= link_to I18n.t('views.leave_days.back'), user_leave_days_path %>

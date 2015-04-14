@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def add_breadcrumbs
     super
-    add_breadcrumb("Users", users_path)
+    add_breadcrumb(I18n.t('controllers.users.breadcrumbs.users'), users_path)
   end
 
   def additional_breadcrumbs
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    add_breadcrumb("New User")
+    add_breadcrumb(I18n.t('controllers.users.breadcrumbs.new_user'))
     @user = User.new
   end
 
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
           Rails.logger.info "Sending account created message to user #{@user.email}"
           UserMailer.notify_account_created(@user, reset_password_url).deliver
         end
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: I18n.t('controllers.users.successfully_created') }
         format.json { render :show, status: :created, location: @user }
       else
         logger.info "error saving"
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: I18n.t('controllers.users.successfully_updated') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: I18n.t('controllers.users.successfully_destroyed') }
       format.json { head :no_content }
     end
   end

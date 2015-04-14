@@ -1,0 +1,34 @@
+en:
+  views:
+    users:
+      title: 'Listing Users'
+      email: 'email'
+      name: 'Name'
+      new_user: 'New User'
+      show: 'Show'
+      back: 'Back'
+      edit: 'Edit'
+      are_you_sure: 'Are you sure?'
+      edit_user: 'Editing User'
+      employments: 'Employments'
+      time_entries: 'Time Entries'
+      leave_days: 'Leavedays'
+      reports: 'Reports'
+      current_report: 'Current Report'
+  helpers:
+    label:
+      user:
+        email: 'email'
+        name: 'Name'
+        role: 'Role'
+        time_zone: 'Time zone'
+        notify_user: 'Notify user via email?'
+    submit:
+      user:
+        create: "Create User"
+        update: "Update User"
+  models:
+    users:
+      roles:
+        admin: 'Administrator'
+        user: 'User'
