@@ -36,7 +36,7 @@
       </tr>
     <% end %>
     <% else  %>
-    <tr><td colspan="5"><center><%= render "partials/leave_day_type", leave_day: @working_day.leave_day %></center></td></tr>
+    <tr><td colspan="5"><center><%= @working_day.leave_day.localized_leave_day_type %></center></td></tr>
     <% end %>
   </tfoot>
 </table>
