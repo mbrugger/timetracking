@@ -55,13 +55,12 @@ class UsersController < ApplicationController
     raw_token, hashed_token = Devise.token_generator.generate(User, :reset_password_token)
     @user.reset_password_token = hashed_token
     @user.reset_password_sent_at = Time.now.utc
-    reset_password_url = edit_password_url(@user, reset_password_token: raw_token)
 
     respond_to do |format|
       if @user.save
         if params[:notify_user]
           Rails.logger.info "Sending account created message to user #{@user.email}"
-          UserMailer.notify_account_created(@user, reset_password_url).deliver
+          UserMailer.notify_account_created(@user, raw_token).deliver
         end
         format.html { redirect_to @user, notice: I18n.t('controllers.users.successfully_created') }
         format.json { render :show, status: :created, location: @user }
