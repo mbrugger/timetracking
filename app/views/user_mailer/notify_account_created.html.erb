@@ -6,7 +6,7 @@
 <body>
   <h2><%= I18n.t('views.user_mailer.account_created.heading')%></h2>
   <p>
-    <%= I18n.t('views.user_mailer.account_created.message_prefix') %> <a href="<%= @url %>"><%= I18n.t('views.user_mailer.account_created.activation_page') %></a><%= I18n.t('views.user_mailer.account_created.message_suffix') %>
+    <%= I18n.t('views.user_mailer.account_created.message_prefix') %> <%= link_to I18n.t('views.user_mailer.account_created.activation_page'), edit_password_path(@user, reset_password_token: @token, only_path:false)%><%= I18n.t('views.user_mailer.account_created.message_suffix') %>
   </p>
 </body>
 </html>

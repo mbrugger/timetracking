@@ -20,9 +20,9 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: I18n.t('mailers.user_mailer.validation_failed'))
   end
 
-  def notify_account_created(user, url)
+  def notify_account_created(user, token)
     @user = user
-    @url = url
+    @token = token
     mail(to: @user.email, subject: I18n.t('mailers.user_mailer.account_created_notification_subject'))
   end
 end

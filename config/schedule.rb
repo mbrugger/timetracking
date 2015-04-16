@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :job_template, "/bin/bash -i -c ':job'"
+
 every 1.day, :at => '1:30 am' do
   runner "WorkingDayValidationController.validate_previous_working_day"
 end
