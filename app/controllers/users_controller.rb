@@ -110,6 +110,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:time_zone, :name, :role, :email)
+      params.require(:user).permit(:time_zone, :name, :role, :email, :validate_working_days)
     end
 end
