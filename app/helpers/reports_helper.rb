@@ -11,7 +11,7 @@ module ReportsHelper
     return nil
   end
 
-  def process_working_days(start_date, end_date, time_entries, leave_days, employments, public_holidays)
+  def process_working_days(start_date, end_date, time_entries, leave_days, employments, public_holidays, validate_missing_time_entries = true)
     working_days = []
     working_days_with_time_entries = prepare_working_days_for_time_entries(time_entries)
     for date in start_date..end_date
@@ -20,7 +20,7 @@ module ReportsHelper
         working_day = WorkingDay.new(date)
       end
       evaluate_working_day_status(working_day, public_holidays, leave_days)
-      process_working_day(working_day, leave_days, public_holidays, employments)
+      process_working_day(working_day, leave_days, public_holidays, employments, validate_missing_time_entries)
       working_days<<working_day
     end
     return working_days
@@ -40,7 +40,7 @@ module ReportsHelper
     return working_days_hash
   end
 
-  def process_working_day(working_day, leave_days, public_holidays, employments)
+  def process_working_day(working_day, leave_days, public_holidays, employments, validate_missing_time_entries = true)
     working_day.duration = calculate_single_day_working_hours(working_day.time_entries)
     working_day.default_duration = calculate_working_day_default_hours(working_day, employments)
     working_day.expected_duration = calculate_working_day_expected_hours(working_day, leave_days, public_holidays, employments)
@@ -54,7 +54,7 @@ module ReportsHelper
       working_day.pause_duration += missing_pause
     end
     # validate time entries and display errors/warnings
-    working_day.validation_errors = calculate_single_day_validation_errors(working_day)
+    working_day.validation_errors = calculate_single_day_validation_errors(working_day, validate_missing_time_entries)
     return working_day
   end
 

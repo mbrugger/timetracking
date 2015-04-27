@@ -53,6 +53,11 @@ wd_validation_user:
   email: wd_tester@brugger.eu
   role: user
 
+wd_validation_user_disabled_missing_validation:
+  email: wd_disabled_tester@brugger.eu
+  validate_working_days: false
+  role: user
+
 time_entries_controller_user:
   email: time_entries_controller_user@brugger.eu
   role: user

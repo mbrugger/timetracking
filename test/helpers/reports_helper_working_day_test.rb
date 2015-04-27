@@ -32,8 +32,8 @@ class ReportsHelperWorkingDayTest < ActionView::TestCase
     @working_day.expected_duration = 8.hours
   end
 
-  def when_validation_is_performed
-    @result = calculate_single_day_validation_errors(@working_day)
+  def when_validation_is_performed(validate_missing_time_entries = true)
+    @result = calculate_single_day_validation_errors(@working_day, validate_missing_time_entries)
   end
 
   def then_validation_result_is(expected_result)
@@ -82,6 +82,12 @@ class ReportsHelperWorkingDayTest < ActionView::TestCase
     then_validation_result_is(['Missing stop time'])
   end
 
+  test "calculate_single_day_validation_errors should return error missing stop time even if missing time entries validation is disabled" do
+    given_time_entries([time_entries(:wd_open)])
+    when_validation_is_performed(false)
+    then_validation_result_is(['Missing stop time'])
+  end
+
   test "calculate_single_day_validation_errors should NOT return error missing stop time at current date" do
     given_time_entries([time_entries(:wd_open_today)])
     # run test only during valid working hours
@@ -95,6 +101,12 @@ class ReportsHelperWorkingDayTest < ActionView::TestCase
     given_working_day_without_time_entries()
     when_validation_is_performed
     then_validation_result_is(['Missing time entries'])
+  end
+
+  test "calculate_single_day_validation_errors should not return error for missing time when missing time entries validation is disabled" do
+    given_working_day_without_time_entries()
+    when_validation_is_performed(false)
+    then_validation_result_is([])
   end
 
   test "calculate_single_day_validation_errors should NOT return error for missing time entries today" do

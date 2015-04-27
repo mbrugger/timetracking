@@ -22,6 +22,9 @@
     <%= f.label :time_zone %><br>
     <%= f.time_zone_select :time_zone, /Europe/, :default => "Vienna" %>
   </p>
+  <p>
+    <%= f.label :validate_working_days %>: <%= f.check_box(:validate_working_days) %>
+  </p>
   <div class="actions">
     <%= f.submit %>
   </div>

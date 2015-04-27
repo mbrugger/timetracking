@@ -22,7 +22,8 @@ de:
         name: 'Name'
         role: 'Berechtigungen'
         time_zone: 'Zeitzone'
-        notify_user: 'Benutzer per e-Mail benachrichtigen?'
+        notify_user: 'Benutzer per e-Mail benachrichtigen'
+        validate_working_days: 'Fehlende Zeiteinträge überprüfen'
     submit:
       user:
         create: "Benutzer anlegen"
@@ -32,4 +33,3 @@ de:
       roles:
         admin: 'Administrator'
         user: 'Zeiterfasser'
-        
