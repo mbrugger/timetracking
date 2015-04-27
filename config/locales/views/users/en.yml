@@ -22,7 +22,8 @@ en:
         name: 'Name'
         role: 'Role'
         time_zone: 'Time zone'
-        notify_user: 'Notify user via email?'
+        notify_user: 'Notify user via email'
+        validate_working_days: 'Validate user for missing time entries'
     submit:
       user:
         create: "Create User"

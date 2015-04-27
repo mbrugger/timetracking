@@ -4,17 +4,21 @@ class UserMailerTest < ActionMailer::TestCase
 
   def setup
     @controller = WorkingDayValidationController.new
-    @current_user = users(:wd_validation_user)
+    ActionMailer::Base.deliveries.clear
+  end
+
+  def given_validation_user(validation_user)
+    @current_user = users(validation_user)
 
     for user in User.all
       if user != @current_user
         user.delete
       end
     end
-    ActionMailer::Base.deliveries.clear
   end
 
   test "should send a mailing for day with validation error" do
+    given_validation_user(:wd_validation_user)
     validation_date = Date.new(2014,12,9)
     @controller.validate_working_day(validation_date)
     mail = ActionMailer::Base.deliveries.last
@@ -24,13 +28,23 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "should not send a mailing for day without validation error" do
+    given_validation_user(:wd_validation_user)
     validation_date = Date.new(2014,12,12)
     @controller.validate_working_day(validation_date)
     mail = ActionMailer::Base.deliveries.last
     assert_nil mail
   end
 
+  test "should not send a validation error for working day without time entries if validation is setting disabled" do
+    given_validation_user(:wd_validation_user_disabled_missing_validation)
+    validation_date = Date.new(2014,12,9)
+    @controller.validate_working_day(validation_date)
+    mail = ActionMailer::Base.deliveries.last
+    assert_nil mail
+  end
+
   test "should send a validation error mail for multiple days validation failed" do
+    given_validation_user(:wd_validation_user)
     @controller.validate_working_days_for_duration(Date.new(2014,12,9), Date.new(2014,12,10))
     mail = ActionMailer::Base.deliveries.last
     assert_equal 1, ActionMailer::Base.deliveries.size

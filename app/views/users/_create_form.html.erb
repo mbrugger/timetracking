@@ -27,8 +27,10 @@
     <%= f.time_zone_select :time_zone, /Europe/, :default => "Vienna" %>
   </p>
   <p>
-    <%= f.label :notify_user %><br>
-    <%= check_box_tag :notify_user, true, {:checked => "checked"} %>
+    <%= f.label :validate_working_days %>: <%= f.check_box(:validate_working_days) %>
+  </p>
+  <p>
+    <%= f.label :notify_user %>: <%= check_box_tag :notify_user, true, {:checked => "checked"} %>
   </p>
   <div class="actions">
     <%= f.submit %>

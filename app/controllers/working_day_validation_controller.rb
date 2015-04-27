@@ -32,7 +32,7 @@ class WorkingDayValidationController
     for user in User.all do
       Rails.logger.info "Validating working day for #{user.email}"
       time_entries = user.time_entries.where(date: validation_day)
-      working_days = process_working_days(validation_day, validation_day, time_entries, user.leave_days, user.employments, public_holidays)
+      working_days = process_working_days(validation_day, validation_day, time_entries, user.leave_days, user.employments, public_holidays, user.validate_working_days)
       validation_errors = working_days.first.validation_errors
       if validation_errors.size > 0
         Rails.logger.info "Sending validation failed message to user #{user.email}"
@@ -53,7 +53,7 @@ class WorkingDayValidationController
       #Rails.logger.info "leave_days #{leave_days}"
       time_entries = user.time_entries.where(date: validation_range).order('date ASC')
       #Rails.logger.info "time_entries #{time_entries}"
-      working_days = process_working_days(start_date, end_date, time_entries, leave_days, user.employments, public_holidays)
+      working_days = process_working_days(start_date, end_date, time_entries, leave_days, user.employments, public_holidays, user.validate_working_days)
       has_validation_errors = false
       failed_days = []
       for working_day in working_days do

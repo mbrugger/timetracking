@@ -18,7 +18,7 @@ class TimeEntriesController < ApplicationController
     public_holidays = PublicHoliday.where(date: @date)
     report_time_entries = @user.time_entries.where(date: @date)
     @time_entries = @user.time_entries.where(date: @date)
-    working_days = process_working_days(@date, @date, report_time_entries, @user.leave_days, @user.employments, public_holidays)
+    working_days = process_working_days(@date, @date, report_time_entries, @user.leave_days, @user.employments, public_holidays, @user.validate_working_days)
     @working_day = working_days.last
   end
 
