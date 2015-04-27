@@ -104,6 +104,12 @@ admin_time_entry_6hr:
   user: admin
 
 # Working day validation
+wd_early_morning_invalid_missing_disabled:
+  date: 2014-04-24
+  startTime: 2014-04-24 04:00:00
+  stopTime: 2014-04-24 14:00:00
+  user: wd_validation_user_disabled_missing_validation
+
 wd_morning:
   date: 2013-12-10
   startTime: 2013-12-10 08:00:00

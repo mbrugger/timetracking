@@ -2,7 +2,7 @@ module ReportsValidationHelper
 
   include WorkingDaysHelper
 
-  def calculate_single_day_validation_errors(working_day)
+  def calculate_single_day_validation_errors(working_day, validate_missing_time_entries = true)
     result = []
     time_entries = sorted_time_entries(working_day.time_entries)
     validate_overlapping_time_entries(time_entries, result)
@@ -15,7 +15,10 @@ module ReportsValidationHelper
     validate_stop_time(time_entries, result) if time_entries.size > 0
     #validate missing stopTime (only not today)
     validate_missing_stop_time(time_entries, result)
-    validate_missing_time_entries(working_day, result)
+    #print "\n validate #{working_day.inspect} missing time entries: #{validate_missing_time_entries}\n"
+    if validate_missing_time_entries
+      validate_missing_time_entries(working_day, result)
+    end
     return result
   end
 
