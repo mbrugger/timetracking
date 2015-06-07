@@ -62,7 +62,7 @@
         <td>-<%= format_duration(@report_summary.comp_time) %></td>
       </tr>
       <% end %>
-      <% if !@report.nil? && !@report.correction.nil? && @report.correction > 0%>
+      <% if !@report.nil? && !@report.correction.nil? && @report.correction != 0%>
       <tr>
         <td colspan="2"></td>
         <td><%= I18n.t('views.reports.correction') %>: <% if !@report.correctionReason.nil? &&  @report.correctionReason.size > 0 %>(<%= @report.correctionReason %>) <% end %></td>
