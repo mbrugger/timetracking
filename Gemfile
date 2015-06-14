@@ -56,7 +56,7 @@ gem "therubyracer"
 gem 'bootstrap-datepicker-rails', '1.3.0.2'
 
 #used for scheduled working day validation
-gem 'whenever'
+gem 'rufus-scheduler', '~> 3.1.2'
 
 gem 'paper_trail', '~> 3.0.0'
 
