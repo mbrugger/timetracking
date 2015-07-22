@@ -48,12 +48,12 @@
       <tr>
         <td colspan="2"></td>
         <td><%= I18n.t('views.reports.working_hours') %>:</td>
-        <td><%= format_duration(@report_summary.working_hours) %> / <%= format_duration(@report_summary.expected_working_hours) %></td>
+        <td><%= format_duration_null(@report_summary.working_hours) %> / <%= format_duration(@report_summary.expected_working_hours) %></td>
       </tr>
       <tr>
         <td colspan="2"></td>
         <td><%= I18n.t('views.reports.balance') %>:</td>
-        <td><%= format_duration(@report_summary.working_hours_balance+@report_summary.comp_time) %></td>
+        <td><%= format_duration_null(@report_summary.working_hours_balance+@report_summary.comp_time) %></td>
       </tr>
       <% if @report_summary.comp_time > 0%>
       <tr>
@@ -73,13 +73,13 @@
       <tr>
         <td colspan="2"></td>
         <td><%= I18n.t('views.reports.previous_balance') %>:</td>
-        <td><%= format_duration(@report_summary.previous_working_hours_balance) %></td>
+        <td><%= format_duration_null(@report_summary.previous_working_hours_balance) %></td>
       </tr>
       <% end %>
       <tr>
         <td colspan="2"></td>
         <td><%= I18n.t('views.reports.total_balance') %>:</td>
-        <td><%= format_duration(@report_summary.total_working_hours_balance) %></td>
+        <td><%= format_duration_null(@report_summary.total_working_hours_balance) %></td>
       </tr>
     </tfoot>
 
