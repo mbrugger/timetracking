@@ -1,0 +1,3 @@
+<div class="panel-heading"><%= I18n.t('views.leave_days.listing_title', start: @working_year_start.to_formatted_s(:pretty_date), end: @working_year_end.to_formatted_s(:pretty_date)).html_safe%>
+  <%= render "partials/year_selector", path: user_leave_days_path(@user) %>
+</div>

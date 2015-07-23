@@ -26,7 +26,23 @@ class LeaveDaysController < ApplicationController
 
     @working_year_start = calculate_working_year_start(Date.new(@year, 12, 31), @user.employments)
     @working_year_end = calculate_working_year_start(Date.new(@year+1, 12, 31), @user.employments) - 1.day
+    begin
     @leave_days = LeaveDay.where(user_id: @user.id, date: (@working_year_start..@working_year_end)).order('date ASC')
+
+    working_year_start_employment = employment_for_date(@working_year_start, @user.employments)
+    if working_year_start_employment.nil?
+      #something is wrong, check this case
+      @leave_days_working_year_start = 0
+    elsif working_year_start_employment.migrated_employment
+      @leave_days_working_year_start = working_year_start_employment.leave_days
+    else
+      @leave_days_working_year_start = calculate_available_leave_days(@working_year_start, @user.employments, @user.leave_days)
+    end
+    @leave_days_consumed = calculate_consumed_leave_days(@working_year_end, @user.employments, @user.leave_days)
+    @leave_days_available = calculate_available_leave_days(@working_year_end, @user.employments, @user.leave_days)
+    rescue ArgumentError
+      render "leave_days_unavailable"
+    end
   end
 
   # GET /leave_days/1

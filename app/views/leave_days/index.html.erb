@@ -1,7 +1,5 @@
 <div class="panel panel-default">
-  <div class="panel-heading"><%= I18n.t('views.leave_days.listing_title', start: @working_year_start.to_formatted_s(:pretty_date), end: @working_year_end.to_formatted_s(:pretty_date))%>
-    <%= render "partials/year_selector", path: user_leave_days_path(@user) %>
-  </div>
+  <%= render 'list_header' %>
   <div class="panel-body">
     <table class="table">
       <thead>
@@ -27,9 +25,9 @@
     <table style="width: 100%">
       <tbody>
         <tr>
-          <td style="width: 40%"><b>Balance previous year:</b> 3&nbsp;days</td>
-          <td style="width: 30%"><b>Consumed:</b> 3&nbsp;days</td>
-          <td style="width: 30%"><b>Available:</b> 29&nbsp;days</td>
+          <td style="width: 33%;"><b><%= I18n.t('views.leave_days.total')%>:</b> <%= @leave_days_working_year_start%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_working_year_start)%></td>
+          <td style="width: 33%;"><b><%= I18n.t('views.leave_days.consumed')%>:</b> <%= @leave_days_consumed%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_consumed)%></td>
+          <td style="width: 33%;"><b><%= I18n.t('views.leave_days.available')%>:</b> <%= @leave_days_available%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_available)%></td>
         </tr>
       </tbody>
     <table>

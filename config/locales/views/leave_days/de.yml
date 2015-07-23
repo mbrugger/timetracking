@@ -1,7 +1,7 @@
 de:
   views:
     leave_days:
-      listing_title: 'Abwesenheitstage für das Arbeitsjahr von %{start} bis %{end}'
+      listing_title: 'Abwesenheitstage für das Arbeitsjahr von <b>%{start}</b> bis <b>%{end}</b>'
       date: 'Datum'
       type: 'Art'
       new_leave_day: 'Neuer Abwesenheitstag'
@@ -9,6 +9,13 @@ de:
       back: 'Zurück'
       edit: 'Bearbeiten'
       are_you_sure: 'Sind Sie sicher?'
+      total: 'Gesamt'
+      consumed: 'Verbraucht'
+      available: 'Verfügbar'
+      leave_days_unavailable: 'Keine Information über Abwesenheitstage in diesem Arbeitsjahr vorhanden'
+      days:
+        one: Tag
+        other: Tage
   helpers:
     label:
       leave_day:

@@ -1,7 +1,7 @@
 en:
   views:
     leave_days:
-      listing_title: 'Listing Leave Days for working year %{start} to %{end}'
+      listing_title: Listing Leave Days for working year <b>%{start}</b> to <b>%{end}</b>
       date: 'Date'
       type: 'Type'
       new_leave_day: 'New Leave day'
@@ -9,6 +9,13 @@ en:
       back: 'Back'
       edit: 'Edit'
       are_you_sure: 'Are you sure?'
+      total: 'Total'
+      consumed: 'Consumed'
+      available: 'Available'
+      leave_days_unavailable: 'No leave days information available for this working year'
+      days:
+        one: day
+        other: days
   helpers:
     label:
       leave_day:
