@@ -31,15 +31,11 @@ class LeaveDaysController < ApplicationController
 
     working_year_start_employment = employment_for_date(@working_year_start, @user.employments)
     if working_year_start_employment.nil?
-      #something is wrong, check this case
-      @leave_days_working_year_start = 0
-    elsif working_year_start_employment.migrated_employment
-      @leave_days_working_year_start = working_year_start_employment.leave_days
-    else
-      @leave_days_working_year_start = calculate_available_leave_days(@working_year_start, @user.employments, @user.leave_days)
+      raise ArgumentError, "Leave days calculation not available prior to employment start"
     end
     @leave_days_consumed = calculate_consumed_leave_days(@working_year_end, @user.employments, @user.leave_days)
     @leave_days_available = calculate_available_leave_days(@working_year_end, @user.employments, @user.leave_days)
+    @leave_days_working_year_start = @leave_days_available - @leave_days_consumed
     rescue ArgumentError
       render "leave_days_unavailable"
     end
