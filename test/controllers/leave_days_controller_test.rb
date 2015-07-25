@@ -64,6 +64,16 @@ class LeaveDaysControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
+  test "summary should correctly calculate leave days at working year start if days have been consumed" do
+    given_authenticated_user(users(:employment_user))
+    get :index, user_id: users(:employment_user).id, year: 2014
+    assert_response :success
+    assert_equal 25, assigns(:leave_days_working_year_start)
+    assert_equal 2, assigns(:leave_days_consumed)
+    assert_equal 23, assigns(:leave_days_available)
+  end
+
+
   # test "should get index" do
   #   get :index
   #   assert_response :success

@@ -35,7 +35,7 @@ class LeaveDaysController < ApplicationController
     end
     @leave_days_consumed = calculate_consumed_leave_days(@working_year_end, @user.employments, @user.leave_days)
     @leave_days_available = calculate_available_leave_days(@working_year_end, @user.employments, @user.leave_days)
-    @leave_days_working_year_start = @leave_days_available - @leave_days_consumed
+    @leave_days_working_year_start = @leave_days_available + @leave_days_consumed
     rescue ArgumentError
       render "leave_days_unavailable"
     end
