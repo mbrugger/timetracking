@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading control-group controls form-inline"><%= I18n.t('views.statistics.leave_days_description') %><input type="text" class="form-control input-sm" id="statistics_leave_days_day_datepicker" value="<%= @date.to_formatted_s(:datepicker_date) %>">
+    <input id="base-url" type="hidden" value="<%= statistics_leave_days_path(params[:locale]) %>" />
+    <div class="clear"></div>
+  </div>
+  <div id="statistics-leave-days-content">
+    <%= render 'statistics/leave_days_content' %>
+  </div>
+</div>
+<br>

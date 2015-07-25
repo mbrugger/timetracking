@@ -1,0 +1,11 @@
+en:
+  views:
+    statistics:
+      description: "Currently available statistics:"
+      leave_days: "Leave Days"
+      leave_days_description: "Leave days available at seleted date"
+      working_hours: "Working Hours"
+      leave_days_content:
+        employee: "Employee"
+        leave_days: "Available leave days"
+        total_leave_days: "Total leave days"

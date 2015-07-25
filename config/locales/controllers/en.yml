@@ -12,7 +12,7 @@ en:
       successfully_destroyed: 'Employment was successfully destroyed.'
       breadcrumbs:
         employments: "Employments"
-        new_employment: "New Employment"      
+        new_employment: "New Employment"
     leave_days:
       successfully_created: 'Leave day was successfully created.'
       successfully_updated: 'Leave day was successfully updated.'
@@ -68,3 +68,8 @@ en:
       breadcrumbs:
         users: "Users"
         new_user: "New User"
+    statistics:
+      breadcrumbs:
+        statistics: "Statistics"
+        working_hours: "Working Hours"
+        leave_days: "Leave Days"

@@ -5,6 +5,7 @@ de:
       current_report: 'Aktueller Monat'
       public_holidays: 'Gesetzliche Feiertage'
       users: 'Mitarbeiter'
+      statistics: 'Statistiken'
       employments: 'Dienstverhältnisse'
       time_entries: 'Zeiteinträge'
       leave_days: 'Urlaubstage/Abwesenheiten'

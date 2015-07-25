@@ -5,6 +5,7 @@ en:
       current_report: 'Current Month'
       public_holidays: 'Public holidays'
       users: 'Users'
+      statistics: 'Statistics'
       employments: 'Employments'
       time_entries: 'TimeEntries'
       leave_days: 'LeaveDays'

@@ -68,3 +68,8 @@ de:
       breadcrumbs:
         users: "Mitarbeiter"
         new_user: "Neuer Mitarbeiter"
+    statistics:
+      breadcrumbs:
+        statistics: "Statistiken"
+        working_hours: "Arbeitszeiten"
+        leave_days: "Urlaubstage"

@@ -18,6 +18,11 @@ Rails.application.routes.draw do
     post 'time_tracking/start' => 'time_tracking#start'
     post 'time_tracking/stop' => 'time_tracking#stop'
 
+    get 'statistics/index'
+    get 'statistics/working_hours'
+    get 'statistics/leave_days'
+    get 'statistics/leave_days/content/' => "statistics#leave_days_content"
+
     # ====== API Routes ======
     post 'api/v1/login' => 'api/v1/api_login#login'
     post 'api/v1/status/start' => 'api/v1/api_status#start'

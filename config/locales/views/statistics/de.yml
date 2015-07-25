@@ -1,0 +1,11 @@
+de:
+  views:
+    statistics:
+      description: "Verfügbare Statistiken:"
+      leave_days: "Urlaubstage"
+      leave_days_description: "Verfügbare Urlaubstage zum gewählten Datum"
+      working_hours: "Arbeitszeiten"
+      leave_days_content:
+        employee: "Angestellter"
+        leave_days: "Urlaubstage"
+        total_leave_days: "Gesamt"
