@@ -50,11 +50,10 @@ class StatisticsController < ApplicationController
             leave_days_available = calculate_available_leave_days(@date, user.employments, user.leave_days)
             user_statistic[:leave_days_available] = leave_days_available
             @total_leave_days += leave_days_available
-            logger.info "#{user.name} has #{leave_days_available} at requested date #{@date.to_formatted_s(:datepicker_date)}"
           end
         rescue ArgumentError
           log.info "no employment available for statistics date"
-            user_statistic[:error] = "Error retrieving user leave days statistic"
+          user_statistic[:error] = "Error retrieving user leave days statistic"
         end
       end
     end
