@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     get 'statistics/index'
     get 'statistics/working_hours'
+    get 'statistics/working_hours/content/' => "statistics#working_hours_content"    
     get 'statistics/leave_days'
     get 'statistics/leave_days/content/' => "statistics#leave_days_content"
 
