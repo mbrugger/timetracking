@@ -6,7 +6,6 @@
     </tr>
   </thead>
   <tbody>
-    <!-- iterate users here -->
       <% @user_leave_days_statistic.each do |user_leave_days_statistic| %>
       <tr>
         <td><%= link_to user_leave_days_statistic[:user].visible_name, user_path(user_leave_days_statistic[:user])%></td>

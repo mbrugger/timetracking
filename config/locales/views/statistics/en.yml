@@ -5,7 +5,13 @@ en:
       leave_days: "Leave Days"
       leave_days_description: "Leave days available at seleted date"
       working_hours: "Working Hours"
+      working_hours_description: "Planned/Actual Working Hours"
       leave_days_content:
         employee: "Employee"
         leave_days: "Available leave days"
         total_leave_days: "Total leave days"
+      working_hours_content:
+        employee: "Employee"
+        working_hours_planned: "Planned Working Hours"
+        working_hours_actual: "Actual Working Hours"
+        totals: "Totals"

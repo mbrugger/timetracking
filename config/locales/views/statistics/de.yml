@@ -5,7 +5,13 @@ de:
       leave_days: "Urlaubstage"
       leave_days_description: "Verfügbare Urlaubstage zum gewählten Datum"
       working_hours: "Arbeitszeiten"
+      working_hours_description: "SOLL/IST Arbeitszeiten"
       leave_days_content:
         employee: "Angestellter"
         leave_days: "Urlaubstage"
         total_leave_days: "Gesamt"
+      working_hours_content:
+        employee: "Angestellter"
+        working_hours_planned: "SOLL Arbeitszeit"
+        working_hours_actual: "IST Arbeitszeit"
+        totals: "Gesamt"

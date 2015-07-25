@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= I18n.t('views.statistics.working_hours_content.employee') %></th>
+      <th><%= I18n.t('views.statistics.working_hours_content.working_hours_planned') %></th>
+      <th><%= I18n.t('views.statistics.working_hours_content.working_hours_actual') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- iterate users here -->
+      <% @user_working_hours_statistic.each do |user_working_hours_statistic| %>
+      <tr>
+        <td><%= link_to user_working_hours_statistic[:user].visible_name, user_path(user_working_hours_statistic[:user])%></td>
+        <% if user_working_hours_statistic[:error] %>
+          <td><%= user_working_hours_statistic[:error]%></td>
+        <% else %>
+          <td><%= format_duration_null(user_working_hours_statistic[:working_hours_planned])%></td>
+          <td><%= format_duration_null(user_working_hours_statistic[:working_hours_actual])%></td>
+        <% end %>
+      </tr>
+      <% end %>
+    <tr>
+      <td class="total-label"><%= I18n.t('views.statistics.working_hours_content.totals')%>:</td>
+      <td><%= format_duration_null(@total_working_hours_planned)%></td>
+      <td><%= format_duration_null(@total_working_hours_actual)%></td>
+    </tr>
+  </tbody>
+</table>
