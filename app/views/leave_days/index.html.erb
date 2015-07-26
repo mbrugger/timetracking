@@ -1,11 +1,11 @@
-<div class="panel panel-default">
+<div class="panel panel-default leave-days">
   <%= render 'list_header' %>
   <div class="panel-body">
     <table class="table">
       <thead>
         <tr>
-          <th style="width: 35%;"><%= I18n.t('views.leave_days.date')%></th>
-          <th style="width: 35%;"><%= I18n.t('views.leave_days.type')%></th>
+          <th class="date"><%= I18n.t('views.leave_days.date')%></th>
+          <th class="type"><%= I18n.t('views.leave_days.type')%></th>
           <th colspan="2"><%= link_to I18n.t('views.leave_days.new_leave_day'), new_user_leave_day_path %></th>
         </tr>
       </thead>
@@ -22,12 +22,12 @@
     </table>
   </div>
   <div class="panel-footer">
-    <table style="width: 100%">
+    <table class="summary">
       <tbody>
         <tr>
-          <td style="width: 33%;"><b><%= I18n.t('views.leave_days.total')%>:</b> <%= @leave_days_working_year_start%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_working_year_start)%></td>
-          <td style="width: 33%;"><b><%= I18n.t('views.leave_days.consumed')%>:</b> <%= @leave_days_consumed%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_consumed)%></td>
-          <td style="width: 33%;"><b><%= I18n.t('views.leave_days.available')%>:</b> <%= @leave_days_available%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_available)%></td>
+          <td><b><%= I18n.t('views.leave_days.total')%>:</b> <%= @leave_days_working_year_start%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_working_year_start)%></td>
+          <td><b><%= I18n.t('views.leave_days.consumed')%>:</b> <%= @leave_days_consumed%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_consumed)%></td>
+          <td><b><%= I18n.t('views.leave_days.available')%>:</b> <%= @leave_days_available%>&nbsp;<%= I18n.t('views.leave_days.days', count: @leave_days_available)%></td>
         </tr>
       </tbody>
     <table>
