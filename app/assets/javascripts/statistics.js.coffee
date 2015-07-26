@@ -36,6 +36,7 @@ ready = ->
     updateWorkingDaysStatistics $("#statistics_working_hours_datepicker input")[0].value, $("#statistics_working_hours_datepicker input")[1].value, $("#users-select").val()
   $("#users-select").multiselect(
     enableFiltering: true
+    buttonClass: 'btn btn-default btn-sm users-button'
   )
 
 $(document).ready(ready)
