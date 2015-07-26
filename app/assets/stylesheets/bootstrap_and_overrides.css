@@ -1,10 +1,25 @@
 /*
-  =require twitter-bootstrap-static/bootstrap
+  require twitter-bootstrap-static/bootstrap
 
   Use Font Awesome icons (default)
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
-  =require twitter-bootstrap-static/fontawesome
+  require twitter-bootstrap-static/fontawesome
   */
+
+/* Override Bootstrap 3 font locations */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../assets/bootstrap/glyphicons-halflings-regular.eot');
+  src: url('../assets/bootstrap/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  url('../assets/bootstrap/glyphicons-halflings-regular.woff') format('woff'),
+  url('../assets/bootstrap/glyphicons-halflings-regular.ttf') format('truetype'),
+  url('../assets/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+.total-label {
+  text-align: right;
+}
+
 div.year_selector {
   float: right;
 }

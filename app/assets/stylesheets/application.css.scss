@@ -14,7 +14,8 @@
  *= require_self
  *= require bootstrap-datepicker3
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
 
-.total-label {
-  text-align: right;
-}
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
