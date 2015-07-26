@@ -11,8 +11,11 @@ class StatisticsControllerTest < ActionController::TestCase
 
   test "should get working_hours" do
     given_authenticated_user(users(:admin_user))
-    get :working_hours
+    get :working_hours, start_date: "1/12/2014", end_date: "31/12/2014"
     assert_response :success
+    assert_not_nil assigns(:user_working_hours_statistic)
+    assert_equal 943.hours, assigns(:total_working_hours_planned)
+    assert_equal 19.hours+29.minutes, assigns(:total_working_hours_actual)
   end
 
   test "should get leave_days" do
