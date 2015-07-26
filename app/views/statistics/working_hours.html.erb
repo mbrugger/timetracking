@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default statistics-working-hours">
   <div class="panel-heading control-group controls form-inline"><%= I18n.t('views.statistics.working_hours_description') %>
     <div class="btn btn-default btn-sm" id="statistics_working_hours_datepicker_refresh"><span class="fa fa-refresh"></span></div>
     <div class="input-daterange input-group" id="statistics_working_hours_datepicker">
@@ -6,7 +6,13 @@
       <span class="input-group-addon">to</span>
       <input type="text" class="input-sm form-control" name="end_date" value="<%= @end_date.to_formatted_s(:datepicker_date) unless @end_date.nil? %>"/>
     </div>
-
+    <div class="users-select">
+      <select multiple="multiple" id="users-select">
+        <% @users.each do |user| %>
+        <option value="<%= user.id %>"><%= user.name %></option>
+        <% end %>
+      </select>
+    </div>
 
     <input id="base-url" type="hidden" value="<%= statistics_working_hours_path(params[:locale]) %>" />
     <div class="clear"></div>

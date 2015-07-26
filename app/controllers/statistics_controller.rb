@@ -69,11 +69,14 @@ class StatisticsController < ApplicationController
   end
 
   def prepare_working_hours_content
+    @users = User.all
     @start_date = Date.parse(params[:start_date]) unless params[:start_date].nil?
     @end_date = Date.parse(params[:end_date]) unless params[:end_date].nil?
+    statistic_users = User.where("id IN (?)", params[:users])
 
     @start_date = Date.today.beginning_of_month if @start_date.nil?
     @end_date = Date.today.end_of_month if @end_date.nil?
+    statistic_users = User.all if statistic_users.nil?
 
     @user_working_hours_statistic = []
     @total_working_hours_planned = 0
@@ -81,7 +84,7 @@ class StatisticsController < ApplicationController
 
     public_holidays = PublicHoliday.where(date: @start_date..@end_date)
 
-    for user in User.all do
+    for user in statistic_users do
 
       working_days = process_working_days(@start_date,
                                             @end_date,

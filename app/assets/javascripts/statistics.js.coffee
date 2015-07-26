@@ -9,11 +9,12 @@ updateContent = (date) ->
     $("#statistics-leave-days-content").html data
     return
 
-updateWorkingDaysStatistics = (start_date, end_date) ->
+updateWorkingDaysStatistics = (start_date, end_date, users) ->
   base_url = $("#base-url").val()
   $.get base_url + '/content/',
     start_date: start_date
     end_date: end_date
+    users: users
   , (data) ->
     $("#statistics-working-hours-content").html data
     return
@@ -32,7 +33,10 @@ ready = ->
     format: "dd/mm/yyyy"
     todayBtn: "linked"
   $("#statistics_working_hours_datepicker_refresh").on "click", (e) ->
-    updateWorkingDaysStatistics $("#statistics_working_hours_datepicker input")[0].value, $("#statistics_working_hours_datepicker input")[1].value
+    updateWorkingDaysStatistics $("#statistics_working_hours_datepicker input")[0].value, $("#statistics_working_hours_datepicker input")[1].value, $("#users-select").val()
+  $("#users-select").multiselect(
+    enableFiltering: true
+  )
 
 $(document).ready(ready)
 $(document).on('page:load', ready)

@@ -1,19 +1,25 @@
 // Place all the styles related to the Statistics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#statistics_leave_days_day_datepicker {
-  float: right;
-}
+.statistics-working-hours {
+  #statistics_leave_days_day_datepicker {
+    float: right;
+  }
 
-#statistics_working_hours_datepicker {
-  float: right;
-}
+  #statistics_working_hours_datepicker {
+    float: right;
+  }
 
-#statistics_working_hours_datepicker_refresh {
-  float: right;
-  height: 30px;
-  margin-left: 8px;
-  span {
-    font-size: 20px;
+  #statistics_working_hours_datepicker_refresh {
+    float: right;
+    height: 30px;
+    margin-left: 8px;
+    span {
+      font-size: 20px;
+    }
+  }
+
+  .users-select {
+    float: right;
   }
 }
