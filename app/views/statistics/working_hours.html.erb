@@ -9,7 +9,7 @@
     <div class="users-select">
       <select multiple="multiple" id="users-select">
         <% @users.each do |user| %>
-        <option value="<%= user.id %>"><%= user.name %></option>
+        <option value="<%= user.id %>" selected="selected"><%= user.name %></option>
         <% end %>
       </select>
     </div>

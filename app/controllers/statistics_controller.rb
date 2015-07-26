@@ -76,7 +76,7 @@ class StatisticsController < ApplicationController
 
     @start_date = Date.today.beginning_of_month if @start_date.nil?
     @end_date = Date.today.end_of_month if @end_date.nil?
-    statistic_users = User.all if statistic_users.nil?
+    statistic_users = User.all if statistic_users.size == 0
 
     @user_working_hours_statistic = []
     @total_working_hours_planned = 0
