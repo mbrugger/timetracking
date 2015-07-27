@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 updateContent = (date) ->
   base_url = $("#base-url").val()
+  history.pushState {}, '', base_url + '?date=' + date
   $.get base_url + '/content/',
     date: date
   , (data) ->
@@ -20,7 +21,7 @@ updateWorkingDaysStatistics = (start_date, end_date, users) ->
     return
 
 ready = ->
-  $("#statistics_leave_days_day_datepicker").datepicker(
+  $("#statistics-leave-days-datepicker").datepicker(
     weekStart: 1
     format: "dd/mm/yyyy"
     todayBtn: "linked"

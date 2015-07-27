@@ -29,7 +29,7 @@ class StatisticsController < ApplicationController
     if !params[:date].nil?
       return Date.parse(params[:date])
     end
-    return Date.today
+    return Date.today.end_of_year
   end
 
   def leave_days_content
