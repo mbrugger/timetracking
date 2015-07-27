@@ -18,6 +18,15 @@ class StatisticsControllerTest < ActionController::TestCase
     assert_equal 19.hours+29.minutes, assigns(:total_working_hours_actual)
   end
 
+  test "should get working_hours filtered for single user" do
+    given_authenticated_user(users(:admin_user))
+    get :working_hours, start_date: "1/08/2014", end_date: "31/08/2014", users: [users(:tester).id]
+    assert_response :success
+    assert_not_nil assigns(:user_working_hours_statistic)
+    assert_equal 138.hours+36.minutes, assigns(:total_working_hours_planned)
+    assert_equal 24.hours, assigns(:total_working_hours_actual)
+  end
+
   test "should get leave_days" do
     given_authenticated_user(users(:admin_user))
     get :leave_days, date: Date.parse("2015/12/31")
