@@ -1,0 +1,3 @@
+<input id="base-url" type="hidden" value="<%= user_reports_path(params[:locale], params[:user_id])%>" />
+<input name="date" type="hidden" class="form-control" value="<%= @report.date.to_formatted_s(:month_year_date) unless @report.date.nil? %>">
+<div class="panel-heading"><%= I18n.t('views.reports.report_for') %> <a href="#" id="reports-datepicker"><%= @report.date.to_formatted_s(:month_year_date)%></a></div>
