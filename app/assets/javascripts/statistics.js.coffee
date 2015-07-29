@@ -12,7 +12,10 @@ updateContent = (date) ->
 
 updateWorkingDaysStatistics = (start_date, end_date, users) ->
   base_url = $("#base-url").val()
-  history.pushState {}, '', base_url+'?start_date='+start_date+'&end_date='+end_date+'&users='+users
+  history.pushState {}, '', base_url+'?'+$.param
+      start_date: start_date
+      end_date: end_date
+      users: users;
   $.get base_url + '/content/',
     start_date: start_date
     end_date: end_date
