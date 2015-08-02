@@ -63,3 +63,6 @@ gem 'paper_trail', '~> 3.0.0'
 #added for heroku deployment
 gem 'rails_12factor', group: [:production, :heroku]
 gem 'pg', group: :heroku
+
+#added for calendar integration
+gem 'icalendar', '~> 2'

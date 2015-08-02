@@ -20,16 +20,19 @@ Rails.application.routes.draw do
 
     get 'statistics/index'
     get 'statistics/working_hours'
-    get 'statistics/working_hours/content/' => "statistics#working_hours_content"    
+    get 'statistics/working_hours/content/' => "statistics#working_hours_content"
     get 'statistics/leave_days'
     get 'statistics/leave_days/content/' => "statistics#leave_days_content"
 
-    # ====== API Routes ======
-    post 'api/v1/login' => 'api/v1/api_login#login'
-    post 'api/v1/status/start' => 'api/v1/api_status#start'
-    post 'api/v1/status/stop' => 'api/v1/api_status#stop'
-    get 'api/v1/status' => 'api/v1/api_status#status'
   end
+  # ====== API Routes ======
+  post 'api/v1/login' => 'api/v1/api_login#login'
+  post 'api/v1/status/start' => 'api/v1/api_status#start'
+  post 'api/v1/status/stop' => 'api/v1/api_status#stop'
+  get 'api/v1/status' => 'api/v1/api_status#status'
+
+  # ====== Calendar stuff =====
+  get 'calendars/leave_days' => "calendars#leave_days"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
