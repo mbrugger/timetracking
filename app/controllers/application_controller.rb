@@ -25,6 +25,15 @@ class ApplicationController < ActionController::Base
     params[resource] &&= send(method) if respond_to?(method, true)
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    logger.info "after_sign_in_path_for"
+    if current_user.token.nil?
+      current_user.token = current_user.generate_authentication_token
+      current_user.save
+    end
+    root_url
+  end
+
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
