@@ -18,6 +18,13 @@ class User < ActiveRecord::Base
     self.role == "admin"
   end
 
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(token: token).first
+    end
+  end
+
   def visible_name
     if !self.name.nil? &&self.name.length > 0
       self.name
