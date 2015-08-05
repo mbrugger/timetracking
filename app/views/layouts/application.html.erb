@@ -50,6 +50,7 @@
                    <li><%= link_to I18n.t('views.layouts.time_entries'), user_time_entries_path(current_user) %></li>
                    <li><%= link_to I18n.t('views.layouts.leave_days'), user_leave_days_path(current_user) %></li>
                    <li><%= link_to I18n.t('views.layouts.reports'), user_reports_path(current_user) %></li>
+                   <li><%= link_to I18n.t('views.layouts.show_my_user'), user_path(current_user) %></li>
                    <li class="divider"></li>
                    <li><%= link_to I18n.t('views.layouts.edit_profile'), edit_user_registration_path, :class => 'navbar-link' %></li>
                    <li><%= link_to I18n.t('views.layouts.logout'), destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>

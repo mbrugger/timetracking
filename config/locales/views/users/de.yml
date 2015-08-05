@@ -15,6 +15,7 @@ de:
       leave_days: 'Abwesenheitstage'
       reports: 'Stundenaufzeichnungen'
       current_report: 'Aktueller Monat'
+      leave_days_calendar: 'Urlaubstage Kalender als .ics'
   helpers:
     label:
       user:
