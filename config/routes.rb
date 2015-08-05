@@ -30,9 +30,9 @@ Rails.application.routes.draw do
   post 'api/v1/status/start' => 'api/v1/api_status#start'
   post 'api/v1/status/stop' => 'api/v1/api_status#stop'
   get 'api/v1/status' => 'api/v1/api_status#status'
-
+  get 'api/v1/calendars/leave_days' => "api/v1/api_calendars#leave_days"
   # ====== Calendar stuff =====
-  get 'calendars/leave_days' => "calendars#leave_days"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

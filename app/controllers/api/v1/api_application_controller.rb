@@ -2,11 +2,15 @@ class Api::V1::ApiApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   prepend_before_action :authenticate_api, unless: :api_login_controller?
 
+  def get_auth_token
+    request.headers["HTTP_X_API_AUTH_TOKEN"]
+  end
+
   def authenticate_api
     logger.debug "Authenticating api request"
     @api_user = nil
     # fetch user by api key
-    token = request.headers["HTTP_X_API_AUTH_TOKEN"]
+    token = get_auth_token
 
     if !token.nil? && token.length > 0
       @api_user = User.where(token: token).first

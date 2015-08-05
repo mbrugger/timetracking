@@ -1,6 +1,9 @@
-class CalendarsController < ActionController::Base
-
+class Api::V1::ApiCalendarsController < Api::V1::ApiApplicationController
   require 'icalendar/tzinfo'
+
+  def get_auth_token
+    return params[:API_AUTH_TOKEN]
+  end
 
   def leave_days
     cal = Icalendar::Calendar.new
