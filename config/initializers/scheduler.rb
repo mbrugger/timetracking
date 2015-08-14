@@ -15,7 +15,7 @@ if ENV['SCHEDULE_VALIDATION_TASKS']
     WorkingDayValidationController.validate_previous_working_day
   end
 
-  s.cron '30 1 * * 5' do
+  s.cron '30 3 * * 1' do
     Rails.logger.info "Running working week validation at #{Time.now}"
     WorkingDayValidationController.validate_previous_week
   end
