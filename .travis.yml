@@ -7,3 +7,7 @@ notifications:
     - travis@brugger.eu
 
 bundler_args: --without development
+
+addons:
+  code_climate:
+    repo_token: c60efb15bb71c8e74eceaa3c1f4d6c9db6b6a192f86c04cd213796f52e29dfd3
