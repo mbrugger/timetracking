@@ -1,4 +1,5 @@
 class Api::V1::ApiCalendarsController < Api::V1::ApiApplicationController
+  include LeaveDaysCalendarHelper
   require 'icalendar/tzinfo'
 
   def get_auth_token
@@ -19,20 +20,19 @@ class Api::V1::ApiCalendarsController < Api::V1::ApiApplicationController
 
     for user in User.all do
 
-      for leave_day in user.leave_days do
+      leave_day_periods = aggregate_leave_day_periods(user.leave_days)
+      
+      for leave_day_period in leave_day_periods do
         cal.event do |e|
-          e.dtstart = Icalendar::Values::Date.new leave_day.date
+          e.dtstart = Icalendar::Values::Date.new leave_day_period.start_date
           e.dtstart.ical_params = { "VALUE" => "DATE" }
-          e.dtend = Icalendar::Values::Date.new  leave_day.date
+          e.dtend = Icalendar::Values::Date.new  leave_day_period.end_date
           e.dtend.ical_params = { "VALUE" => "DATE" }
 
           e.summary = user.visible_name
-          e.description = leave_day.localized_leave_day_type
         end
       end
     end
-
-
     respond_to do |format|
       format.ics { send_data(cal.to_ical, :filename=>"leave_days.ics", :disposition=>"inline; filename=leave_days.ics", :type=>"text/calendar")}
     end
