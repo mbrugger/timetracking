@@ -2,6 +2,8 @@ RoR Timetracking Application for Small Companies
 ===
 
 [![Build Status](https://travis-ci.org/mbrugger/timetracking.svg)](https://travis-ci.org/mbrugger/timetracking)
+[![Code Climate](https://codeclimate.com/github/mbrugger/timetracking/badges/gpa.svg)](https://codeclimate.com/github/mbrugger/timetracking)
+[![Test Coverage](https://codeclimate.com/github/mbrugger/timetracking/badges/coverage.svg)](https://codeclimate.com/github/mbrugger/timetracking/coverage)
 
 A lot of work still needs to be done but the current version of the application already serves its purpose for me and my 14 colleagues.
 I created a list of issues I hopefully will be able to resolve soon.
