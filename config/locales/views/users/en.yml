@@ -16,6 +16,7 @@ en:
       reports: 'Reports'
       current_report: 'Current Report'
       leave_days_calendar: 'Leavedays calendar .ics'
+      public_holidays_calendar: 'Public holidays calendar .ics'
   helpers:
     label:
       user:

@@ -7,5 +7,6 @@
   <li><%= link_to I18n.t('views.users.reports'), user_reports_path(@user) %></li>
   <li><%= link_to I18n.t('views.users.current_report'), user_reports_current_path(@user) %></li>
   <li><%= link_to I18n.t('views.users.leave_days_calendar'), api_v1_calendars_leave_days_path(API_AUTH_TOKEN: current_user.token, :format => :ics ) %></li>
+  <li><%= link_to I18n.t('views.users.public_holidays_calendar'), api_v1_calendars_public_holidays_path(API_AUTH_TOKEN: current_user.token, :format => :ics ) %></li>
 </ul>
 <%= link_to I18n.t('views.users.edit'), edit_user_path(@user) %>

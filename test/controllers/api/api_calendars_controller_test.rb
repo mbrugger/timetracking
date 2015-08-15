@@ -18,5 +18,9 @@ class ApiCalendarsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should get public holidays with valid token" do
+    get :public_holidays, format: :ics, API_AUTH_TOKEN: users(:working_api_user_with_pause).token
+    assert_response :success
+  end
 
 end

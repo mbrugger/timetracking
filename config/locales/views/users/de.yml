@@ -16,6 +16,7 @@ de:
       reports: 'Stundenaufzeichnungen'
       current_report: 'Aktueller Monat'
       leave_days_calendar: 'Urlaubstage Kalender als .ics'
+      public_holidays_calendar: 'Kalender gesetzlicher Feiertage als .ics'
   helpers:
     label:
       user:

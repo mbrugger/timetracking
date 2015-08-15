@@ -8,34 +8,36 @@ class Api::V1::ApiCalendarsController < Api::V1::ApiApplicationController
 
   def leave_days
     cal = Icalendar::Calendar.new
-    # todo check authentication/authorization
-    # add all user leave days
-
-    # event_start = DateTime.new 2015, 8, 1, 8, 0, 0
-    # event_end = DateTime.new 2015, 8, 1, 11, 0, 0
-    # tzid = "Europe/Vienna"
-    # tz = TZInfo::Timezone.get tzid
-    # timezone = tz.ical_timezone event_start
-    # cal.add_timezone timezone
-
     for user in User.all do
 
       leave_day_periods = aggregate_leave_day_periods(user.leave_days)
-      
       for leave_day_period in leave_day_periods do
-        cal.event do |e|
-          e.dtstart = Icalendar::Values::Date.new leave_day_period.start_date
-          e.dtstart.ical_params = { "VALUE" => "DATE" }
-          e.dtend = Icalendar::Values::Date.new  leave_day_period.end_date
-          e.dtend.ical_params = { "VALUE" => "DATE" }
-
-          e.summary = user.visible_name
-        end
+        create_all_day_event(cal, leave_day_period.start_date, leave_day_period.end_date, user.visible_name)
       end
     end
     respond_to do |format|
       format.ics { send_data(cal.to_ical, :filename=>"leave_days.ics", :disposition=>"inline; filename=leave_days.ics", :type=>"text/calendar")}
     end
-
   end
+
+  def public_holidays
+    cal = Icalendar::Calendar.new
+    for public_holiday in PublicHoliday.all do
+      create_all_day_event(cal, public_holiday.date, public_holiday.date, public_holiday.name)
+    end
+    respond_to do |format|
+      format.ics { send_data(cal.to_ical, :filename=>"public_holidays.ics", :disposition=>"inline; filename=public_holidays.ics", :type=>"text/calendar")}
+    end
+  end
+
+  def create_all_day_event(calendar, start_date, end_date, summary)
+    calendar.event do |e|
+      e.dtstart = Icalendar::Values::Date.new start_date
+      e.dtstart.ical_params = { "VALUE" => "DATE" }
+      e.dtend = Icalendar::Values::Date.new  end_date
+      e.dtend.ical_params = { "VALUE" => "DATE" }
+      e.summary = summary
+    end
+  end
+
 end
