@@ -34,14 +34,6 @@ gem 'spring',        group: :development
 gem 'unicorn'
 #gem 'thin', '~> 1.6.0'
 
-# Use Capistrano for deployment
-gem 'capistrano-bundler', group: :development
-gem 'capistrano-rails', group: :development
-gem 'capistrano-rvm', group: :development
-gem 'capistrano-passenger', group: :development
-#gem 'capistrano-stats', group: :development
-
-
 gem 'sqlite3', group: [:development, :test]
 gem 'byebug', '~> 4.0.5', group: :development
 
@@ -66,3 +58,5 @@ gem 'pg', group: :heroku
 
 #added for calendar integration
 gem 'icalendar', '~> 2'
+
+gem 'coveralls', require: false, group: :test
