@@ -59,4 +59,4 @@ gem 'pg', group: :heroku
 #added for calendar integration
 gem 'icalendar', '~> 2'
 
-gem 'coveralls', require: false, group: :test
+gem "codeclimate-test-reporter", group: :test, require: nil
