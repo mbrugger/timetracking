@@ -50,8 +50,8 @@ en:
       error_edit_report_already_exists: "Can not edit time entries if a report already exists, delete report before editing time entry."
       error_create_report_already_exists: "Can not create time entries if a report already exists for the given date, delete report before creating time entry."
       error_delete_report_already_exists: 'Can not destroy time entries if a report already exists, delete report before destroying time entry.'
-      error_invalid_start_time: "Invalid start time %{start_time_string}"
-      error_invalid_stop_time: "Invalid stop time %{stop_time_string}"
+      error_invalid_start_time: "Invalid start time %{parameter_string_value}"
+      error_invalid_stop_time: "Invalid stop time %{parameter_string_value}"
       breadcrumbs:
         time_entries: "Time entries"
         new_time_entry: "New Time entry"

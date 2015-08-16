@@ -125,42 +125,31 @@ class TimeEntriesController < ApplicationController
       @time_entry = TimeEntry.find(params[:id])
     end
 
+    def parse_time_parameter(time_entry, parameter_string_field, parameter_field, error_key)
+      parameter_string_value = time_entry[parameter_string_field]
+      if !parameter_string_value.nil?
+        begin
+          if parameter_string_value.length>0
+            parsed_time = Time.zone.parse(time_entry[:date] + " " + parameter_string_value)
+            time_entry[parameter_field] = parsed_time
+          else
+            time_entry[parameter_field] = nil
+          end
+          time_entry.delete(parameter_string_field)
+        rescue  ArgumentError
+          flash[:alert] = I18n.t(error_key, parameter_string_value: parameter_string_value)
+          @parse_error = true
+        end
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def time_entry_params
       @parse_error = false
       time_entry = params[:time_entry]
 
-      offset = Time.zone.formatted_offset
-      if !time_entry[:start_time_string].nil?
-        begin
-          if time_entry[:start_time_string].length>0
-            start_time = Time.zone.parse(time_entry[:date] + " " + time_entry[:start_time_string])
-            time_entry[:startTime] = start_time
-          else
-            time_entry[:startTime] = nil
-          end
-          time_entry.delete(:start_time_string)
-        rescue  ArgumentError
-          flash[:alert] = I18n.t('controllers.time_entries.error_invalid_start_time', start_time_string: time_entry[:start_time_string])
-          @parse_error = true
-        end
-      end
-
-
-      if !time_entry[:stop_time_string].nil?
-        begin
-          if time_entry[:stop_time_string].length>0
-            stop_time = Time.zone.parse(time_entry[:date] + " " + time_entry[:stop_time_string])
-            time_entry[:stopTime] = stop_time
-          else
-            time_entry[:stopTime] = nil
-          end
-          time_entry.delete(:stop_time_string)
-        rescue  ArgumentError
-          flash[:alert] = I18n.t('controllers.time_entries.error_invalid_stop_time', stop_time_string: time_entry[:stop_time_string])
-          @parse_error = true
-        end
-      end
+      parse_time_parameter(time_entry, 'start_time_string', 'startTime', 'controllers.time_entries.error_invalid_start_time')
+      parse_time_parameter(time_entry, 'stop_time_string', 'stopTime', 'controllers.time_entries.error_invalid_stop_time')
       params.require(:time_entry).permit(:date, :startTime, :stopTime)
     end
 end

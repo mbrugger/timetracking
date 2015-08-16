@@ -50,8 +50,8 @@ de:
       error_edit_report_already_exists: "Die Zeitbuchung kann nicht bearbeitet werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
       error_create_report_already_exists: "Für dieses Datum kann keine Zeitbuchung angelegt werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
       error_delete_report_already_exists: "Diese Zeitbuchung kann nicht gelöscht werden, da bereits eine Monatsabrechnung für dieses Datum existiert! Bitte Monatsabrechnung löschen und nach der Änderung neu anlegen."
-      error_invalid_start_time: "Ungültiger Arbeitsbeginn %{start_time_string}"
-      error_invalid_stop_time: "Ungültiges Arbeitsende %{stop_time_string}"
+      error_invalid_start_time: "Ungültiger Arbeitsbeginn %{parameter_string_value}"
+      error_invalid_stop_time: "Ungültiges Arbeitsende %{parameter_string_value}"
       breadcrumbs:
         time_entries: "Zeitbuchungen"
         new_time_entry: "Neue Zeitbuchung"
