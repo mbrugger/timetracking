@@ -103,3 +103,10 @@ working_api_user_with_pause:
   role: user
   token: some_other_working_user_token
   encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+#================= Leave day calendar fixtures
+api_calendar_user:
+  email: api_calendar_user@brugger.eu
+  role: user
+  token: some_random_token
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>

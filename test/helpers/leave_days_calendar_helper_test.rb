@@ -28,6 +28,12 @@ class LeaveDaysCalendarHelperTest < ActionView::TestCase
     assert_leave_day_period(leave_day_periods[1], leave_days(:adi_leave_day_3).date, leave_days(:adi_leave_day_4).date)
   end
 
+  test 'aggregate full week of leave days should create single leave_day_period' do
+    leave_day_periods = aggregate_leave_day_periods(users(:api_calendar_user).leave_days)
+    assert leave_day_periods.size == 1, "expected one leave day period got #{leave_day_periods}"
+    assert_leave_day_period(leave_day_periods[0], Date.new(2015,8,17), Date.new(2015,8,21))
+  end
+
   test 'aggregate without leave day should create no leave_day_period' do
     leave_day_periods = aggregate_leave_day_periods([])
     assert leave_day_periods.size == 0, "expected no leave day period got #{leave_day_periods}"

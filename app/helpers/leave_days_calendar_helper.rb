@@ -1,10 +1,12 @@
 module LeaveDaysCalendarHelper
 
     def aggregate_leave_day_periods(leave_days)
+
+      sorted_leave_days = leave_days.sort {|a,b| a.date <=> b.date}
       leave_day_periods = []
       if leave_days.size > 0
         leave_day_period = nil
-        for leave_day in leave_days do
+        for leave_day in sorted_leave_days do
           if !leave_day_period.nil? && leave_day_period.end_date+1.day == leave_day.date
             leave_day_period.end_date = leave_day.date
           else

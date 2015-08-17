@@ -101,3 +101,39 @@ adi_leave_day_7:
   description: Holiday
   leave_day_type: leave_day
   user: user_adi
+
+week_leave_day_1:
+  date: 2015-08-17
+  description: Holiday
+  leave_day_type: leave_day
+  user: api_calendar_user
+
+week_leave_day_1:
+  date: 2015-08-17
+  description: Holiday
+  leave_day_type: leave_day
+  user: api_calendar_user
+
+week_leave_day_2:
+  date: 2015-08-18
+  description: Holiday
+  leave_day_type: leave_day
+  user: api_calendar_user
+
+week_leave_day_3:
+  date: 2015-08-19
+  description: Holiday
+  leave_day_type: leave_day
+  user: api_calendar_user
+
+week_leave_day_4:
+  date: 2015-08-20
+  description: Holiday
+  leave_day_type: leave_day
+  user: api_calendar_user
+
+week_leave_day_5:
+  date: 2015-08-21
+  description: Holiday
+  leave_day_type: leave_day
+  user: api_calendar_user
