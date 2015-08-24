@@ -32,9 +32,9 @@ class Api::V1::ApiCalendarsController < Api::V1::ApiApplicationController
 
   def create_all_day_event(calendar, start_date, end_date, summary)
     calendar.event do |e|
-      e.dtstart = Icalendar::Values::Date.new start_date
+      e.dtstart = Icalendar::Values::Date.new(start_date)
       e.dtstart.ical_params = { "VALUE" => "DATE" }
-      e.dtend = Icalendar::Values::Date.new  end_date
+      e.dtend = Icalendar::Values::Date.new(end_date+1.day)
       e.dtend.ical_params = { "VALUE" => "DATE" }
       e.summary = summary
     end
