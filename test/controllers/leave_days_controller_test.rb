@@ -73,46 +73,45 @@ class LeaveDaysControllerTest < ActionController::TestCase
     assert_equal 23, assigns(:leave_days_available)
   end
 
+  test "should get new" do
+     given_authenticated_user(users(:employment_user))
+     get :new, user_id: users(:employment_user).id
+     assert_response :success
+   end
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:leave_days)
-  # end
-  #
-  # test "should get new" do
-  #   get :new
-  #   assert_response :success
-  # end
-  #
-  # test "should create leave_day" do
-  #   assert_difference('LeaveDay.count') do
-  #     post :create, leave_day: {  }
-  #   end
-  #
-  #   assert_redirected_to leave_day_path(assigns(:leave_day))
-  # end
-  #
-  # test "should show leave_day" do
-  #   get :show, id: @leave_day
-  #   assert_response :success
-  # end
-  #
-  # test "should get edit" do
-  #   get :edit, id: @leave_day
-  #   assert_response :success
-  # end
-  #
-  # test "should update leave_day" do
-  #   patch :update, id: @leave_day, leave_day: {  }
-  #   assert_redirected_to leave_day_path(assigns(:leave_day))
-  # end
-  #
-  # test "should destroy leave_day" do
-  #   assert_difference('LeaveDay.count', -1) do
-  #     delete :destroy, id: @leave_day
-  #   end
-  #
-  #   assert_redirected_to leave_days_path
-  # end
+  test "should create leave_day" do
+    @user = users(:employment_user)
+    given_authenticated_user(@user)
+    assert_difference('LeaveDay.count') do
+      post :create, user_id: @user.id, leave_day_dates: Date.new,leave_day: { leave_day_type: "leave_day" }
+    end
+    assert_redirected_to user_leave_days_path(@user)
+  end
+
+  test "should get edit" do
+    given_authenticated_user(users(:employment_user))
+    get :edit, user_id:users(:employment_user).id ,id: users(:employment_user).leave_days.first
+    assert_response :success
+  end
+
+  test "should update leave_day" do
+    @user = users(:employment_user)
+    given_authenticated_user(@user)
+    changed_leave_day = @user.leave_days.first
+    changed_leave_day.description = "updated"
+
+    patch :update, user_id: @user.id, id: @user.leave_days.first.id, leave_day: {date: Date.new, leave_day_type: "sick_day", description: "updated"}
+    assert_redirected_to user_leave_days_path(@user)
+  end
+
+  test "should destroy leave_day" do
+    @user = users(:employment_user)
+    given_authenticated_user(@user)
+
+    @leave_day = @user.leave_days.first
+    assert_difference('LeaveDay.count', -1) do
+      delete :destroy, user_id: @user.id, id: @leave_day.id
+    end
+    assert_redirected_to user_leave_days_path(@user)
+  end
 end
