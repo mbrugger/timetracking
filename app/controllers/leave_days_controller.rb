@@ -20,12 +20,13 @@ class LeaveDaysController < ApplicationController
   # GET /user/:user_id/leave_days.json
   def index
     @year = params[:year].to_i
+    employment_start_date = @user.sorted_employments.first.startDate
     if @year == 0
-      @year = calculate_working_year_start(Date.today, @user.employments).year
+      @year = calculate_working_year_start(Date.today, employment_start_date).year
     end
 
-    @working_year_start = calculate_working_year_start(Date.new(@year, 12, 31), @user.employments)
-    @working_year_end = calculate_working_year_start(Date.new(@year+1, 12, 31), @user.employments) - 1.day
+    @working_year_start = calculate_working_year_start(Date.new(@year, 12, 31), employment_start_date)
+    @working_year_end = calculate_working_year_start(Date.new(@year+1, 12, 31), employment_start_date) - 1.day
     begin
     @leave_days = LeaveDay.where(user_id: @user.id, date: (@working_year_start..@working_year_end)).order('date ASC')
 

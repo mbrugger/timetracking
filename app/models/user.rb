@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def sorted_employments
+    return self.employments.sort {|a,b| a.startDate <=> b.startDate}
+  end
+
   def self.roles
     ['user', 'admin']
   end

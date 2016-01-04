@@ -55,16 +55,16 @@ module LeaveDaysHelper
   end
 
   def calculate_consumed_leave_days(date, employments, leave_days)
-    working_year_start = calculate_working_year_start(date, employments)
+    sorted_employments = employments.sort {|a,b| a.startDate <=> b.startDate}
+    working_year_start = calculate_working_year_start(date, sorted_employments.first.startDate)
     return (leave_days.select {|leave_day| leave_day.date <= date && leave_day.date >= working_year_start && leave_day.leave_day_type == "leave_day"}).size
   end
 
-  def calculate_working_year_start(date, employments)
-    employment = (employments.sort {|a,b| a.startDate <=> b.startDate}).first
+  def calculate_working_year_start(date, employment_start_date)
     working_year = date.year
-    if Date.new(working_year, employment.startDate.month, employment.startDate.day) > date
+    if Date.new(working_year, employment_start_date.month, employment_start_date.day) > date
       working_year -= 1
     end
-    return Date.new(working_year, employment.startDate.month, employment.startDate.day)
+    return Date.new(working_year, employment_start_date.month, employment_start_date.day)
   end
 end

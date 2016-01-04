@@ -137,17 +137,17 @@ class LeaveDaysHelperTest < ActionView::TestCase
   # ======================= calculate_working_year_start =======================
 
   test "working_year_start should calculate the working year start based on the employment start for the first year" do
-    working_year_start = calculate_working_year_start(Date.new(2014,10,31), [employments(:default_employment)])
+    working_year_start = calculate_working_year_start(Date.new(2014,10,31), employments(:default_employment).startDate)
     assert Date.new(2014,8,1) == working_year_start, "got #{working_year_start}"
   end
 
   test "working_year_start should calculate the working year start based on the employment start for the yearly second year" do
-    working_year_start = calculate_working_year_start(Date.new(2015,7,31), [employments(:default_employment)])
+    working_year_start = calculate_working_year_start(Date.new(2015,7,31), employments(:default_employment).startDate)
     assert Date.new(2014,8,1) == working_year_start, "got #{working_year_start}"
   end
 
   test "working_year_start should calculate the working year start based on the employment start" do
-    working_year_start = calculate_working_year_start(Date.new(2016,10,31), [employments(:migrated_employment), employments(:original_employment)])
+    working_year_start = calculate_working_year_start(Date.new(2016,10,31), employments(:original_employment).startDate)
     assert Date.new(2016,8,1) == working_year_start, "got #{working_year_start}"
   end
 
