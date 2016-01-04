@@ -1,11 +1,16 @@
 .leave-days {
 
     th.date {
+      width: 15%;
+    }
+
+    th.description {
       width: 35%;
     }
 
+
     th.type {
-      width: 35%;
+      width: 15%;
     }
 
     table.summary {

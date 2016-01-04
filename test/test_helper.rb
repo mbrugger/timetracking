@@ -37,4 +37,12 @@ class ActiveSupport::TestCase
     end
     assert expected.to_i == actual.to_i, assert_message
   end
+
+  def assert_leave_day(expected_leave_day)
+    actual_leave_day = LeaveDay.find(expected_leave_day)
+    # puts "#{expected_leave_day.inspect} - #{actual_leave_day.inspect}"
+    assert_equal expected_leave_day.date, actual_leave_day.date
+    assert_equal expected_leave_day.description, actual_leave_day.description
+    assert_equal expected_leave_day.leave_day_type, actual_leave_day.leave_day_type
+  end
 end

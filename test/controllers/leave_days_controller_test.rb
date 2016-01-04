@@ -82,10 +82,18 @@ class LeaveDaysControllerTest < ActionController::TestCase
   test "should create leave_day" do
     @user = users(:employment_user)
     given_authenticated_user(@user)
+
+    new_leave_day = LeaveDay.new
+    new_leave_day.date = Date.new
+    new_leave_day.leave_day_type = "leave_day"
+    new_leave_day.description = "new"
+
     assert_difference('LeaveDay.count') do
-      post :create, user_id: @user.id, leave_day_dates: Date.new,leave_day: { leave_day_type: "leave_day" }
+      post :create, user_id: @user.id, leave_day_dates: new_leave_day.date, leave_day: { leave_day_type: new_leave_day.leave_day_type, description: new_leave_day.description }
     end
     assert_redirected_to user_leave_days_path(@user)
+    new_leave_day.id = LeaveDay.where(user_id: @user.id).last.id
+    assert_leave_day new_leave_day
   end
 
   test "should get edit" do
@@ -99,9 +107,12 @@ class LeaveDaysControllerTest < ActionController::TestCase
     given_authenticated_user(@user)
     changed_leave_day = @user.leave_days.first
     changed_leave_day.description = "updated"
+    changed_leave_day.leave_day_type = "absent_day"
+    changed_leave_day.date = Date.new
 
-    patch :update, user_id: @user.id, id: @user.leave_days.first.id, leave_day: {date: Date.new, leave_day_type: "sick_day", description: "updated"}
+    patch :update, user_id: @user.id, id: @user.leave_days.first.id, leave_day: {date: changed_leave_day.date, leave_day_type: changed_leave_day.leave_day_type, description: changed_leave_day.description}
     assert_redirected_to user_leave_days_path(@user)
+    assert_leave_day changed_leave_day
   end
 
   test "should destroy leave_day" do

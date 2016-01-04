@@ -11,15 +11,20 @@
     </div>
   <% end %>
 
-<p>
-  <%= f.label :date %><br>
-  <input type="text" id="leave_day_datepicker" name="leave_day_dates">
-</p>
+  <p>
+    <%= f.label :date %><br>
+    <input type="text" id="leave_day_datepicker" name="leave_day_dates">
+  </p>
 
-<p>
-  <%= f.label :leave_day_type %><br>
-  <%= f.select(:leave_day_type, options_for_select(LeaveDay.localized_leave_day_types)) %>
-</p>
+  <p>
+    <%= f.label :leave_day_type %><br>
+    <%= f.select(:leave_day_type, options_for_select(LeaveDay.localized_leave_day_types)) %>
+  </p>
+  
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </p>
 
   <div class="actions">
     <%= f.submit %>

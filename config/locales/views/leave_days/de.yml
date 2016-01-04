@@ -3,6 +3,7 @@ de:
     leave_days:
       listing_title: 'Abwesenheitstage für das Arbeitsjahr von <b>%{start}</b> bis <b>%{end}</b>'
       date: 'Datum'
+      description: 'Beschreibung'
       type: 'Art'
       new_leave_day: 'Neuer Abwesenheitstag'
       show: 'Anzeigen'

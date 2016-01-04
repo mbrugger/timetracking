@@ -77,6 +77,7 @@ class LeaveDaysController < ApplicationController
           leave_day = @user.leave_days.build
           leave_day.date = date
           leave_day.leave_day_type = leave_day_params[:leave_day_type]
+          leave_day.description = leave_day_params[:description]
           begin
             if (!leave_day.save)
               flash[:alert] = I18n.t('controllers.leave_days.could_not_save', date: date)
@@ -145,6 +146,6 @@ class LeaveDaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def leave_day_params
-      params.require(:leave_day).permit(:date, :leave_day_type)
+      params.require(:leave_day).permit(:date, :leave_day_type, :description)
     end
 end

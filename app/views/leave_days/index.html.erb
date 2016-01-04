@@ -5,6 +5,7 @@
       <thead>
         <tr>
           <th class="date"><%= I18n.t('views.leave_days.date')%></th>
+          <th class="description"><%= I18n.t('views.leave_days.description')%></th>
           <th class="type"><%= I18n.t('views.leave_days.type')%></th>
           <th colspan="2"><%= link_to I18n.t('views.leave_days.new_leave_day'), new_user_leave_day_path %></th>
         </tr>
@@ -13,6 +14,7 @@
         <% @leave_days.each do |leave_day| %>
           <tr>
             <td><%= leave_day.date.to_formatted_s(:pretty_date)%></td>
+            <td><%= leave_day.description %></td>
             <td><%= leave_day.localized_leave_day_type %></td>
             <td><%= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_user_leave_day_path(leave_day.user, leave_day) %></td>
             <td><%= link_to raw('<i class="fa fa-trash-o"></i>'), [leave_day.user, leave_day], method: :delete, data: { confirm: I18n.t('views.leave_days.are_you_sure') } %></td>

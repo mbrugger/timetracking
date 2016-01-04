@@ -3,6 +3,7 @@ en:
     leave_days:
       listing_title: Listing Leave Days for working year <b>%{start}</b> to <b>%{end}</b>
       date: 'Date'
+      description: 'Description'
       type: 'Type'
       new_leave_day: 'New Leave day'
       show: 'Show'
