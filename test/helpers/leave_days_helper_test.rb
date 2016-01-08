@@ -5,12 +5,24 @@ class LeaveDaysHelperTest < ActionView::TestCase
 
   def setup
     @current_user = users(:employment_user)
+    @start_date = Date.new(2015,1,1)
   end
 
   def assert_days(expected, actual, additional_message = nil)
     message = "expected: #{expected} got: #{actual}"
     message += " #{additional_message}" unless additional_message.nil?
     assert expected == actual, message
+  end
+
+  def end_date(start_date, contract_duration)
+    return start_date + contract_duration - 1.day
+  end
+
+  def calculate_obtained_leave_days_for_dates_with_contract_end(start_date, end_date, current_date)
+    employment = Employment.new
+    employment.startDate = start_date
+    employment.endDate = end_date
+    return calculate_obtained_leave_days(current_date, [employment])
   end
 
   # ======== helper method test ============
@@ -229,6 +241,122 @@ class LeaveDaysHelperTest < ActionView::TestCase
     @leave_days_consumed = calculate_consumed_leave_days(Date.new(2015,3,31), @current_user.employments, @current_user.leave_days)
     assert @leave_days_consumed == 0, "expected 0 got #{@leave_days_consumed}"
     assert @leave_days_available == 50, "expected 50 got #{@leave_days_available}"
+  end
+
+  # ======================= scenario contract termination available leave days calculation =======================
+
+  test "calculate available leave days if employment is terminated after 5 months" do
+    @current_user = users(:terminated_after_5_month_user)
+    @leave_days_available = calculate_available_leave_days(Date.new(2015,6,30), @current_user.employments, @current_user.leave_days)
+    assert_equal 10, @leave_days_available
+  end
+
+  test "calculate available leave days if employment is terminated after 5 months at future date" do
+    @current_user = users(:terminated_after_5_month_user)
+    @leave_days_available = calculate_available_leave_days(Date.new(2015,8,30), @current_user.employments, @current_user.leave_days)
+    assert_equal 10, @leave_days_available
+  end
+
+  test "calculate available leave days if employment is terminated after 5 months and user is migrated" do
+    @current_user = users(:migrated_terminated_after_5_month_user)
+    @leave_days_available = calculate_available_leave_days(Date.new(2015,8,30), @current_user.employments, @current_user.leave_days)
+    assert_equal 10, @leave_days_available
+  end
+
+  test "calculate available leave days if employment is terminated after 11 months" do
+    @current_user = users(:terminated_after_11_month_user)
+    @leave_days_available = calculate_available_leave_days(Date.new(2015,12,31), @current_user.employments, @current_user.leave_days)
+    assert_equal 22, @leave_days_available
+  end
+
+  test "calculate available leave days if employment is terminated after 11 months checked at future date" do
+    @current_user = users(:terminated_after_11_month_user)
+    @leave_days_available = calculate_available_leave_days(Date.new(2016,1,31), @current_user.employments, @current_user.leave_days)
+    assert_equal 22, @leave_days_available
+  end
+
+  test "calculate available leave days if employment is terminated after 18 months and employment has been changed in between" do
+    @current_user = users(:terminated_after_18_month_user)
+    @leave_days_available = calculate_available_leave_days(Date.new(2016,7,31), @current_user.employments, @current_user.leave_days)
+    assert_equal 25+6*2, @leave_days_available
+  end
+
+  test "calculate obtained leave days with contract end date for 3 months contract before contract end" do
+    @end_date = end_date(@start_date, 3.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date - 2.month)
+    assert_equal 2, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 3 months contract at contract end" do
+    @end_date = end_date(@start_date, 3.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date)
+    assert_equal 6, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 3 months contract after contract end" do
+    @end_date = end_date(@start_date, 3.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date + 1.month)
+    assert_equal 6, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 11 months contract before contract end" do
+    @end_date = end_date(@start_date, 11.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date - 2.month)
+    assert_equal 22, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 11 months contract at contract end" do
+    @end_date = end_date(@start_date, 11.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date)
+    assert_equal 22, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 11 months contract after contract end" do
+    @end_date = end_date(@start_date, 11.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date + 2.month)
+    assert_equal 22, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 12 months contract before contract end" do
+    @end_date = end_date(@start_date, 12.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date - 2.month)
+    assert_equal 25, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 12 months contract at contract end" do
+    @end_date = end_date(@start_date, 12.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date)
+    assert_equal 25, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 12 months contract after contract end" do
+    @end_date = end_date(@start_date, 12.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date + 2.month)
+    assert_equal 25, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 18 months contract before contract end" do
+    @end_date = end_date(@start_date, 18.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date - 2.month)
+    assert_equal 25+12, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 18 months contract at contract end" do
+    @end_date = end_date(@start_date, 18.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date)
+    assert_equal 25+12, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 18 months contract after contract end" do
+    @end_date = end_date(@start_date, 18.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date + 2.month)
+    assert_equal 25+12, obtained_leave_days
+  end
+
+  test "calculate obtained leave days with contract end date for 18 months contract at end of first year" do
+    @end_date = end_date(@start_date, 18.month)
+    obtained_leave_days = calculate_obtained_leave_days_for_dates_with_contract_end(@start_date, @end_date, @end_date - 6.month)
+    assert_equal 25, obtained_leave_days
   end
 
 

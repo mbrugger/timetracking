@@ -3,28 +3,59 @@ module LeaveDaysHelper
 
   def calculate_available_leave_days(date, employments, leave_days)
     #print "calculate available leave days for date: #{date} \n"
+    obtained_leave_days = calculate_obtained_leave_days(date, employments)
+    consumed_leave_days = (leave_days.select {|leave_day| leave_day.date <= date && leave_day.leave_day_type == "leave_day"}).size
+    #print "consumed_leave_days: #{consumed_leave_days}\n"
+    return obtained_leave_days - consumed_leave_days
+  end
+
+  def calculate_obtained_leave_days(date, employments)
     sorted_employments = employments.sort {|a,b| a.startDate <=> b.startDate}
     if !sorted_employments.last.endDate.nil? && date > sorted_employments.last.endDate
       date = sorted_employments.last.endDate
     end
 
     first_employment = sorted_employments.first
+
+    contract_start_date = sorted_employments.first.startDate
+    contract_end_date = sorted_employments.last.endDate
+
+
     if (first_employment.migrated_employment? && date <= first_employment.endDate)
       raise ArgumentError, "Leave days calculation not support in migrated employment"
     end
-    if first_employment.migrated_employment? && first_employment.startDate < (first_employment.endDate - 1.year)
+    if first_employment.migrated_employment? && contract_start_date < (first_employment.endDate - 1.year)
       #print "mig calculation\n"
-      obtained_leave_days_before_migration = calculate_obtained_leave_days_for_dates(first_employment.startDate, first_employment.endDate)
-      obtained_leave_days = calculate_obtained_leave_days_for_dates(first_employment.startDate, date) - obtained_leave_days_before_migration
+      obtained_leave_days_before_migration = calculate_obtained_leave_days_for_dates(contract_start_date, first_employment.endDate)
+      obtained_leave_days = calculate_obtained_leave_days_for_dates(contract_start_date, date) - obtained_leave_days_before_migration
       obtained_leave_days += first_employment.leave_days
     else
       #print "standard calculation \n"
-      obtained_leave_days = calculate_obtained_leave_days_for_dates(sorted_employments.first.startDate, date)
+      obtained_leave_days = calculate_obtained_leave_days_for_dates(contract_start_date, date)
       #print "obtained: #{obtained_leave_days} from #{sorted_employments.first.startDate} to #{date} \n"
     end
-    consumed_leave_days = (leave_days.select {|leave_day| leave_day.date <= date && leave_day.leave_day_type == "leave_day"}).size
-    #print "consumed_leave_days: #{consumed_leave_days}\n"
-    return obtained_leave_days - consumed_leave_days
+
+    # if the employment has been terminated, reduce obtained leave days for final working year
+    if !contract_end_date.nil? && calculate_employment_months(contract_start_date, contract_end_date) > 6
+      final_working_year_start = calculate_working_year_start(contract_end_date, contract_start_date)
+      # only consider contract end when calculating leave days in final year of contract
+      if date > final_working_year_start
+        #print "calculating reduced available leave days because contract is already terminated\n"
+        if calculate_employment_months(contract_start_date, contract_end_date) > 6
+          employment_months_in_final_year = calculate_employment_months(final_working_year_start, contract_end_date) + 1
+          #print "final year employment months: #{employment_months_in_final_year}\n"
+          if (employment_months_in_final_year < 12)
+            obtained_leave_days_in_final_year = employment_months_in_final_year * 2;
+          else
+            obtained_leave_days_in_final_year = 25
+          end
+          leave_days_reduction = 25 - obtained_leave_days_in_final_year
+          #print "reducing leave days by #{leave_days_reduction} for early termination\n"
+          obtained_leave_days -= leave_days_reduction
+        end
+      end
+    end
+    return obtained_leave_days
   end
 
   def calculate_obtained_leave_days_for_dates(start_date, current_date)

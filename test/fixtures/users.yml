@@ -110,3 +110,28 @@ api_calendar_user:
   role: user
   token: some_random_token
   encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+#================= Leave days calculation for terminated employments
+terminated_after_5_month_user:
+  email: terminated_after_5_month_user@brugger.eu
+  role: user
+  token:
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+migrated_terminated_after_5_month_user:
+  email: migrated_terminated_after_5_month_user@brugger.eu
+  role: user
+  token:
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+terminated_after_11_month_user:
+  email: terminated_after_11_month_user@brugger.eu
+  role: user
+  token:
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+
+terminated_after_18_month_user:
+  email: terminated_after_18_month_user@brugger.eu
+  role: user
+  token: 
+  encrypted_password: <%= Devise.bcrypt(User, 'password') %>

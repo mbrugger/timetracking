@@ -32,7 +32,7 @@ class StatisticsControllerTest < ActionController::TestCase
     get :leave_days, date: Date.parse("2015/12/31")
     assert_response :success
     assert_not_nil assigns(:user_leave_days_statistic)
-    assert_equal 418, assigns(:total_leave_days)
+    assert_equal 465, assigns(:total_leave_days)
   end
 
   test "user should not be allowed to get index" do

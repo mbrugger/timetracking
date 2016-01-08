@@ -130,3 +130,45 @@ admin_user:
   leave_days:
   weeklyHours: 7
   user: admin_user
+
+#================= Leave days calculation for terminated employments
+terminated_after_5_month_employment:
+  startDate: 2015-02-01
+  endDate: 2015-06-30
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: terminated_after_5_month_user
+
+migrated_1_terminated_after_5_month_employment:
+  startDate: 2015-02-01
+  endDate: 2015-03-31
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  migrated_employment: true
+  user: migrated_terminated_after_5_month_user
+
+migrated_2_terminated_after_5_month_employment:
+  startDate: 2015-04-01
+  endDate: 2015-06-30
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: migrated_terminated_after_5_month_user
+
+terminated_after_11_month_employment:
+  startDate: 2015-02-01
+  endDate: 2015-12-31
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: terminated_after_11_month_user
+
+terminated_after_18_month_employment:
+  startDate: 2015-02-01
+  endDate: 2016-7-31
+  working_hours_balance:
+  leave_days:
+  weeklyHours: 7
+  user: terminated_after_18_month_user
