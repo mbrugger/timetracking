@@ -1,5 +1,3 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -39,7 +37,7 @@ class ActiveSupport::TestCase
   end
 
   def assert_leave_day(expected_leave_day)
-    actual_leave_day = LeaveDay.find(expected_leave_day)
+    actual_leave_day = LeaveDay.find(expected_leave_day.id)
     # puts "#{expected_leave_day.inspect} - #{actual_leave_day.inspect}"
     assert_equal expected_leave_day.date, actual_leave_day.date
     assert_equal expected_leave_day.description, actual_leave_day.description
