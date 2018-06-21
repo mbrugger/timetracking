@@ -39,7 +39,7 @@ gem 'byebug', '~> 4.0.5', group: :development
 
 gem 'devise', '3.4.1'
 
-gem 'mysql2', group: :mysql
+gem 'mysql2', '0.4.10', group: :mysql
 
 gem 'cancancan', '~> 1.9'
 
