@@ -30,3 +30,6 @@ pickle-email-*.html
 *.bowerrc
 bower.json
 .DS_Store
+
+.idea
+coverage
