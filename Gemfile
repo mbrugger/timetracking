@@ -59,4 +59,6 @@ gem 'pg', '~> 0.15', group: :heroku
 #added for calendar integration
 gem 'icalendar', '~> 2'
 
+gem 'loofah', '2.2.3'
+
 gem 'simplecov', require: false, group: :test
